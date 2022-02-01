@@ -74,6 +74,96 @@ public:
     friend std::ostream& operator<<(std::ostream& str, CameraServer::CameraMode const& camera_mode);
 
     /**
+     * @brief
+     */
+    enum class CameraFocusStepDirection {
+        In, /**< @brief. */
+        Out, /**< @brief. */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraFocusStepDirection`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(
+        std::ostream& str,
+        CameraServer::CameraFocusStepDirection const& camera_focus_step_direction);
+
+    /**
+     * @brief
+     */
+    enum class CameraFocusType {
+        Step, /**< @brief. */
+        Continuous, /**< @brief. */
+        Range, /**< @brief. */
+        Meters, /**< @brief. */
+        Auto, /**< @brief. */
+        AutoSingle, /**< @brief. */
+        AutoContinuous, /**< @brief. */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraFocusType`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::CameraFocusType const& camera_focus_type);
+
+    /**
+     * @brief
+     */
+    struct CameraZoomFocalLength {
+        float normalized{}; /**< @brief */
+        float length{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `CameraServer::CameraZoomFocalLength` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(
+        const CameraServer::CameraZoomFocalLength& lhs,
+        const CameraServer::CameraZoomFocalLength& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraZoomFocalLength`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(
+        std::ostream& str, CameraServer::CameraZoomFocalLength const& camera_zoom_focal_length);
+
+    /**
+     * @brief
+     */
+    struct CameraFocus {
+        CameraFocusType type{}; /**< @brief */
+        CameraFocusStepDirection step_direction{}; /**< @brief */
+        float continuous{}; /**< @brief */
+        float normalized{}; /**< @brief */
+        float meters{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `CameraServer::CameraFocus` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool
+    operator==(const CameraServer::CameraFocus& lhs, const CameraServer::CameraFocus& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraFocus`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::CameraFocus const& camera_focus);
+
+    /**
      * @brief Type to represent a camera information.
      */
     struct Information {
@@ -279,6 +369,29 @@ public:
      * @brief
      */
     void subscribe_set_camera_mode_survey(SetCameraModeSurveyCallback callback);
+
+    /**
+     * @brief Callback type for subscribe_set_camera_zoom.
+     */
+
+    using SetCameraZoomCallback = std::function<void(Result, CameraZoomFocalLength)>;
+
+    /**
+     * @brief Subscribe to camera zoom commands
+     */
+    void subscribe_set_camera_zoom(
+        float focal_length_min, float focal_length_max, SetCameraZoomCallback callback);
+
+    /**
+     * @brief Callback type for subscribe_set_camera_focus.
+     */
+
+    using SetCameraFocusCallback = std::function<void(Result, CameraFocus)>;
+
+    /**
+     * @brief Subscribe to camera focus commands
+     */
+    void subscribe_set_camera_focus(SetCameraFocusCallback callback);
 
     /**
      * @brief Adds a photo to the list of available photos

@@ -10,6 +10,8 @@
 
 namespace mavsdk {
 
+using CameraZoomFocalLength = CameraServer::CameraZoomFocalLength;
+using CameraFocus = CameraServer::CameraFocus;
 using Information = CameraServer::Information;
 using Position = CameraServer::Position;
 using Quaternion = CameraServer::Quaternion;
@@ -57,9 +59,62 @@ void CameraServer::subscribe_set_camera_mode_survey(SetCameraModeSurveyCallback 
     _impl->subscribe_set_camera_mode_survey(callback);
 }
 
+void CameraServer::subscribe_set_camera_zoom(
+    float focal_length_min, float focal_length_max, SetCameraZoomCallback callback)
+{
+    _impl->subscribe_set_camera_zoom(focal_length_min, focal_length_max, callback);
+}
+
+void CameraServer::subscribe_set_camera_focus(SetCameraFocusCallback callback)
+{
+    _impl->subscribe_set_camera_focus(callback);
+}
+
 CameraServer::Result CameraServer::publish_photo(CaptureInfo capture_info) const
 {
     return _impl->publish_photo(capture_info);
+}
+
+bool operator==(
+    const CameraServer::CameraZoomFocalLength& lhs, const CameraServer::CameraZoomFocalLength& rhs)
+{
+    return ((std::isnan(rhs.normalized) && std::isnan(lhs.normalized)) ||
+            rhs.normalized == lhs.normalized) &&
+           ((std::isnan(rhs.length) && std::isnan(lhs.length)) || rhs.length == lhs.length);
+}
+
+std::ostream&
+operator<<(std::ostream& str, CameraServer::CameraZoomFocalLength const& camera_zoom_focal_length)
+{
+    str << std::setprecision(15);
+    str << "camera_zoom_focal_length:" << '\n' << "{\n";
+    str << "    normalized: " << camera_zoom_focal_length.normalized << '\n';
+    str << "    length: " << camera_zoom_focal_length.length << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const CameraServer::CameraFocus& lhs, const CameraServer::CameraFocus& rhs)
+{
+    return (rhs.type == lhs.type) && (rhs.step_direction == lhs.step_direction) &&
+           ((std::isnan(rhs.continuous) && std::isnan(lhs.continuous)) ||
+            rhs.continuous == lhs.continuous) &&
+           ((std::isnan(rhs.normalized) && std::isnan(lhs.normalized)) ||
+            rhs.normalized == lhs.normalized) &&
+           ((std::isnan(rhs.meters) && std::isnan(lhs.meters)) || rhs.meters == lhs.meters);
+}
+
+std::ostream& operator<<(std::ostream& str, CameraServer::CameraFocus const& camera_focus)
+{
+    str << std::setprecision(15);
+    str << "camera_focus:" << '\n' << "{\n";
+    str << "    type: " << camera_focus.type << '\n';
+    str << "    step_direction: " << camera_focus.step_direction << '\n';
+    str << "    continuous: " << camera_focus.continuous << '\n';
+    str << "    normalized: " << camera_focus.normalized << '\n';
+    str << "    meters: " << camera_focus.meters << '\n';
+    str << '}';
+    return str;
 }
 
 bool operator==(const CameraServer::Information& lhs, const CameraServer::Information& rhs)
@@ -199,6 +254,41 @@ std::ostream& operator<<(std::ostream& str, CameraServer::CameraMode const& came
             return str << "Video";
         case CameraServer::CameraMode::Survey:
             return str << "Survey";
+        default:
+            return str << "Unknown";
+    }
+}
+
+std::ostream& operator<<(
+    std::ostream& str, CameraServer::CameraFocusStepDirection const& camera_focus_step_direction)
+{
+    switch (camera_focus_step_direction) {
+        case CameraServer::CameraFocusStepDirection::In:
+            return str << "In";
+        case CameraServer::CameraFocusStepDirection::Out:
+            return str << "Out";
+        default:
+            return str << "Unknown";
+    }
+}
+
+std::ostream& operator<<(std::ostream& str, CameraServer::CameraFocusType const& camera_focus_type)
+{
+    switch (camera_focus_type) {
+        case CameraServer::CameraFocusType::Step:
+            return str << "Step";
+        case CameraServer::CameraFocusType::Continuous:
+            return str << "Continuous";
+        case CameraServer::CameraFocusType::Range:
+            return str << "Range";
+        case CameraServer::CameraFocusType::Meters:
+            return str << "Meters";
+        case CameraServer::CameraFocusType::Auto:
+            return str << "Auto";
+        case CameraServer::CameraFocusType::AutoSingle:
+            return str << "Auto Single";
+        case CameraServer::CameraFocusType::AutoContinuous:
+            return str << "Auto Continuous";
         default:
             return str << "Unknown";
     }

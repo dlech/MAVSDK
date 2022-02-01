@@ -75,6 +75,149 @@ public:
         }
     }
 
+    static rpc::camera_server::CameraFocusStepDirection translateToRpcCameraFocusStepDirection(
+        const mavsdk::CameraServer::CameraFocusStepDirection& camera_focus_step_direction)
+    {
+        switch (camera_focus_step_direction) {
+            default:
+                LogErr() << "Unknown camera_focus_step_direction enum value: "
+                         << static_cast<int>(camera_focus_step_direction);
+            // FALLTHROUGH
+            case mavsdk::CameraServer::CameraFocusStepDirection::In:
+                return rpc::camera_server::CAMERA_FOCUS_STEP_DIRECTION_IN;
+            case mavsdk::CameraServer::CameraFocusStepDirection::Out:
+                return rpc::camera_server::CAMERA_FOCUS_STEP_DIRECTION_OUT;
+        }
+    }
+
+    static mavsdk::CameraServer::CameraFocusStepDirection translateFromRpcCameraFocusStepDirection(
+        const rpc::camera_server::CameraFocusStepDirection camera_focus_step_direction)
+    {
+        switch (camera_focus_step_direction) {
+            default:
+                LogErr() << "Unknown camera_focus_step_direction enum value: "
+                         << static_cast<int>(camera_focus_step_direction);
+            // FALLTHROUGH
+            case rpc::camera_server::CAMERA_FOCUS_STEP_DIRECTION_IN:
+                return mavsdk::CameraServer::CameraFocusStepDirection::In;
+            case rpc::camera_server::CAMERA_FOCUS_STEP_DIRECTION_OUT:
+                return mavsdk::CameraServer::CameraFocusStepDirection::Out;
+        }
+    }
+
+    static rpc::camera_server::CameraFocusType
+    translateToRpcCameraFocusType(const mavsdk::CameraServer::CameraFocusType& camera_focus_type)
+    {
+        switch (camera_focus_type) {
+            default:
+                LogErr() << "Unknown camera_focus_type enum value: "
+                         << static_cast<int>(camera_focus_type);
+            // FALLTHROUGH
+            case mavsdk::CameraServer::CameraFocusType::Step:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_STEP;
+            case mavsdk::CameraServer::CameraFocusType::Continuous:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_CONTINUOUS;
+            case mavsdk::CameraServer::CameraFocusType::Range:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_RANGE;
+            case mavsdk::CameraServer::CameraFocusType::Meters:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_METERS;
+            case mavsdk::CameraServer::CameraFocusType::Auto:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_AUTO;
+            case mavsdk::CameraServer::CameraFocusType::AutoSingle:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_AUTO_SINGLE;
+            case mavsdk::CameraServer::CameraFocusType::AutoContinuous:
+                return rpc::camera_server::CAMERA_FOCUS_TYPE_AUTO_CONTINUOUS;
+        }
+    }
+
+    static mavsdk::CameraServer::CameraFocusType
+    translateFromRpcCameraFocusType(const rpc::camera_server::CameraFocusType camera_focus_type)
+    {
+        switch (camera_focus_type) {
+            default:
+                LogErr() << "Unknown camera_focus_type enum value: "
+                         << static_cast<int>(camera_focus_type);
+            // FALLTHROUGH
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_STEP:
+                return mavsdk::CameraServer::CameraFocusType::Step;
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_CONTINUOUS:
+                return mavsdk::CameraServer::CameraFocusType::Continuous;
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_RANGE:
+                return mavsdk::CameraServer::CameraFocusType::Range;
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_METERS:
+                return mavsdk::CameraServer::CameraFocusType::Meters;
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_AUTO:
+                return mavsdk::CameraServer::CameraFocusType::Auto;
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_AUTO_SINGLE:
+                return mavsdk::CameraServer::CameraFocusType::AutoSingle;
+            case rpc::camera_server::CAMERA_FOCUS_TYPE_AUTO_CONTINUOUS:
+                return mavsdk::CameraServer::CameraFocusType::AutoContinuous;
+        }
+    }
+
+    static std::unique_ptr<rpc::camera_server::CameraZoomFocalLength>
+    translateToRpcCameraZoomFocalLength(
+        const mavsdk::CameraServer::CameraZoomFocalLength& camera_zoom_focal_length)
+    {
+        auto rpc_obj = std::make_unique<rpc::camera_server::CameraZoomFocalLength>();
+
+        rpc_obj->set_normalized(camera_zoom_focal_length.normalized);
+
+        rpc_obj->set_length(camera_zoom_focal_length.length);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::CameraServer::CameraZoomFocalLength translateFromRpcCameraZoomFocalLength(
+        const rpc::camera_server::CameraZoomFocalLength& camera_zoom_focal_length)
+    {
+        mavsdk::CameraServer::CameraZoomFocalLength obj;
+
+        obj.normalized = camera_zoom_focal_length.normalized();
+
+        obj.length = camera_zoom_focal_length.length();
+
+        return obj;
+    }
+
+    static std::unique_ptr<rpc::camera_server::CameraFocus>
+    translateToRpcCameraFocus(const mavsdk::CameraServer::CameraFocus& camera_focus)
+    {
+        auto rpc_obj = std::make_unique<rpc::camera_server::CameraFocus>();
+
+        rpc_obj->set_type(translateToRpcCameraFocusType(camera_focus.type));
+
+        rpc_obj->set_step_direction(
+            translateToRpcCameraFocusStepDirection(camera_focus.step_direction));
+
+        rpc_obj->set_continuous(camera_focus.continuous);
+
+        rpc_obj->set_normalized(camera_focus.normalized);
+
+        rpc_obj->set_meters(camera_focus.meters);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::CameraServer::CameraFocus
+    translateFromRpcCameraFocus(const rpc::camera_server::CameraFocus& camera_focus)
+    {
+        mavsdk::CameraServer::CameraFocus obj;
+
+        obj.type = translateFromRpcCameraFocusType(camera_focus.type());
+
+        obj.step_direction =
+            translateFromRpcCameraFocusStepDirection(camera_focus.step_direction());
+
+        obj.continuous = camera_focus.continuous();
+
+        obj.normalized = camera_focus.normalized();
+
+        obj.meters = camera_focus.meters();
+
+        return obj;
+    }
+
     static std::unique_ptr<rpc::camera_server::Information>
     translateToRpcInformation(const mavsdk::CameraServer::Information& information)
     {
@@ -555,6 +698,119 @@ public:
                 std::unique_lock<std::mutex> lock(*subscribe_mutex);
                 if (!*is_finished && !writer->Write(rpc_response)) {
                     _lazy_plugin.maybe_plugin()->subscribe_set_camera_mode_survey(nullptr);
+
+                    *is_finished = true;
+                    unregister_stream_stop_promise(stream_closed_promise);
+                    stream_closed_promise->set_value();
+                }
+            });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeSetCameraZoom(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* request,
+        grpc::ServerWriter<rpc::camera_server::SetCameraZoomResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            rpc::camera_server::SetCameraZoomResponse rpc_response;
+            auto result = mavsdk::CameraServer::Result::NoSystem;
+            fillResponseWithResult(&rpc_response, result);
+            writer->Write(rpc_response);
+
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        _lazy_plugin.maybe_plugin()->subscribe_set_camera_zoom(
+            request->focal_length_min(),
+            request->focal_length_max(),
+            [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex](
+                mavsdk::CameraServer::Result result,
+                const mavsdk::CameraServer::CameraZoomFocalLength set_camera_zoom) {
+                rpc::camera_server::SetCameraZoomResponse rpc_response;
+
+                rpc_response.set_allocated_focal(
+                    translateToRpcCameraZoomFocalLength(set_camera_zoom).release());
+
+                auto rpc_result = translateToRpcResult(result);
+                auto* rpc_camera_server_result = new rpc::camera_server::CameraServerResult();
+                rpc_camera_server_result->set_result(rpc_result);
+                std::stringstream ss;
+                ss << result;
+                rpc_camera_server_result->set_result_str(ss.str());
+                rpc_response.set_allocated_camera_server_result(rpc_camera_server_result);
+
+                std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                if (!*is_finished && !writer->Write(rpc_response)) {
+                    _lazy_plugin.maybe_plugin()->subscribe_set_camera_zoom(
+                        float(), float(), nullptr);
+
+                    *is_finished = true;
+                    unregister_stream_stop_promise(stream_closed_promise);
+                    stream_closed_promise->set_value();
+                }
+            });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeSetCameraFocus(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /* request */,
+        grpc::ServerWriter<rpc::camera_server::SetCameraFocusResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            rpc::camera_server::SetCameraFocusResponse rpc_response;
+            auto result = mavsdk::CameraServer::Result::NoSystem;
+            fillResponseWithResult(&rpc_response, result);
+            writer->Write(rpc_response);
+
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        _lazy_plugin.maybe_plugin()->subscribe_set_camera_focus(
+            [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex](
+                mavsdk::CameraServer::Result result,
+                const mavsdk::CameraServer::CameraFocus set_camera_focus) {
+                rpc::camera_server::SetCameraFocusResponse rpc_response;
+
+                rpc_response.set_allocated_focus(
+                    translateToRpcCameraFocus(set_camera_focus).release());
+
+                auto rpc_result = translateToRpcResult(result);
+                auto* rpc_camera_server_result = new rpc::camera_server::CameraServerResult();
+                rpc_camera_server_result->set_result(rpc_result);
+                std::stringstream ss;
+                ss << result;
+                rpc_camera_server_result->set_result_str(ss.str());
+                rpc_response.set_allocated_camera_server_result(rpc_camera_server_result);
+
+                std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                if (!*is_finished && !writer->Write(rpc_response)) {
+                    _lazy_plugin.maybe_plugin()->subscribe_set_camera_focus(nullptr);
 
                     *is_finished = true;
                     unregister_stream_stop_promise(stream_closed_promise);

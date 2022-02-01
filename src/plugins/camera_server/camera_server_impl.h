@@ -28,6 +28,12 @@ public:
     void subscribe_set_camera_mode_video(CameraServer::SetCameraModeVideoCallback callback);
     void subscribe_set_camera_mode_survey(CameraServer::SetCameraModeSurveyCallback callback);
 
+    void subscribe_set_camera_zoom(
+        float focal_length_min,
+        float focal_length_max,
+        CameraServer::SetCameraZoomCallback callback);
+    void subscribe_set_camera_focus(CameraServer::SetCameraFocusCallback callback);
+
     CameraServer::Result publish_photo(CameraServer::CaptureInfo capture_info);
 
 private:
@@ -47,9 +53,17 @@ private:
     CameraServer::Information _information{};
     bool _in_progress{};
 
+    float _focal_length_min{};
+    float _focal_length_max{};
+
     void check_modes_available();
 
     CameraServer::TakePhotoCallback take_photo_callback;
+    CameraServer::SetCameraModeImageCallback set_camera_mode_image_callback;
+    CameraServer::SetCameraModeVideoCallback set_camera_mode_video_callback;
+    CameraServer::SetCameraModeSurveyCallback set_camera_mode_survey_callback;
+    CameraServer::SetCameraZoomCallback set_camera_zoom_callback;
+    CameraServer::SetCameraFocusCallback set_camera_focus_callback;
 
     std::optional<mavlink_message_t>
     process_camera_information_request(const MavlinkCommandReceiver::CommandLong& command);
