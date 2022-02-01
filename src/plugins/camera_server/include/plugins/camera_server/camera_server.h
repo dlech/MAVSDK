@@ -57,7 +57,7 @@ public:
     ~CameraServer();
 
     /**
-     * @brief Possible results returned for action requests.
+     * @brief
      */
     enum class CameraMode {
         Unknown, /**< @brief. */
