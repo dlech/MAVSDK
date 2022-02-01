@@ -147,8 +147,6 @@ void CameraServerImpl::enable() {}
 
 void CameraServerImpl::disable() {}
 
-
-
 CameraServer::Result CameraServerImpl::set_information(CameraServer::Information information)
 {
     _is_information_set = true;
@@ -156,36 +154,94 @@ CameraServer::Result CameraServerImpl::set_information(CameraServer::Information
     return CameraServer::Result::Success;
 }
 
-
-
 CameraServer::Result CameraServerImpl::set_in_progress(bool in_progress)
 {
     _in_progress = in_progress;
     return CameraServer::Result::Success;
 }
 
-
-
-void CameraServerImpl::subscribe_take_photo(CameraServer::TakePhotoCallback callback)
+void CameraServerImpl::check_modes_available()
 {
+    uint8_t modes = 0;
+    if (_information_flags & CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_IMAGE)
+        modes++;
+    if (_information_flags & CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_VIDEO)
+        modes++;
+    if (_information_flags & CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_IMAGE_SURVEY_MODE)
+        modes++;
 
-    UNUSED(callback);
+    if (modes > 1) {
+        _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_MODES;
+    }
 }
 
+void CameraServerImpl::subscribe_take_photo(
+    bool can_capture_in_video_mode, CameraServer::TakePhotoCallback callback)
+{
+    _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_IMAGE;
+    if (can_capture_in_video_mode) {
+        _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_VIDEO;
+        _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAN_CAPTURE_IMAGE_IN_VIDEO_MODE;
+    }
+    check_modes_available();
 
+    take_photo_callback = callback;
+}
+
+void CameraServerImpl::subscribe_set_camera_mode_image(
+    CameraServer::SetCameraModeImageCallback callback)
+{
+    _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_IMAGE;
+    check_modes_available();
+
+    set_camera_mode_image_callback = callback;
+}
+
+void CameraServerImpl::subscribe_set_camera_mode_video(
+    CameraServer::SetCameraModeVideoCallback callback)
+{
+    _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_VIDEO;
+    check_modes_available();
+
+    set_camera_mode_video_callback = callback;
+}
+
+void CameraServerImpl::subscribe_set_camera_mode_survey(
+    CameraServer::SetCameraModeSurveyCallback callback)
+{
+    _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_IMAGE_SURVEY_MODE;
+    check_modes_available();
+
+    set_camera_mode_survey_callback = callback;
+}
+
+void CameraServerImpl::subscribe_set_camera_zoom(
+    float focal_length_min, float focal_length_max, CameraServer::SetCameraZoomCallback callback)
+{
+    _focal_length_min = focal_length_min;
+    _focal_length_max = focal_length_max;
+    _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM;
+
+    set_camera_zoom_callback = callback;
+}
+
+void CameraServerImpl::subscribe_set_camera_focus(CameraServer::SetCameraFocusCallback callback)
+{
+    _information_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS;
+
+    set_camera_focus_callback = callback;
+}
 
 CameraServer::Result CameraServerImpl::publish_photo(CameraServer::CaptureInfo capture_info)
 {
-
     UNUSED(capture_info);
-
 
     // TODO :)
     return {};
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_camera_information_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_camera_information_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto capabilities = static_cast<bool>(command.params.param1);
 
@@ -195,7 +251,8 @@ CameraServerImpl::process_camera_information_request(const MavlinkCommandReceive
     }
 
     if (!_is_information_set) {
-        return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_TEMPORARILY_REJECTED);
+        return _parent->make_command_ack_message(
+            command, MAV_RESULT::MAV_RESULT_TEMPORARILY_REJECTED);
     }
 
     // ack needs to be sent before camera information message
@@ -203,14 +260,8 @@ CameraServerImpl::process_camera_information_request(const MavlinkCommandReceive
     _parent->send_message(ack_msg);
     LogDebug() << "sent info ack";
 
-    // FIXME: why is this needed to prevent dropping messages?
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    // unsupported items
-    const uint32_t firmware_version = 0;
-    const uint8_t lens_id = 0;
-    const uint16_t camera_definition_version = 0;
-    auto camera_definition_uri = "";
+    // FIXME: why is this needed to prevent dropping messages? - comment from dayjaby: guess it's
+    // not? commenting it for now std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     mavlink_message_t msg{};
     mavlink_msg_camera_information_pack(
@@ -220,16 +271,16 @@ CameraServerImpl::process_camera_information_request(const MavlinkCommandReceive
         static_cast<uint32_t>(_parent->get_time().elapsed_s() * 1e3),
         reinterpret_cast<const uint8_t*>(_information.vendor_name.c_str()),
         reinterpret_cast<const uint8_t*>(_information.model_name.c_str()),
-        firmware_version,
+        _information.firmware_version,
         _information.focal_length_mm,
-        _information.horizontal_sensor_size_mm,
-        _information.vertical_sensor_size_mm,
-        _information.horizontal_resolution_px,
-        _information.vertical_resolution_px,
-        lens_id,
-        CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_IMAGE,
-        camera_definition_version,
-        camera_definition_uri);
+        _information.sensor_size_h_mm,
+        _information.sensor_size_v_mm,
+        _information.resolution_h_px,
+        _information.resolution_v_px,
+        _information.lens_id,
+        _information_flags,
+        _information.cam_definition_version,
+        reinterpret_cast<const char*>(_information.cam_definition_uri.c_str()));
 
     _parent->send_message(msg);
     LogDebug() << "sent info msg";
@@ -238,8 +289,8 @@ CameraServerImpl::process_camera_information_request(const MavlinkCommandReceive
     return std::nullopt;
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_camera_settings_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_camera_settings_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto settings = static_cast<bool>(command.params.param1);
 
@@ -278,8 +329,8 @@ CameraServerImpl::process_camera_settings_request(const MavlinkCommandReceiver::
     return std::nullopt;
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_storage_information_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_storage_information_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto storage_id = static_cast<uint8_t>(command.params.param1);
     auto information = static_cast<bool>(command.params.param2);
@@ -350,8 +401,8 @@ CameraServerImpl::process_storage_format(const MavlinkCommandReceiver::CommandLo
     return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_camera_capture_status_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_camera_capture_status_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto capture_status = static_cast<bool>(command.params.param1);
 
@@ -428,12 +479,30 @@ CameraServerImpl::process_set_camera_zoom(const MavlinkCommandReceiver::CommandL
     auto zoom_type = static_cast<CAMERA_ZOOM_TYPE>(command.params.param1);
     auto zoom_value = command.params.param2;
 
-    UNUSED(zoom_type);
-    UNUSED(zoom_value);
+    CameraServer::CameraZoomFocalLength zoom;
 
-    LogDebug() << "unsupported set camera zoom request";
+    switch (zoom_type) {
+        case CAMERA_ZOOM_TYPE::ZOOM_TYPE_RANGE:
+            zoom.normalized = zoom_value / 100.0f;
+            zoom.length =
+                zoom.normalized * (_focal_length_max - _focal_length_min) + _focal_length_min;
+            break;
+        case CAMERA_ZOOM_TYPE::ZOOM_TYPE_FOCAL_LENGTH:
+            zoom.length = zoom_value;
+            if (_focal_length_min > 0.0f || _focal_length_max > _focal_length_min) {
+                zoom.normalized =
+                    (zoom_value - _focal_length_min) / (_focal_length_max - _focal_length_min);
+            }
+            break;
+        default:
+            return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_DENIED);
+    }
 
-    return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
+    auto ack_msg = _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_IN_PROGRESS);
+    _parent->send_message(ack_msg);
+    set_camera_zoom_callback(CameraServer::Result::Success, zoom);
+
+    return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_ACCEPTED);
 }
 
 std::optional<mavlink_message_t>
@@ -442,12 +511,47 @@ CameraServerImpl::process_set_camera_focus(const MavlinkCommandReceiver::Command
     auto focus_type = static_cast<SET_FOCUS_TYPE>(command.params.param1);
     auto focus_value = command.params.param2;
 
-    UNUSED(focus_type);
-    UNUSED(focus_value);
+    CameraServer::CameraFocus focus;
 
-    LogDebug() << "unsupported set camera focus request";
+    switch (focus_type) {
+        case SET_FOCUS_TYPE::FOCUS_TYPE_STEP:
+            focus.type = CameraServer::CameraFocusType::Step;
+            if (focus_value < 0.0f) {
+                focus.step_direction = CameraServer::CameraFocusStepDirection::In;
+            } else {
+                focus.step_direction = CameraServer::CameraFocusStepDirection::Out;
+            }
+            break;
+        case SET_FOCUS_TYPE::FOCUS_TYPE_CONTINUOUS:
+            focus.type = CameraServer::CameraFocusType::Continuous;
+            focus.continuous = focus_value;
+            break;
+        case SET_FOCUS_TYPE::FOCUS_TYPE_RANGE:
+            focus.type = CameraServer::CameraFocusType::Range;
+            focus.normalized = focus_value / 100.0f;
+            break;
+        case SET_FOCUS_TYPE::FOCUS_TYPE_METERS:
+            focus.type = CameraServer::CameraFocusType::Meters;
+            focus.meters = focus_value;
+            break;
+        case SET_FOCUS_TYPE::FOCUS_TYPE_AUTO:
+            focus.type = CameraServer::CameraFocusType::Auto;
+            break;
+        case SET_FOCUS_TYPE::FOCUS_TYPE_AUTO_SINGLE:
+            focus.type = CameraServer::CameraFocusType::AutoSingle;
+            break;
+        case SET_FOCUS_TYPE::FOCUS_TYPE_AUTO_CONTINUOUS:
+            focus.type = CameraServer::CameraFocusType::AutoContinuous;
+            break;
+        default:
+            return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_DENIED);
+    }
 
-    return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
+    auto ack_msg = _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_IN_PROGRESS);
+    _parent->send_message(ack_msg);
+    set_camera_focus_callback(CameraServer::Result::Success, focus);
+
+    return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_ACCEPTED);
 }
 
 std::optional<mavlink_message_t>
@@ -475,9 +579,11 @@ CameraServerImpl::process_image_start_capture(const MavlinkCommandReceiver::Comm
     UNUSED(total_images);
     UNUSED(seq_number);
 
-    LogDebug() << "unsupported image start capture request";
+    // ack needs to be sent before camera information message
+    auto ack_msg = _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_IN_PROGRESS);
+    _parent->send_message(ack_msg);
 
-    return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
+    return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_ACCEPTED);
 }
 
 std::optional<mavlink_message_t>
@@ -488,8 +594,8 @@ CameraServerImpl::process_image_stop_capture(const MavlinkCommandReceiver::Comma
     return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_camera_image_capture_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_camera_image_capture_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto seq_number = static_cast<uint32_t>(command.params.param1);
 
@@ -566,8 +672,8 @@ CameraServerImpl::process_video_stop_streaming(const MavlinkCommandReceiver::Com
     return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_video_stream_information_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_video_stream_information_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto stream_id = static_cast<uint8_t>(command.params.param1);
 
@@ -578,8 +684,8 @@ CameraServerImpl::process_video_stream_information_request(const MavlinkCommandR
     return _parent->make_command_ack_message(command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
 }
 
-std::optional<mavlink_message_t>
-CameraServerImpl::process_video_stream_status_request(const MavlinkCommandReceiver::CommandLong& command)
+std::optional<mavlink_message_t> CameraServerImpl::process_video_stream_status_request(
+    const MavlinkCommandReceiver::CommandLong& command)
 {
     auto stream_id = static_cast<uint8_t>(command.params.param1);
 

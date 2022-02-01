@@ -10,6 +10,7 @@ add_executable(camera_server
 )
 
 find_package(MAVSDK REQUIRED)
+find_package(Threads REQUIRED)
 
 target_link_libraries(camera_server
     MAVSDK::mavsdk_camera

@@ -29,12 +29,11 @@ using std::this_thread::sleep_for;
 int main(int argc, char** argv)
 {
     mavsdk::Mavsdk mavsdk;
-    mavsdk::Mavsdk::Configuration configuration(
-        mavsdk::Mavsdk::Configuration::UsageType::Camera);
+    mavsdk::Mavsdk::Configuration configuration(mavsdk::Mavsdk::Configuration::UsageType::Camera);
     mavsdk.set_configuration(configuration);
 
     // 14030 is the default camera port for PX4 SITL
-    auto result = mavsdk.add_any_connection("udp://:14030");
+    auto result = mavsdk.add_any_connection("udp://:24547");
     if (result == mavsdk::ConnectionResult::Success) {
         std::cout << "Created camera server connection" << std::endl;
     }
@@ -52,7 +51,6 @@ int main(int argc, char** argv)
         std::cout << "Discovered GCS" << std::endl;
         mavsdk.subscribe_on_new_system(nullptr);
         prom.set_value(system);
-        
     });
 
     if (fut.wait_for(seconds(10)) == std::future_status::timeout) {
@@ -65,45 +63,52 @@ int main(int argc, char** argv)
     // Create server plugin
     auto camera_server = mavsdk::CameraServer{system};
 
-    camera_server.set_information({
-        .vendor_name = "MAVSDK",
-        .model_name = "Example Camera Server",
-        .focal_length_mm = 3.0,
-        .horizontal_sensor_size_mm = 3.68,
-        .vertical_sensor_size_mm = 2.76,
-        .horizontal_resolution_px = 3280,
-        .vertical_resolution_px = 2464,
-    });
+    camera_server.set_information(
+        {.vendor_name = "Foo Industries",
+         .model_name = "T100",
+         .firmware_version = 1,
+         .focal_length_mm = 16.0,
+         .sensor_size_h_mm = 15.4,
+         .sensor_size_v_mm = 23.2,
+         .resolution_h_px = 5456,
+         .resolution_v_px = 2464,
+         .lens_id = 0,
+         .cam_definition_version = 0,
+         .cam_definition_uri =
+             "https://gist.githubusercontent.com/dayjaby/a448be3670fbbcf05a5360421c92c27f/raw/b0e75b84f1fad69c5598bac2d96a25f96686c436/camera_info.xml"});
 
     camera_server.set_in_progress(false);
 
-    camera_server.subscribe_take_photo([&camera_server](CameraServer::Result result, int32_t index) {
-        camera_server.set_in_progress(true);
+    bool can_capture_in_video_mode = true;
+    camera_server.subscribe_take_photo(
+        can_capture_in_video_mode, [&camera_server](CameraServer::Result result, int32_t index) {
+            camera_server.set_in_progress(true);
 
-        std::cout << "taking a picture..." << std::endl;
+            std::cout << "taking a picture..." << std::endl;
 
-        // TODO : actually capture image here
-        // simulating with delay
-        sleep_for(seconds(1));
+            // TODO : actually capture image here
+            // simulating with delay
+            sleep_for(seconds(1));
 
-        // TODO: populate with telemetry data
-        auto position = CameraServer::Position{};
-        auto attitude = CameraServer::Quaternion{};
+            // TODO: populate with telemetry data
+            auto position = CameraServer::Position{};
+            auto attitude = CameraServer::Quaternion{};
 
-        auto timestamp = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-        auto success = true;
+            auto timestamp =
+                duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+            auto success = true;
 
-        camera_server.set_in_progress(false);
+            camera_server.set_in_progress(false);
 
-        camera_server.publish_photo({
-            .position = position,
-            .attitude_quaternion = attitude,
-            .time_utc_us = static_cast<uint64_t>(timestamp),
-            .is_success = success,
-            .index = index,
-            .file_url = {},
+            camera_server.publish_photo({
+                .position = position,
+                .attitude_quaternion = attitude,
+                .time_utc_us = static_cast<uint64_t>(timestamp),
+                .is_success = success,
+                .index = index,
+                .file_url = {},
+            });
         });
-    });
 
     while (true) {
         // TODO: better way to wait forever?

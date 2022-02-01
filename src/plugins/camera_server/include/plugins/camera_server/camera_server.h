@@ -56,22 +56,128 @@ public:
      */
     ~CameraServer();
 
+    /**
+     * @brief
+     */
+    enum class CameraMode {
+        Unknown, /**< @brief. */
+        Image, /**< @brief. */
+        Video, /**< @brief. */
+        Survey, /**< @brief. */
+    };
 
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraMode`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, CameraServer::CameraMode const& camera_mode);
 
+    /**
+     * @brief
+     */
+    enum class CameraFocusStepDirection {
+        In, /**< @brief. */
+        Out, /**< @brief. */
+    };
 
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraFocusStepDirection`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(
+        std::ostream& str,
+        CameraServer::CameraFocusStepDirection const& camera_focus_step_direction);
+
+    /**
+     * @brief
+     */
+    enum class CameraFocusType {
+        Step, /**< @brief. */
+        Continuous, /**< @brief. */
+        Range, /**< @brief. */
+        Meters, /**< @brief. */
+        Auto, /**< @brief. */
+        AutoSingle, /**< @brief. */
+        AutoContinuous, /**< @brief. */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraFocusType`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::CameraFocusType const& camera_focus_type);
+
+    /**
+     * @brief
+     */
+    struct CameraZoomFocalLength {
+        float normalized{}; /**< @brief */
+        float length{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `CameraServer::CameraZoomFocalLength` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(
+        const CameraServer::CameraZoomFocalLength& lhs,
+        const CameraServer::CameraZoomFocalLength& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraZoomFocalLength`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(
+        std::ostream& str, CameraServer::CameraZoomFocalLength const& camera_zoom_focal_length);
+
+    /**
+     * @brief
+     */
+    struct CameraFocus {
+        CameraFocusType type{}; /**< @brief */
+        CameraFocusStepDirection step_direction{}; /**< @brief */
+        float continuous{}; /**< @brief */
+        float normalized{}; /**< @brief */
+        float meters{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `CameraServer::CameraFocus` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool
+    operator==(const CameraServer::CameraFocus& lhs, const CameraServer::CameraFocus& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::CameraFocus`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::CameraFocus const& camera_focus);
 
     /**
      * @brief Type to represent a camera information.
      */
     struct Information {
-        
         std::string vendor_name{}; /**< @brief Name of the camera vendor */
         std::string model_name{}; /**< @brief Name of the camera model */
+        uint32_t firmware_version{}; /**< @brief Version of the camera firmware */
         float focal_length_mm{}; /**< @brief Focal length */
-        float horizontal_sensor_size_mm{}; /**< @brief Horizontal sensor size */
-        float vertical_sensor_size_mm{}; /**< @brief Vertical sensor size */
-        uint32_t horizontal_resolution_px{}; /**< @brief Horizontal image resolution in pixels */
-        uint32_t vertical_resolution_px{}; /**< @brief Vertical image resolution in pixels */
+        float sensor_size_h_mm{}; /**< @brief Horizontal sensor size */
+        float sensor_size_v_mm{}; /**< @brief Vertical sensor size */
+        uint32_t resolution_h_px{}; /**< @brief Horizontal image resolution in pixels */
+        uint32_t resolution_v_px{}; /**< @brief Vertical image resolution in pixels */
+        uint32_t lens_id{}; /**< @brief Lens ID */
+        uint32_t cam_definition_version{}; /**< @brief Camera definition version (iteration) */
+        std::string cam_definition_uri{}; /**< @brief Camera definition URI (http or mavlink ftp) */
     };
 
     /**
@@ -79,23 +185,21 @@ public:
      *
      * @return `true` if items are equal.
      */
-    friend bool operator==(const CameraServer::Information& lhs, const CameraServer::Information& rhs);
+    friend bool
+    operator==(const CameraServer::Information& lhs, const CameraServer::Information& rhs);
 
     /**
      * @brief Stream operator to print information about a `CameraServer::Information`.
      *
      * @return A reference to the stream.
      */
-    friend std::ostream& operator<<(std::ostream& str, CameraServer::Information const& information);
-
-
-
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::Information const& information);
 
     /**
      * @brief Position type in global coordinates.
      */
     struct Position {
-        
         double latitude_deg{}; /**< @brief Latitude in degrees (range: -90 to +90) */
         double longitude_deg{}; /**< @brief Longitude in degrees (range: -180 to +180) */
         float absolute_altitude_m{}; /**< @brief Altitude AMSL (above mean sea level) in metres */
@@ -116,9 +220,6 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& str, CameraServer::Position const& position);
 
-
-
-
     /**
      * @brief Quaternion type.
      *
@@ -130,7 +231,6 @@ public:
      * For more info see: https://en.wikipedia.org/wiki/Quaternion
      */
     struct Quaternion {
-        
         float w{}; /**< @brief Quaternion entry 0, also denoted as a */
         float x{}; /**< @brief Quaternion entry 1, also denoted as b */
         float y{}; /**< @brief Quaternion entry 2, also denoted as c */
@@ -142,7 +242,8 @@ public:
      *
      * @return `true` if items are equal.
      */
-    friend bool operator==(const CameraServer::Quaternion& lhs, const CameraServer::Quaternion& rhs);
+    friend bool
+    operator==(const CameraServer::Quaternion& lhs, const CameraServer::Quaternion& rhs);
 
     /**
      * @brief Stream operator to print information about a `CameraServer::Quaternion`.
@@ -151,16 +252,13 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& str, CameraServer::Quaternion const& quaternion);
 
-
-
-
     /**
      * @brief Information about a picture just captured.
      */
     struct CaptureInfo {
-        
         Position position{}; /**< @brief Location where the picture was taken */
-        Quaternion attitude_quaternion{}; /**< @brief Attitude of the camera when the picture was taken (quaternion) */
+        Quaternion attitude_quaternion{}; /**< @brief Attitude of the camera when the picture was
+                                             taken (quaternion) */
         uint64_t time_utc_us{}; /**< @brief Timestamp in UTC (since UNIX epoch) in microseconds */
         bool is_success{}; /**< @brief True if the capture was successful */
         int32_t index{}; /**< @brief Index from TakePhotoResponse */
@@ -172,18 +270,16 @@ public:
      *
      * @return `true` if items are equal.
      */
-    friend bool operator==(const CameraServer::CaptureInfo& lhs, const CameraServer::CaptureInfo& rhs);
+    friend bool
+    operator==(const CameraServer::CaptureInfo& lhs, const CameraServer::CaptureInfo& rhs);
 
     /**
      * @brief Stream operator to print information about a `CameraServer::CaptureInfo`.
      *
      * @return A reference to the stream.
      */
-    friend std::ostream& operator<<(std::ostream& str, CameraServer::CaptureInfo const& capture_info);
-
-
-
-
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::CaptureInfo const& capture_info);
 
     /**
      * @brief Possible results returned for action requests.
@@ -207,17 +303,10 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& str, CameraServer::Result const& result);
 
-
-
     /**
      * @brief Callback type for asynchronous CameraServer calls.
      */
     using ResultCallback = std::function<void(Result)>;
-
-
-
-
-
 
     /**
      * @brief Sets the camera information
@@ -228,11 +317,6 @@ public:
      */
     Result set_information(Information information) const;
 
-
-
-
-
-
     /**
      * @brief Sets the camera capture status
      *
@@ -242,27 +326,72 @@ public:
      */
     Result set_in_progress(bool in_progress) const;
 
-
-
-
-        
     /**
-    * @brief Callback type for subscribe_take_photo.
-    */
-        
+     * @brief Callback type for subscribe_take_photo.
+     */
+
     using TakePhotoCallback = std::function<void(Result, int32_t)>;
 
     /**
      * @brief Subscribe to single-image capture commands
      */
-    void subscribe_take_photo(TakePhotoCallback callback);
+    void subscribe_take_photo(bool can_capture_in_video_mode, TakePhotoCallback callback);
 
+    /**
+     * @brief Callback type for subscribe_set_camera_mode_image.
+     */
 
+    using SetCameraModeImageCallback = std::function<void(Result, CameraMode)>;
 
+    /**
+     * @brief Subscribe to camera mode commands
+     */
+    void subscribe_set_camera_mode_image(SetCameraModeImageCallback callback);
 
+    /**
+     * @brief Callback type for subscribe_set_camera_mode_video.
+     */
 
+    using SetCameraModeVideoCallback = std::function<void(Result, CameraMode)>;
 
+    /**
+     * @brief
+     */
+    void subscribe_set_camera_mode_video(SetCameraModeVideoCallback callback);
 
+    /**
+     * @brief Callback type for subscribe_set_camera_mode_survey.
+     */
+
+    using SetCameraModeSurveyCallback = std::function<void(Result, CameraMode)>;
+
+    /**
+     * @brief
+     */
+    void subscribe_set_camera_mode_survey(SetCameraModeSurveyCallback callback);
+
+    /**
+     * @brief Callback type for subscribe_set_camera_zoom.
+     */
+
+    using SetCameraZoomCallback = std::function<void(Result, CameraZoomFocalLength)>;
+
+    /**
+     * @brief Subscribe to camera zoom commands
+     */
+    void subscribe_set_camera_zoom(
+        float focal_length_min, float focal_length_max, SetCameraZoomCallback callback);
+
+    /**
+     * @brief Callback type for subscribe_set_camera_focus.
+     */
+
+    using SetCameraFocusCallback = std::function<void(Result, CameraFocus)>;
+
+    /**
+     * @brief Subscribe to camera focus commands
+     */
+    void subscribe_set_camera_focus(SetCameraFocusCallback callback);
 
     /**
      * @brief Adds a photo to the list of available photos
@@ -272,9 +401,6 @@ public:
      * @return Result of request.
      */
     Result publish_photo(CaptureInfo capture_info) const;
-
-
-
 
     /**
      * @brief Copy constructor.
