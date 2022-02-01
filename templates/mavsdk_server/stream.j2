@@ -49,7 +49,7 @@ grpc::Status Subscribe{{ name.upper_camel_case }}(grpc::ServerContext* /* contex
         std::unique_lock<std::mutex> lock(*subscribe_mutex);
         if (!*is_finished && !writer->Write(rpc_response)) {
             {% if not is_finite %}
-            _lazy_plugin.maybe_plugin()->subscribe_{{ name.lower_snake_case }}(nullptr);
+            _lazy_plugin.maybe_plugin()->subscribe_{{ name.lower_snake_case }}({% for param in params %}{% if param.type_info.is_primitive %}{{ param.type_info.name }}(){% endif %}, {% endfor %}nullptr);
             {% endif %}
             *is_finished = true;
             unregister_stream_stop_promise(stream_closed_promise);
