@@ -167,6 +167,83 @@ struct SetCameraModeSurveyResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetCameraModeSurveyResponseDefaultTypeInternal _SetCameraModeSurveyResponse_default_instance_;
+constexpr SubscribeSetCameraZoomRequest::SubscribeSetCameraZoomRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : focal_length_min_(0)
+  , focal_length_max_(0){}
+struct SubscribeSetCameraZoomRequestDefaultTypeInternal {
+  constexpr SubscribeSetCameraZoomRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~SubscribeSetCameraZoomRequestDefaultTypeInternal() {}
+  union {
+    SubscribeSetCameraZoomRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SubscribeSetCameraZoomRequestDefaultTypeInternal _SubscribeSetCameraZoomRequest_default_instance_;
+constexpr CameraZoomFocalLength::CameraZoomFocalLength(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : normalized_(0)
+  , length_(0){}
+struct CameraZoomFocalLengthDefaultTypeInternal {
+  constexpr CameraZoomFocalLengthDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~CameraZoomFocalLengthDefaultTypeInternal() {}
+  union {
+    CameraZoomFocalLength _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CameraZoomFocalLengthDefaultTypeInternal _CameraZoomFocalLength_default_instance_;
+constexpr SetCameraZoomResponse::SetCameraZoomResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : camera_server_result_(nullptr)
+  , focal_(nullptr){}
+struct SetCameraZoomResponseDefaultTypeInternal {
+  constexpr SetCameraZoomResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~SetCameraZoomResponseDefaultTypeInternal() {}
+  union {
+    SetCameraZoomResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetCameraZoomResponseDefaultTypeInternal _SetCameraZoomResponse_default_instance_;
+constexpr SubscribeSetCameraFocusRequest::SubscribeSetCameraFocusRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct SubscribeSetCameraFocusRequestDefaultTypeInternal {
+  constexpr SubscribeSetCameraFocusRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~SubscribeSetCameraFocusRequestDefaultTypeInternal() {}
+  union {
+    SubscribeSetCameraFocusRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SubscribeSetCameraFocusRequestDefaultTypeInternal _SubscribeSetCameraFocusRequest_default_instance_;
+constexpr CameraFocus::CameraFocus(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : type_(0)
+
+  , _oneof_case_{}{}
+struct CameraFocusDefaultTypeInternal {
+  constexpr CameraFocusDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~CameraFocusDefaultTypeInternal() {}
+  union {
+    CameraFocus _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CameraFocusDefaultTypeInternal _CameraFocus_default_instance_;
+constexpr SetCameraFocusResponse::SetCameraFocusResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : camera_server_result_(nullptr)
+  , focus_(nullptr){}
+struct SetCameraFocusResponseDefaultTypeInternal {
+  constexpr SetCameraFocusResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~SetCameraFocusResponseDefaultTypeInternal() {}
+  union {
+    SetCameraFocusResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetCameraFocusResponseDefaultTypeInternal _SetCameraFocusResponse_default_instance_;
 constexpr PublishPhotoRequest::PublishPhotoRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : capture_info_(nullptr){}
@@ -277,8 +354,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CameraServerResultDefaultTypeIn
 }  // namespace camera_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[19];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_camera_5fserver_2fcamera_5fserver_2eproto[2];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[25];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_camera_5fserver_2fcamera_5fserver_2eproto[4];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_camera_5fserver_2fcamera_5fserver_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_camera_5fserver_2fcamera_5fserver_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -355,6 +432,50 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_camera_5fserver_2fcamera_5fser
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse, camera_server_result_),
   PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse, mode_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest, focal_length_min_),
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest, focal_length_max_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraZoomFocalLength, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraZoomFocalLength, normalized_),
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraZoomFocalLength, length_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraZoomResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraZoomResponse, camera_server_result_),
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraZoomResponse, focal_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraFocus, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraFocus, _oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraFocus, type_),
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::CameraFocus, value_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraFocusResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraFocusResponse, camera_server_result_),
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::SetCameraFocusResponse, focus_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::PublishPhotoRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -433,13 +554,19 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 54, -1, sizeof(::mavsdk::rpc::camera_server::SetCameraModeVideoResponse)},
   { 61, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest)},
   { 66, -1, sizeof(::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse)},
-  { 73, -1, sizeof(::mavsdk::rpc::camera_server::PublishPhotoRequest)},
-  { 79, -1, sizeof(::mavsdk::rpc::camera_server::PublishPhotoResponse)},
-  { 85, -1, sizeof(::mavsdk::rpc::camera_server::Information)},
-  { 101, -1, sizeof(::mavsdk::rpc::camera_server::Position)},
-  { 110, -1, sizeof(::mavsdk::rpc::camera_server::Quaternion)},
-  { 119, -1, sizeof(::mavsdk::rpc::camera_server::CaptureInfo)},
-  { 130, -1, sizeof(::mavsdk::rpc::camera_server::CameraServerResult)},
+  { 73, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest)},
+  { 80, -1, sizeof(::mavsdk::rpc::camera_server::CameraZoomFocalLength)},
+  { 87, -1, sizeof(::mavsdk::rpc::camera_server::SetCameraZoomResponse)},
+  { 94, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest)},
+  { 99, -1, sizeof(::mavsdk::rpc::camera_server::CameraFocus)},
+  { 110, -1, sizeof(::mavsdk::rpc::camera_server::SetCameraFocusResponse)},
+  { 117, -1, sizeof(::mavsdk::rpc::camera_server::PublishPhotoRequest)},
+  { 123, -1, sizeof(::mavsdk::rpc::camera_server::PublishPhotoResponse)},
+  { 129, -1, sizeof(::mavsdk::rpc::camera_server::Information)},
+  { 145, -1, sizeof(::mavsdk::rpc::camera_server::Position)},
+  { 154, -1, sizeof(::mavsdk::rpc::camera_server::Quaternion)},
+  { 163, -1, sizeof(::mavsdk::rpc::camera_server::CaptureInfo)},
+  { 174, -1, sizeof(::mavsdk::rpc::camera_server::CameraServerResult)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -455,6 +582,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SetCameraModeVideoResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SubscribeSetCameraModeSurveyRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SetCameraModeSurveyResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SubscribeSetCameraZoomRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_CameraZoomFocalLength_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SetCameraZoomResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SubscribeSetCameraFocusRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_CameraFocus_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_SetCameraFocusResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_PublishPhotoRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_PublishPhotoResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::mavsdk::rpc::camera_server::_Information_default_instance_),
@@ -494,73 +627,107 @@ const char descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto[]
   "odeSurveyResponse\022J\n\024camera_server_resul"
   "t\030\001 \001(\0132,.mavsdk.rpc.camera_server.Camer"
   "aServerResult\0222\n\004mode\030\002 \001(\0162$.mavsdk.rpc"
-  ".camera_server.CameraMode\"R\n\023PublishPhot"
-  "oRequest\022;\n\014capture_info\030\001 \001(\0132%.mavsdk."
-  "rpc.camera_server.CaptureInfo\"b\n\024Publish"
-  "PhotoResponse\022J\n\024camera_server_result\030\001 "
-  "\001(\0132,.mavsdk.rpc.camera_server.CameraSer"
-  "verResult\"\234\002\n\013Information\022\023\n\013vendor_name"
-  "\030\001 \001(\t\022\022\n\nmodel_name\030\002 \001(\t\022\030\n\020firmware_v"
-  "ersion\030\003 \001(\r\022\027\n\017focal_length_mm\030\004 \001(\002\022\030\n"
-  "\020sensor_size_h_mm\030\005 \001(\002\022\030\n\020sensor_size_v"
-  "_mm\030\006 \001(\002\022\027\n\017resolution_h_px\030\007 \001(\r\022\027\n\017re"
-  "solution_v_px\030\010 \001(\r\022\017\n\007lens_id\030\t \001(\r\022\036\n\026"
-  "cam_definition_version\030\n \001(\r\022\032\n\022cam_defi"
-  "nition_uri\030\013 \001(\t\"q\n\010Position\022\024\n\014latitude"
-  "_deg\030\001 \001(\001\022\025\n\rlongitude_deg\030\002 \001(\001\022\033\n\023abs"
-  "olute_altitude_m\030\003 \001(\002\022\033\n\023relative_altit"
-  "ude_m\030\004 \001(\002\"8\n\nQuaternion\022\t\n\001w\030\001 \001(\002\022\t\n\001"
-  "x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"\320\001\n\013Captur"
-  "eInfo\0224\n\010position\030\001 \001(\0132\".mavsdk.rpc.cam"
-  "era_server.Position\022A\n\023attitude_quaterni"
-  "on\030\002 \001(\0132$.mavsdk.rpc.camera_server.Quat"
-  "ernion\022\023\n\013time_utc_us\030\003 \001(\004\022\022\n\nis_succes"
-  "s\030\004 \001(\010\022\r\n\005index\030\005 \001(\005\022\020\n\010file_url\030\006 \001(\t"
-  "\"\263\002\n\022CameraServerResult\022C\n\006result\030\001 \001(\0162"
-  "3.mavsdk.rpc.camera_server.CameraServerR"
-  "esult.Result\022\022\n\nresult_str\030\002 \001(\t\"\303\001\n\006Res"
-  "ult\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n\016RESULT_SUCCES"
-  "S\020\001\022\026\n\022RESULT_IN_PROGRESS\020\002\022\017\n\013RESULT_BU"
-  "SY\020\003\022\021\n\rRESULT_DENIED\020\004\022\020\n\014RESULT_ERROR\020"
-  "\005\022\022\n\016RESULT_TIMEOUT\020\006\022\031\n\025RESULT_WRONG_AR"
-  "GUMENT\020\007\022\024\n\020RESULT_NO_SYSTEM\020\010*k\n\nCamera"
-  "Mode\022\027\n\023CAMERA_MODE_UNKNOWN\020\000\022\025\n\021CAMERA_"
-  "MODE_IMAGE\020\001\022\025\n\021CAMERA_MODE_VIDEO\020\002\022\026\n\022C"
-  "AMERA_MODE_SURVEY\020\0032\324\007\n\023CameraServerServ"
-  "ice\022y\n\016SetInformation\022/.mavsdk.rpc.camer"
-  "a_server.SetInformationRequest\0320.mavsdk."
-  "rpc.camera_server.SetInformationResponse"
-  "\"\004\200\265\030\001\022v\n\rSetInProgress\022..mavsdk.rpc.cam"
-  "era_server.SetInProgressRequest\032/.mavsdk"
-  ".rpc.camera_server.SetInProgressResponse"
-  "\"\004\200\265\030\001\022~\n\022SubscribeTakePhoto\0223.mavsdk.rp"
-  "c.camera_server.SubscribeTakePhotoReques"
-  "t\032+.mavsdk.rpc.camera_server.TakePhotoRe"
-  "sponse\"\004\200\265\030\0000\001\022\231\001\n\033SubscribeSetCameraMod"
-  "eImage\022<.mavsdk.rpc.camera_server.Subscr"
-  "ibeSetCameraModeImageRequest\0324.mavsdk.rp"
-  "c.camera_server.SetCameraModeImageRespon"
-  "se\"\004\200\265\030\0000\001\022\231\001\n\033SubscribeSetCameraModeVid"
-  "eo\022<.mavsdk.rpc.camera_server.SubscribeS"
-  "etCameraModeVideoRequest\0324.mavsdk.rpc.ca"
-  "mera_server.SetCameraModeVideoResponse\"\004"
-  "\200\265\030\0000\001\022\234\001\n\034SubscribeSetCameraModeSurvey\022"
-  "=.mavsdk.rpc.camera_server.SubscribeSetC"
-  "ameraModeSurveyRequest\0325.mavsdk.rpc.came"
-  "ra_server.SetCameraModeSurveyResponse\"\004\200"
-  "\265\030\0000\001\022s\n\014PublishPhoto\022-.mavsdk.rpc.camer"
-  "a_server.PublishPhotoRequest\032..mavsdk.rp"
-  "c.camera_server.PublishPhotoResponse\"\004\200\265"
-  "\030\001B,\n\027io.mavsdk.camera_serverB\021CameraSer"
-  "verProtob\006proto3"
+  ".camera_server.CameraMode\"S\n\035SubscribeSe"
+  "tCameraZoomRequest\022\030\n\020focal_length_min\030\001"
+  " \001(\002\022\030\n\020focal_length_max\030\002 \001(\002\";\n\025Camera"
+  "ZoomFocalLength\022\022\n\nnormalized\030\001 \001(\002\022\016\n\006l"
+  "ength\030\002 \001(\002\"\243\001\n\025SetCameraZoomResponse\022J\n"
+  "\024camera_server_result\030\001 \001(\0132,.mavsdk.rpc"
+  ".camera_server.CameraServerResult\022>\n\005foc"
+  "al\030\002 \001(\0132/.mavsdk.rpc.camera_server.Came"
+  "raZoomFocalLength\" \n\036SubscribeSetCameraF"
+  "ocusRequest\"\333\001\n\013CameraFocus\0227\n\004type\030\001 \001("
+  "\0162).mavsdk.rpc.camera_server.CameraFocus"
+  "Type\022L\n\016step_direction\030\002 \001(\01622.mavsdk.rp"
+  "c.camera_server.CameraFocusStepDirection"
+  "H\000\022\024\n\ncontinuous\030\003 \001(\002H\000\022\024\n\nnormalized\030\004"
+  " \001(\002H\000\022\020\n\006meters\030\005 \001(\002H\000B\007\n\005value\"\232\001\n\026Se"
+  "tCameraFocusResponse\022J\n\024camera_server_re"
+  "sult\030\001 \001(\0132,.mavsdk.rpc.camera_server.Ca"
+  "meraServerResult\0224\n\005focus\030\002 \001(\0132%.mavsdk"
+  ".rpc.camera_server.CameraFocus\"R\n\023Publis"
+  "hPhotoRequest\022;\n\014capture_info\030\001 \001(\0132%.ma"
+  "vsdk.rpc.camera_server.CaptureInfo\"b\n\024Pu"
+  "blishPhotoResponse\022J\n\024camera_server_resu"
+  "lt\030\001 \001(\0132,.mavsdk.rpc.camera_server.Came"
+  "raServerResult\"\234\002\n\013Information\022\023\n\013vendor"
+  "_name\030\001 \001(\t\022\022\n\nmodel_name\030\002 \001(\t\022\030\n\020firmw"
+  "are_version\030\003 \001(\r\022\027\n\017focal_length_mm\030\004 \001"
+  "(\002\022\030\n\020sensor_size_h_mm\030\005 \001(\002\022\030\n\020sensor_s"
+  "ize_v_mm\030\006 \001(\002\022\027\n\017resolution_h_px\030\007 \001(\r\022"
+  "\027\n\017resolution_v_px\030\010 \001(\r\022\017\n\007lens_id\030\t \001("
+  "\r\022\036\n\026cam_definition_version\030\n \001(\r\022\032\n\022cam"
+  "_definition_uri\030\013 \001(\t\"q\n\010Position\022\024\n\014lat"
+  "itude_deg\030\001 \001(\001\022\025\n\rlongitude_deg\030\002 \001(\001\022\033"
+  "\n\023absolute_altitude_m\030\003 \001(\002\022\033\n\023relative_"
+  "altitude_m\030\004 \001(\002\"8\n\nQuaternion\022\t\n\001w\030\001 \001("
+  "\002\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"\320\001\n\013C"
+  "aptureInfo\0224\n\010position\030\001 \001(\0132\".mavsdk.rp"
+  "c.camera_server.Position\022A\n\023attitude_qua"
+  "ternion\030\002 \001(\0132$.mavsdk.rpc.camera_server"
+  ".Quaternion\022\023\n\013time_utc_us\030\003 \001(\004\022\022\n\nis_s"
+  "uccess\030\004 \001(\010\022\r\n\005index\030\005 \001(\005\022\020\n\010file_url\030"
+  "\006 \001(\t\"\263\002\n\022CameraServerResult\022C\n\006result\030\001"
+  " \001(\01623.mavsdk.rpc.camera_server.CameraSe"
+  "rverResult.Result\022\022\n\nresult_str\030\002 \001(\t\"\303\001"
+  "\n\006Result\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n\016RESULT_S"
+  "UCCESS\020\001\022\026\n\022RESULT_IN_PROGRESS\020\002\022\017\n\013RESU"
+  "LT_BUSY\020\003\022\021\n\rRESULT_DENIED\020\004\022\020\n\014RESULT_E"
+  "RROR\020\005\022\022\n\016RESULT_TIMEOUT\020\006\022\031\n\025RESULT_WRO"
+  "NG_ARGUMENT\020\007\022\024\n\020RESULT_NO_SYSTEM\020\010*k\n\nC"
+  "ameraMode\022\027\n\023CAMERA_MODE_UNKNOWN\020\000\022\025\n\021CA"
+  "MERA_MODE_IMAGE\020\001\022\025\n\021CAMERA_MODE_VIDEO\020\002"
+  "\022\026\n\022CAMERA_MODE_SURVEY\020\003*c\n\030CameraFocusS"
+  "tepDirection\022\"\n\036CAMERA_FOCUS_STEP_DIRECT"
+  "ION_IN\020\000\022#\n\037CAMERA_FOCUS_STEP_DIRECTION_"
+  "OUT\020\001*\360\001\n\017CameraFocusType\022\032\n\026CAMERA_FOCU"
+  "S_TYPE_STEP\020\000\022 \n\034CAMERA_FOCUS_TYPE_CONTI"
+  "NUOUS\020\001\022\033\n\027CAMERA_FOCUS_TYPE_RANGE\020\002\022\034\n\030"
+  "CAMERA_FOCUS_TYPE_METERS\020\003\022\032\n\026CAMERA_FOC"
+  "US_TYPE_AUTO\020\004\022!\n\035CAMERA_FOCUS_TYPE_AUTO"
+  "_SINGLE\020\005\022%\n!CAMERA_FOCUS_TYPE_AUTO_CONT"
+  "INUOUS\020\0062\361\t\n\023CameraServerService\022y\n\016SetI"
+  "nformation\022/.mavsdk.rpc.camera_server.Se"
+  "tInformationRequest\0320.mavsdk.rpc.camera_"
+  "server.SetInformationResponse\"\004\200\265\030\001\022v\n\rS"
+  "etInProgress\022..mavsdk.rpc.camera_server."
+  "SetInProgressRequest\032/.mavsdk.rpc.camera"
+  "_server.SetInProgressResponse\"\004\200\265\030\001\022~\n\022S"
+  "ubscribeTakePhoto\0223.mavsdk.rpc.camera_se"
+  "rver.SubscribeTakePhotoRequest\032+.mavsdk."
+  "rpc.camera_server.TakePhotoResponse\"\004\200\265\030"
+  "\0000\001\022\231\001\n\033SubscribeSetCameraModeImage\022<.ma"
+  "vsdk.rpc.camera_server.SubscribeSetCamer"
+  "aModeImageRequest\0324.mavsdk.rpc.camera_se"
+  "rver.SetCameraModeImageResponse\"\004\200\265\030\0000\001\022"
+  "\231\001\n\033SubscribeSetCameraModeVideo\022<.mavsdk"
+  ".rpc.camera_server.SubscribeSetCameraMod"
+  "eVideoRequest\0324.mavsdk.rpc.camera_server"
+  ".SetCameraModeVideoResponse\"\004\200\265\030\0000\001\022\234\001\n\034"
+  "SubscribeSetCameraModeSurvey\022=.mavsdk.rp"
+  "c.camera_server.SubscribeSetCameraModeSu"
+  "rveyRequest\0325.mavsdk.rpc.camera_server.S"
+  "etCameraModeSurveyResponse\"\004\200\265\030\0000\001\022\212\001\n\026S"
+  "ubscribeSetCameraZoom\0227.mavsdk.rpc.camer"
+  "a_server.SubscribeSetCameraZoomRequest\032/"
+  ".mavsdk.rpc.camera_server.SetCameraZoomR"
+  "esponse\"\004\200\265\030\0000\001\022\215\001\n\027SubscribeSetCameraFo"
+  "cus\0228.mavsdk.rpc.camera_server.Subscribe"
+  "SetCameraFocusRequest\0320.mavsdk.rpc.camer"
+  "a_server.SetCameraFocusResponse\"\004\200\265\030\0000\001\022"
+  "s\n\014PublishPhoto\022-.mavsdk.rpc.camera_serv"
+  "er.PublishPhotoRequest\032..mavsdk.rpc.came"
+  "ra_server.PublishPhotoResponse\"\004\200\265\030\001B,\n\027"
+  "io.mavsdk.camera_serverB\021CameraServerPro"
+  "tob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_deps[1] = {
   &::descriptor_table_mavsdk_5foptions_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto = {
-  false, false, 3496, descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto, "camera_server/camera_server.proto", 
-  &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once, descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_deps, 1, 19,
+  false, false, 4850, descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto, "camera_server/camera_server.proto", 
+  &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once, descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_deps, 1, 25,
   schemas, file_default_instances, TableStruct_camera_5fserver_2fcamera_5fserver_2eproto::offsets,
   file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto, file_level_enum_descriptors_camera_5fserver_2fcamera_5fserver_2eproto, file_level_service_descriptors_camera_5fserver_2fcamera_5fserver_2eproto,
 };
@@ -618,6 +785,39 @@ bool CameraMode_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CameraFocusStepDirection_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto);
+  return file_level_enum_descriptors_camera_5fserver_2fcamera_5fserver_2eproto[2];
+}
+bool CameraFocusStepDirection_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CameraFocusType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto);
+  return file_level_enum_descriptors_camera_5fserver_2fcamera_5fserver_2eproto[3];
+}
+bool CameraFocusType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -2987,6 +3187,1430 @@ void SetCameraModeSurveyResponse::InternalSwap(SetCameraModeSurveyResponse* othe
 
 // ===================================================================
 
+class SubscribeSetCameraZoomRequest::_Internal {
+ public:
+};
+
+SubscribeSetCameraZoomRequest::SubscribeSetCameraZoomRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+}
+SubscribeSetCameraZoomRequest::SubscribeSetCameraZoomRequest(const SubscribeSetCameraZoomRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&focal_length_min_, &from.focal_length_min_,
+    static_cast<size_t>(reinterpret_cast<char*>(&focal_length_max_) -
+    reinterpret_cast<char*>(&focal_length_min_)) + sizeof(focal_length_max_));
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+}
+
+inline void SubscribeSetCameraZoomRequest::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&focal_length_min_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&focal_length_max_) -
+    reinterpret_cast<char*>(&focal_length_min_)) + sizeof(focal_length_max_));
+}
+
+SubscribeSetCameraZoomRequest::~SubscribeSetCameraZoomRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void SubscribeSetCameraZoomRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void SubscribeSetCameraZoomRequest::ArenaDtor(void* object) {
+  SubscribeSetCameraZoomRequest* _this = reinterpret_cast< SubscribeSetCameraZoomRequest* >(object);
+  (void)_this;
+}
+void SubscribeSetCameraZoomRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void SubscribeSetCameraZoomRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void SubscribeSetCameraZoomRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&focal_length_min_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&focal_length_max_) -
+      reinterpret_cast<char*>(&focal_length_min_)) + sizeof(focal_length_max_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SubscribeSetCameraZoomRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // float focal_length_min = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
+          focal_length_min_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float focal_length_max = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          focal_length_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SubscribeSetCameraZoomRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // float focal_length_min = 1;
+  if (!(this->_internal_focal_length_min() <= 0 && this->_internal_focal_length_min() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_focal_length_min(), target);
+  }
+
+  // float focal_length_max = 2;
+  if (!(this->_internal_focal_length_max() <= 0 && this->_internal_focal_length_max() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_focal_length_max(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  return target;
+}
+
+size_t SubscribeSetCameraZoomRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float focal_length_min = 1;
+  if (!(this->_internal_focal_length_min() <= 0 && this->_internal_focal_length_min() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float focal_length_max = 2;
+  if (!(this->_internal_focal_length_max() <= 0 && this->_internal_focal_length_max() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SubscribeSetCameraZoomRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    SubscribeSetCameraZoomRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubscribeSetCameraZoomRequest::GetClassData() const { return &_class_data_; }
+
+void SubscribeSetCameraZoomRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<SubscribeSetCameraZoomRequest *>(to)->MergeFrom(
+      static_cast<const SubscribeSetCameraZoomRequest &>(from));
+}
+
+
+void SubscribeSetCameraZoomRequest::MergeFrom(const SubscribeSetCameraZoomRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!(from._internal_focal_length_min() <= 0 && from._internal_focal_length_min() >= 0)) {
+    _internal_set_focal_length_min(from._internal_focal_length_min());
+  }
+  if (!(from._internal_focal_length_max() <= 0 && from._internal_focal_length_max() >= 0)) {
+    _internal_set_focal_length_max(from._internal_focal_length_max());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubscribeSetCameraZoomRequest::CopyFrom(const SubscribeSetCameraZoomRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.SubscribeSetCameraZoomRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SubscribeSetCameraZoomRequest::IsInitialized() const {
+  return true;
+}
+
+void SubscribeSetCameraZoomRequest::InternalSwap(SubscribeSetCameraZoomRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SubscribeSetCameraZoomRequest, focal_length_max_)
+      + sizeof(SubscribeSetCameraZoomRequest::focal_length_max_)
+      - PROTOBUF_FIELD_OFFSET(SubscribeSetCameraZoomRequest, focal_length_min_)>(
+          reinterpret_cast<char*>(&focal_length_min_),
+          reinterpret_cast<char*>(&other->focal_length_min_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SubscribeSetCameraZoomRequest::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[12]);
+}
+
+// ===================================================================
+
+class CameraZoomFocalLength::_Internal {
+ public:
+};
+
+CameraZoomFocalLength::CameraZoomFocalLength(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+}
+CameraZoomFocalLength::CameraZoomFocalLength(const CameraZoomFocalLength& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&normalized_, &from.normalized_,
+    static_cast<size_t>(reinterpret_cast<char*>(&length_) -
+    reinterpret_cast<char*>(&normalized_)) + sizeof(length_));
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+}
+
+inline void CameraZoomFocalLength::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&normalized_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&length_) -
+    reinterpret_cast<char*>(&normalized_)) + sizeof(length_));
+}
+
+CameraZoomFocalLength::~CameraZoomFocalLength() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void CameraZoomFocalLength::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void CameraZoomFocalLength::ArenaDtor(void* object) {
+  CameraZoomFocalLength* _this = reinterpret_cast< CameraZoomFocalLength* >(object);
+  (void)_this;
+}
+void CameraZoomFocalLength::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void CameraZoomFocalLength::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void CameraZoomFocalLength::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&normalized_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&length_) -
+      reinterpret_cast<char*>(&normalized_)) + sizeof(length_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CameraZoomFocalLength::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // float normalized = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
+          normalized_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float length = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          length_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CameraZoomFocalLength::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // float normalized = 1;
+  if (!(this->_internal_normalized() <= 0 && this->_internal_normalized() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_normalized(), target);
+  }
+
+  // float length = 2;
+  if (!(this->_internal_length() <= 0 && this->_internal_length() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_length(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  return target;
+}
+
+size_t CameraZoomFocalLength::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float normalized = 1;
+  if (!(this->_internal_normalized() <= 0 && this->_internal_normalized() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float length = 2;
+  if (!(this->_internal_length() <= 0 && this->_internal_length() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CameraZoomFocalLength::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    CameraZoomFocalLength::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CameraZoomFocalLength::GetClassData() const { return &_class_data_; }
+
+void CameraZoomFocalLength::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<CameraZoomFocalLength *>(to)->MergeFrom(
+      static_cast<const CameraZoomFocalLength &>(from));
+}
+
+
+void CameraZoomFocalLength::MergeFrom(const CameraZoomFocalLength& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!(from._internal_normalized() <= 0 && from._internal_normalized() >= 0)) {
+    _internal_set_normalized(from._internal_normalized());
+  }
+  if (!(from._internal_length() <= 0 && from._internal_length() >= 0)) {
+    _internal_set_length(from._internal_length());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CameraZoomFocalLength::CopyFrom(const CameraZoomFocalLength& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.CameraZoomFocalLength)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CameraZoomFocalLength::IsInitialized() const {
+  return true;
+}
+
+void CameraZoomFocalLength::InternalSwap(CameraZoomFocalLength* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(CameraZoomFocalLength, length_)
+      + sizeof(CameraZoomFocalLength::length_)
+      - PROTOBUF_FIELD_OFFSET(CameraZoomFocalLength, normalized_)>(
+          reinterpret_cast<char*>(&normalized_),
+          reinterpret_cast<char*>(&other->normalized_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CameraZoomFocalLength::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[13]);
+}
+
+// ===================================================================
+
+class SetCameraZoomResponse::_Internal {
+ public:
+  static const ::mavsdk::rpc::camera_server::CameraServerResult& camera_server_result(const SetCameraZoomResponse* msg);
+  static const ::mavsdk::rpc::camera_server::CameraZoomFocalLength& focal(const SetCameraZoomResponse* msg);
+};
+
+const ::mavsdk::rpc::camera_server::CameraServerResult&
+SetCameraZoomResponse::_Internal::camera_server_result(const SetCameraZoomResponse* msg) {
+  return *msg->camera_server_result_;
+}
+const ::mavsdk::rpc::camera_server::CameraZoomFocalLength&
+SetCameraZoomResponse::_Internal::focal(const SetCameraZoomResponse* msg) {
+  return *msg->focal_;
+}
+SetCameraZoomResponse::SetCameraZoomResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+}
+SetCameraZoomResponse::SetCameraZoomResponse(const SetCameraZoomResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_camera_server_result()) {
+    camera_server_result_ = new ::mavsdk::rpc::camera_server::CameraServerResult(*from.camera_server_result_);
+  } else {
+    camera_server_result_ = nullptr;
+  }
+  if (from._internal_has_focal()) {
+    focal_ = new ::mavsdk::rpc::camera_server::CameraZoomFocalLength(*from.focal_);
+  } else {
+    focal_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+}
+
+inline void SetCameraZoomResponse::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&camera_server_result_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&focal_) -
+    reinterpret_cast<char*>(&camera_server_result_)) + sizeof(focal_));
+}
+
+SetCameraZoomResponse::~SetCameraZoomResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void SetCameraZoomResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete camera_server_result_;
+  if (this != internal_default_instance()) delete focal_;
+}
+
+void SetCameraZoomResponse::ArenaDtor(void* object) {
+  SetCameraZoomResponse* _this = reinterpret_cast< SetCameraZoomResponse* >(object);
+  (void)_this;
+}
+void SetCameraZoomResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void SetCameraZoomResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void SetCameraZoomResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && camera_server_result_ != nullptr) {
+    delete camera_server_result_;
+  }
+  camera_server_result_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && focal_ != nullptr) {
+    delete focal_;
+  }
+  focal_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SetCameraZoomResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .mavsdk.rpc.camera_server.CameraServerResult camera_server_result = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_camera_server_result(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .mavsdk.rpc.camera_server.CameraZoomFocalLength focal = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_focal(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SetCameraZoomResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.camera_server.CameraServerResult camera_server_result = 1;
+  if (this->_internal_has_camera_server_result()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::camera_server_result(this), target, stream);
+  }
+
+  // .mavsdk.rpc.camera_server.CameraZoomFocalLength focal = 2;
+  if (this->_internal_has_focal()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::focal(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  return target;
+}
+
+size_t SetCameraZoomResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.camera_server.CameraServerResult camera_server_result = 1;
+  if (this->_internal_has_camera_server_result()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *camera_server_result_);
+  }
+
+  // .mavsdk.rpc.camera_server.CameraZoomFocalLength focal = 2;
+  if (this->_internal_has_focal()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *focal_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetCameraZoomResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    SetCameraZoomResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetCameraZoomResponse::GetClassData() const { return &_class_data_; }
+
+void SetCameraZoomResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<SetCameraZoomResponse *>(to)->MergeFrom(
+      static_cast<const SetCameraZoomResponse &>(from));
+}
+
+
+void SetCameraZoomResponse::MergeFrom(const SetCameraZoomResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_camera_server_result()) {
+    _internal_mutable_camera_server_result()->::mavsdk::rpc::camera_server::CameraServerResult::MergeFrom(from._internal_camera_server_result());
+  }
+  if (from._internal_has_focal()) {
+    _internal_mutable_focal()->::mavsdk::rpc::camera_server::CameraZoomFocalLength::MergeFrom(from._internal_focal());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetCameraZoomResponse::CopyFrom(const SetCameraZoomResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.SetCameraZoomResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SetCameraZoomResponse::IsInitialized() const {
+  return true;
+}
+
+void SetCameraZoomResponse::InternalSwap(SetCameraZoomResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetCameraZoomResponse, focal_)
+      + sizeof(SetCameraZoomResponse::focal_)
+      - PROTOBUF_FIELD_OFFSET(SetCameraZoomResponse, camera_server_result_)>(
+          reinterpret_cast<char*>(&camera_server_result_),
+          reinterpret_cast<char*>(&other->camera_server_result_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SetCameraZoomResponse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[14]);
+}
+
+// ===================================================================
+
+class SubscribeSetCameraFocusRequest::_Internal {
+ public:
+};
+
+SubscribeSetCameraFocusRequest::SubscribeSetCameraFocusRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+}
+SubscribeSetCameraFocusRequest::SubscribeSetCameraFocusRequest(const SubscribeSetCameraFocusRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+}
+
+inline void SubscribeSetCameraFocusRequest::SharedCtor() {
+}
+
+SubscribeSetCameraFocusRequest::~SubscribeSetCameraFocusRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void SubscribeSetCameraFocusRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void SubscribeSetCameraFocusRequest::ArenaDtor(void* object) {
+  SubscribeSetCameraFocusRequest* _this = reinterpret_cast< SubscribeSetCameraFocusRequest* >(object);
+  (void)_this;
+}
+void SubscribeSetCameraFocusRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void SubscribeSetCameraFocusRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void SubscribeSetCameraFocusRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SubscribeSetCameraFocusRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SubscribeSetCameraFocusRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  return target;
+}
+
+size_t SubscribeSetCameraFocusRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SubscribeSetCameraFocusRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    SubscribeSetCameraFocusRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubscribeSetCameraFocusRequest::GetClassData() const { return &_class_data_; }
+
+void SubscribeSetCameraFocusRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<SubscribeSetCameraFocusRequest *>(to)->MergeFrom(
+      static_cast<const SubscribeSetCameraFocusRequest &>(from));
+}
+
+
+void SubscribeSetCameraFocusRequest::MergeFrom(const SubscribeSetCameraFocusRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubscribeSetCameraFocusRequest::CopyFrom(const SubscribeSetCameraFocusRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.SubscribeSetCameraFocusRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SubscribeSetCameraFocusRequest::IsInitialized() const {
+  return true;
+}
+
+void SubscribeSetCameraFocusRequest::InternalSwap(SubscribeSetCameraFocusRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SubscribeSetCameraFocusRequest::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[15]);
+}
+
+// ===================================================================
+
+class CameraFocus::_Internal {
+ public:
+};
+
+CameraFocus::CameraFocus(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.CameraFocus)
+}
+CameraFocus::CameraFocus(const CameraFocus& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  type_ = from.type_;
+  clear_has_value();
+  switch (from.value_case()) {
+    case kStepDirection: {
+      _internal_set_step_direction(from._internal_step_direction());
+      break;
+    }
+    case kContinuous: {
+      _internal_set_continuous(from._internal_continuous());
+      break;
+    }
+    case kNormalized: {
+      _internal_set_normalized(from._internal_normalized());
+      break;
+    }
+    case kMeters: {
+      _internal_set_meters(from._internal_meters());
+      break;
+    }
+    case VALUE_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.CameraFocus)
+}
+
+inline void CameraFocus::SharedCtor() {
+type_ = 0;
+clear_has_value();
+}
+
+CameraFocus::~CameraFocus() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.CameraFocus)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void CameraFocus::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (has_value()) {
+    clear_value();
+  }
+}
+
+void CameraFocus::ArenaDtor(void* object) {
+  CameraFocus* _this = reinterpret_cast< CameraFocus* >(object);
+  (void)_this;
+}
+void CameraFocus::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void CameraFocus::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void CameraFocus::clear_value() {
+// @@protoc_insertion_point(one_of_clear_start:mavsdk.rpc.camera_server.CameraFocus)
+  switch (value_case()) {
+    case kStepDirection: {
+      // No need to clear
+      break;
+    }
+    case kContinuous: {
+      // No need to clear
+      break;
+    }
+    case kNormalized: {
+      // No need to clear
+      break;
+    }
+    case kMeters: {
+      // No need to clear
+      break;
+    }
+    case VALUE_NOT_SET: {
+      break;
+    }
+  }
+  _oneof_case_[0] = VALUE_NOT_SET;
+}
+
+
+void CameraFocus::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.CameraFocus)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  type_ = 0;
+  clear_value();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CameraFocus::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .mavsdk.rpc.camera_server.CameraFocusType type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_type(static_cast<::mavsdk::rpc::camera_server::CameraFocusType>(val));
+        } else goto handle_unusual;
+        continue;
+      // .mavsdk.rpc.camera_server.CameraFocusStepDirection step_direction = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_step_direction(static_cast<::mavsdk::rpc::camera_server::CameraFocusStepDirection>(val));
+        } else goto handle_unusual;
+        continue;
+      // float continuous = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _internal_set_continuous(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float normalized = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _internal_set_normalized(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float meters = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          _internal_set_meters(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CameraFocus::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.CameraFocus)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.camera_server.CameraFocusType type = 1;
+  if (this->_internal_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_type(), target);
+  }
+
+  // .mavsdk.rpc.camera_server.CameraFocusStepDirection step_direction = 2;
+  if (_internal_has_step_direction()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_step_direction(), target);
+  }
+
+  // float continuous = 3;
+  if (_internal_has_continuous()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_continuous(), target);
+  }
+
+  // float normalized = 4;
+  if (_internal_has_normalized()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_normalized(), target);
+  }
+
+  // float meters = 5;
+  if (_internal_has_meters()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_meters(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.CameraFocus)
+  return target;
+}
+
+size_t CameraFocus::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.CameraFocus)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.camera_server.CameraFocusType type = 1;
+  if (this->_internal_type() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
+  }
+
+  switch (value_case()) {
+    // .mavsdk.rpc.camera_server.CameraFocusStepDirection step_direction = 2;
+    case kStepDirection: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_step_direction());
+      break;
+    }
+    // float continuous = 3;
+    case kContinuous: {
+      total_size += 1 + 4;
+      break;
+    }
+    // float normalized = 4;
+    case kNormalized: {
+      total_size += 1 + 4;
+      break;
+    }
+    // float meters = 5;
+    case kMeters: {
+      total_size += 1 + 4;
+      break;
+    }
+    case VALUE_NOT_SET: {
+      break;
+    }
+  }
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CameraFocus::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    CameraFocus::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CameraFocus::GetClassData() const { return &_class_data_; }
+
+void CameraFocus::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<CameraFocus *>(to)->MergeFrom(
+      static_cast<const CameraFocus &>(from));
+}
+
+
+void CameraFocus::MergeFrom(const CameraFocus& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.CameraFocus)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_type() != 0) {
+    _internal_set_type(from._internal_type());
+  }
+  switch (from.value_case()) {
+    case kStepDirection: {
+      _internal_set_step_direction(from._internal_step_direction());
+      break;
+    }
+    case kContinuous: {
+      _internal_set_continuous(from._internal_continuous());
+      break;
+    }
+    case kNormalized: {
+      _internal_set_normalized(from._internal_normalized());
+      break;
+    }
+    case kMeters: {
+      _internal_set_meters(from._internal_meters());
+      break;
+    }
+    case VALUE_NOT_SET: {
+      break;
+    }
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CameraFocus::CopyFrom(const CameraFocus& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.CameraFocus)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CameraFocus::IsInitialized() const {
+  return true;
+}
+
+void CameraFocus::InternalSwap(CameraFocus* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(type_, other->type_);
+  swap(value_, other->value_);
+  swap(_oneof_case_[0], other->_oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CameraFocus::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[16]);
+}
+
+// ===================================================================
+
+class SetCameraFocusResponse::_Internal {
+ public:
+  static const ::mavsdk::rpc::camera_server::CameraServerResult& camera_server_result(const SetCameraFocusResponse* msg);
+  static const ::mavsdk::rpc::camera_server::CameraFocus& focus(const SetCameraFocusResponse* msg);
+};
+
+const ::mavsdk::rpc::camera_server::CameraServerResult&
+SetCameraFocusResponse::_Internal::camera_server_result(const SetCameraFocusResponse* msg) {
+  return *msg->camera_server_result_;
+}
+const ::mavsdk::rpc::camera_server::CameraFocus&
+SetCameraFocusResponse::_Internal::focus(const SetCameraFocusResponse* msg) {
+  return *msg->focus_;
+}
+SetCameraFocusResponse::SetCameraFocusResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+}
+SetCameraFocusResponse::SetCameraFocusResponse(const SetCameraFocusResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_camera_server_result()) {
+    camera_server_result_ = new ::mavsdk::rpc::camera_server::CameraServerResult(*from.camera_server_result_);
+  } else {
+    camera_server_result_ = nullptr;
+  }
+  if (from._internal_has_focus()) {
+    focus_ = new ::mavsdk::rpc::camera_server::CameraFocus(*from.focus_);
+  } else {
+    focus_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+}
+
+inline void SetCameraFocusResponse::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&camera_server_result_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&focus_) -
+    reinterpret_cast<char*>(&camera_server_result_)) + sizeof(focus_));
+}
+
+SetCameraFocusResponse::~SetCameraFocusResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void SetCameraFocusResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete camera_server_result_;
+  if (this != internal_default_instance()) delete focus_;
+}
+
+void SetCameraFocusResponse::ArenaDtor(void* object) {
+  SetCameraFocusResponse* _this = reinterpret_cast< SetCameraFocusResponse* >(object);
+  (void)_this;
+}
+void SetCameraFocusResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void SetCameraFocusResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void SetCameraFocusResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && camera_server_result_ != nullptr) {
+    delete camera_server_result_;
+  }
+  camera_server_result_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && focus_ != nullptr) {
+    delete focus_;
+  }
+  focus_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SetCameraFocusResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .mavsdk.rpc.camera_server.CameraServerResult camera_server_result = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_camera_server_result(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .mavsdk.rpc.camera_server.CameraFocus focus = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_focus(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SetCameraFocusResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.camera_server.CameraServerResult camera_server_result = 1;
+  if (this->_internal_has_camera_server_result()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::camera_server_result(this), target, stream);
+  }
+
+  // .mavsdk.rpc.camera_server.CameraFocus focus = 2;
+  if (this->_internal_has_focus()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::focus(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  return target;
+}
+
+size_t SetCameraFocusResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.camera_server.CameraServerResult camera_server_result = 1;
+  if (this->_internal_has_camera_server_result()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *camera_server_result_);
+  }
+
+  // .mavsdk.rpc.camera_server.CameraFocus focus = 2;
+  if (this->_internal_has_focus()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *focus_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetCameraFocusResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    SetCameraFocusResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetCameraFocusResponse::GetClassData() const { return &_class_data_; }
+
+void SetCameraFocusResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<SetCameraFocusResponse *>(to)->MergeFrom(
+      static_cast<const SetCameraFocusResponse &>(from));
+}
+
+
+void SetCameraFocusResponse::MergeFrom(const SetCameraFocusResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_camera_server_result()) {
+    _internal_mutable_camera_server_result()->::mavsdk::rpc::camera_server::CameraServerResult::MergeFrom(from._internal_camera_server_result());
+  }
+  if (from._internal_has_focus()) {
+    _internal_mutable_focus()->::mavsdk::rpc::camera_server::CameraFocus::MergeFrom(from._internal_focus());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetCameraFocusResponse::CopyFrom(const SetCameraFocusResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.SetCameraFocusResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SetCameraFocusResponse::IsInitialized() const {
+  return true;
+}
+
+void SetCameraFocusResponse::InternalSwap(SetCameraFocusResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetCameraFocusResponse, focus_)
+      + sizeof(SetCameraFocusResponse::focus_)
+      - PROTOBUF_FIELD_OFFSET(SetCameraFocusResponse, camera_server_result_)>(
+          reinterpret_cast<char*>(&camera_server_result_),
+          reinterpret_cast<char*>(&other->camera_server_result_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SetCameraFocusResponse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[17]);
+}
+
+// ===================================================================
+
 class PublishPhotoRequest::_Internal {
  public:
   static const ::mavsdk::rpc::camera_server::CaptureInfo& capture_info(const PublishPhotoRequest* msg);
@@ -3182,7 +4806,7 @@ void PublishPhotoRequest::InternalSwap(PublishPhotoRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PublishPhotoRequest::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[12]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[18]);
 }
 
 // ===================================================================
@@ -3382,7 +5006,7 @@ void PublishPhotoResponse::InternalSwap(PublishPhotoResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PublishPhotoResponse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[13]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[19]);
 }
 
 // ===================================================================
@@ -3860,7 +5484,7 @@ void Information::InternalSwap(Information* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Information::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[14]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[20]);
 }
 
 // ===================================================================
@@ -4118,7 +5742,7 @@ void Position::InternalSwap(Position* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Position::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[15]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[21]);
 }
 
 // ===================================================================
@@ -4376,7 +6000,7 @@ void Quaternion::InternalSwap(Quaternion* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Quaternion::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[16]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[22]);
 }
 
 // ===================================================================
@@ -4739,7 +6363,7 @@ void CaptureInfo::InternalSwap(CaptureInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CaptureInfo::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[17]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[23]);
 }
 
 // ===================================================================
@@ -4967,7 +6591,7 @@ void CameraServerResult::InternalSwap(CameraServerResult* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CameraServerResult::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[18]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[24]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -5010,6 +6634,24 @@ template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::SubscribeSetCameraMod
 }
 template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::CameraZoomFocalLength* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::CameraZoomFocalLength >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::CameraZoomFocalLength >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::SetCameraZoomResponse* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::SetCameraZoomResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::SetCameraZoomResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::CameraFocus* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::CameraFocus >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::CameraFocus >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::SetCameraFocusResponse* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::SetCameraFocusResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::SetCameraFocusResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::mavsdk::rpc::camera_server::PublishPhotoRequest* Arena::CreateMaybeMessage< ::mavsdk::rpc::camera_server::PublishPhotoRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mavsdk::rpc::camera_server::PublishPhotoRequest >(arena);

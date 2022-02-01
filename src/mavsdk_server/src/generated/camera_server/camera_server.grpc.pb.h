@@ -92,6 +92,26 @@ class CameraServerService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>> PrepareAsyncSubscribeSetCameraModeSurvey(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>>(PrepareAsyncSubscribeSetCameraModeSurveyRaw(context, request, cq));
     }
+    // Subscribe to camera zoom commands
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>> SubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>>(SubscribeSetCameraZoomRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>> AsyncSubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>>(AsyncSubscribeSetCameraZoomRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>> PrepareAsyncSubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>>(PrepareAsyncSubscribeSetCameraZoomRaw(context, request, cq));
+    }
+    // Subscribe to camera focus commands
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>> SubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>>(SubscribeSetCameraFocusRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>> AsyncSubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>>(AsyncSubscribeSetCameraFocusRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>> PrepareAsyncSubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>>(PrepareAsyncSubscribeSetCameraFocusRaw(context, request, cq));
+    }
     // Adds a photo to the list of available photos
     virtual ::grpc::Status PublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::camera_server::PublishPhotoResponse>> AsyncPublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::grpc::CompletionQueue* cq) {
@@ -115,6 +135,10 @@ class CameraServerService final {
       virtual void SubscribeSetCameraModeImage(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeImageRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraModeImageResponse>* reactor) = 0;
       virtual void SubscribeSetCameraModeVideo(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeVideoRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraModeVideoResponse>* reactor) = 0;
       virtual void SubscribeSetCameraModeSurvey(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* reactor) = 0;
+      // Subscribe to camera zoom commands
+      virtual void SubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* reactor) = 0;
+      // Subscribe to camera focus commands
+      virtual void SubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* reactor) = 0;
       // Adds a photo to the list of available photos
       virtual void PublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void PublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
@@ -139,6 +163,12 @@ class CameraServerService final {
     virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* SubscribeSetCameraModeSurveyRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* AsyncSubscribeSetCameraModeSurveyRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* PrepareAsyncSubscribeSetCameraModeSurveyRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* SubscribeSetCameraZoomRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* AsyncSubscribeSetCameraZoomRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* PrepareAsyncSubscribeSetCameraZoomRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* SubscribeSetCameraFocusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* AsyncSubscribeSetCameraFocusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* PrepareAsyncSubscribeSetCameraFocusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::camera_server::PublishPhotoResponse>* AsyncPublishPhotoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::camera_server::PublishPhotoResponse>* PrepareAsyncPublishPhotoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -195,6 +225,24 @@ class CameraServerService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>> PrepareAsyncSubscribeSetCameraModeSurvey(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>>(PrepareAsyncSubscribeSetCameraModeSurveyRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>> SubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>>(SubscribeSetCameraZoomRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>> AsyncSubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>>(AsyncSubscribeSetCameraZoomRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>> PrepareAsyncSubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>>(PrepareAsyncSubscribeSetCameraZoomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>> SubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>>(SubscribeSetCameraFocusRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>> AsyncSubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>>(AsyncSubscribeSetCameraFocusRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>> PrepareAsyncSubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>>(PrepareAsyncSubscribeSetCameraFocusRaw(context, request, cq));
+    }
     ::grpc::Status PublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::camera_server::PublishPhotoResponse>> AsyncPublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::camera_server::PublishPhotoResponse>>(AsyncPublishPhotoRaw(context, request, cq));
@@ -213,6 +261,8 @@ class CameraServerService final {
       void SubscribeSetCameraModeImage(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeImageRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraModeImageResponse>* reactor) override;
       void SubscribeSetCameraModeVideo(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeVideoRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraModeVideoResponse>* reactor) override;
       void SubscribeSetCameraModeSurvey(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* reactor) override;
+      void SubscribeSetCameraZoom(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* reactor) override;
+      void SubscribeSetCameraFocus(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* reactor) override;
       void PublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response, std::function<void(::grpc::Status)>) override;
       void PublishPhoto(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
@@ -242,6 +292,12 @@ class CameraServerService final {
     ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* SubscribeSetCameraModeSurveyRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* AsyncSubscribeSetCameraModeSurveyRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* PrepareAsyncSubscribeSetCameraModeSurveyRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* SubscribeSetCameraZoomRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* AsyncSubscribeSetCameraZoomRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* PrepareAsyncSubscribeSetCameraZoomRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* SubscribeSetCameraFocusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* AsyncSubscribeSetCameraFocusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* PrepareAsyncSubscribeSetCameraFocusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::camera_server::PublishPhotoResponse>* AsyncPublishPhotoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::camera_server::PublishPhotoResponse>* PrepareAsyncPublishPhotoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SetInformation_;
@@ -250,6 +306,8 @@ class CameraServerService final {
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeSetCameraModeImage_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeSetCameraModeVideo_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeSetCameraModeSurvey_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeSetCameraZoom_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeSetCameraFocus_;
     const ::grpc::internal::RpcMethod rpcmethod_PublishPhoto_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -268,6 +326,10 @@ class CameraServerService final {
     virtual ::grpc::Status SubscribeSetCameraModeImage(::grpc::ServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeImageRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraModeImageResponse>* writer);
     virtual ::grpc::Status SubscribeSetCameraModeVideo(::grpc::ServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeVideoRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraModeVideoResponse>* writer);
     virtual ::grpc::Status SubscribeSetCameraModeSurvey(::grpc::ServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* writer);
+    // Subscribe to camera zoom commands
+    virtual ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* writer);
+    // Subscribe to camera focus commands
+    virtual ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* writer);
     // Adds a photo to the list of available photos
     virtual ::grpc::Status PublishPhoto(::grpc::ServerContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response);
   };
@@ -392,12 +454,52 @@ class CameraServerService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_SubscribeSetCameraZoom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeSetCameraZoom() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_SubscribeSetCameraZoom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeSetCameraZoom(::grpc::ServerContext* context, ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(6, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeSetCameraFocus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeSetCameraFocus() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_SubscribeSetCameraFocus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeSetCameraFocus(::grpc::ServerContext* context, ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(7, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_PublishPhoto : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_PublishPhoto() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_PublishPhoto() override {
       BaseClassMustBeDerivedFromService(this);
@@ -408,10 +510,10 @@ class CameraServerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPublishPhoto(::grpc::ServerContext* context, ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::camera_server::PublishPhotoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetInformation<WithAsyncMethod_SetInProgress<WithAsyncMethod_SubscribeTakePhoto<WithAsyncMethod_SubscribeSetCameraModeImage<WithAsyncMethod_SubscribeSetCameraModeVideo<WithAsyncMethod_SubscribeSetCameraModeSurvey<WithAsyncMethod_PublishPhoto<Service > > > > > > > AsyncService;
+  typedef WithAsyncMethod_SetInformation<WithAsyncMethod_SetInProgress<WithAsyncMethod_SubscribeTakePhoto<WithAsyncMethod_SubscribeSetCameraModeImage<WithAsyncMethod_SubscribeSetCameraModeVideo<WithAsyncMethod_SubscribeSetCameraModeSurvey<WithAsyncMethod_SubscribeSetCameraZoom<WithAsyncMethod_SubscribeSetCameraFocus<WithAsyncMethod_PublishPhoto<Service > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetInformation : public BaseClass {
    private:
@@ -555,18 +657,62 @@ class CameraServerService final {
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_SubscribeSetCameraZoom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeSetCameraZoom() {
+      ::grpc::Service::MarkMethodCallback(6,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest, ::mavsdk::rpc::camera_server::SetCameraZoomResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* request) { return this->SubscribeSetCameraZoom(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeSetCameraZoom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* SubscribeSetCameraZoom(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeSetCameraFocus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeSetCameraFocus() {
+      ::grpc::Service::MarkMethodCallback(7,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest, ::mavsdk::rpc::camera_server::SetCameraFocusResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* request) { return this->SubscribeSetCameraFocus(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeSetCameraFocus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* SubscribeSetCameraFocus(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_PublishPhoto : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_PublishPhoto() {
-      ::grpc::Service::MarkMethodCallback(6,
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::camera_server::PublishPhotoRequest, ::mavsdk::rpc::camera_server::PublishPhotoResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* request, ::mavsdk::rpc::camera_server::PublishPhotoResponse* response) { return this->PublishPhoto(context, request, response); }));}
     void SetMessageAllocatorFor_PublishPhoto(
         ::grpc::MessageAllocator< ::mavsdk::rpc::camera_server::PublishPhotoRequest, ::mavsdk::rpc::camera_server::PublishPhotoResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::camera_server::PublishPhotoRequest, ::mavsdk::rpc::camera_server::PublishPhotoResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -581,7 +727,7 @@ class CameraServerService final {
     virtual ::grpc::ServerUnaryReactor* PublishPhoto(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::camera_server::PublishPhotoRequest* /*request*/, ::mavsdk::rpc::camera_server::PublishPhotoResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetInformation<WithCallbackMethod_SetInProgress<WithCallbackMethod_SubscribeTakePhoto<WithCallbackMethod_SubscribeSetCameraModeImage<WithCallbackMethod_SubscribeSetCameraModeVideo<WithCallbackMethod_SubscribeSetCameraModeSurvey<WithCallbackMethod_PublishPhoto<Service > > > > > > > CallbackService;
+  typedef WithCallbackMethod_SetInformation<WithCallbackMethod_SetInProgress<WithCallbackMethod_SubscribeTakePhoto<WithCallbackMethod_SubscribeSetCameraModeImage<WithCallbackMethod_SubscribeSetCameraModeVideo<WithCallbackMethod_SubscribeSetCameraModeSurvey<WithCallbackMethod_SubscribeSetCameraZoom<WithCallbackMethod_SubscribeSetCameraFocus<WithCallbackMethod_PublishPhoto<Service > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetInformation : public BaseClass {
@@ -686,12 +832,46 @@ class CameraServerService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SubscribeSetCameraZoom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeSetCameraZoom() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_SubscribeSetCameraZoom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeSetCameraFocus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeSetCameraFocus() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_SubscribeSetCameraFocus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_PublishPhoto : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_PublishPhoto() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_PublishPhoto() override {
       BaseClassMustBeDerivedFromService(this);
@@ -823,12 +1003,52 @@ class CameraServerService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SubscribeSetCameraZoom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeSetCameraZoom() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_SubscribeSetCameraZoom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeSetCameraZoom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(6, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubscribeSetCameraFocus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeSetCameraFocus() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_SubscribeSetCameraFocus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeSetCameraFocus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(7, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_PublishPhoto : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_PublishPhoto() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_PublishPhoto() override {
       BaseClassMustBeDerivedFromService(this);
@@ -839,7 +1059,7 @@ class CameraServerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPublishPhoto(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -975,12 +1195,56 @@ class CameraServerService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeSetCameraZoom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeSetCameraZoom() {
+      ::grpc::Service::MarkMethodRawCallback(6,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeSetCameraZoom(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeSetCameraZoom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeSetCameraZoom(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeSetCameraFocus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeSetCameraFocus() {
+      ::grpc::Service::MarkMethodRawCallback(7,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeSetCameraFocus(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeSetCameraFocus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeSetCameraFocus(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_PublishPhoto : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_PublishPhoto() {
-      ::grpc::Service::MarkMethodRawCallback(6,
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PublishPhoto(context, request, response); }));
@@ -1056,7 +1320,7 @@ class CameraServerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_PublishPhoto() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::camera_server::PublishPhotoRequest, ::mavsdk::rpc::camera_server::PublishPhotoResponse>(
             [this](::grpc::ServerContext* context,
@@ -1186,8 +1450,62 @@ class CameraServerService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeSetCameraModeSurvey(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::camera_server::SubscribeSetCameraModeSurveyRequest,::mavsdk::rpc::camera_server::SetCameraModeSurveyResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeTakePhoto<WithSplitStreamingMethod_SubscribeSetCameraModeImage<WithSplitStreamingMethod_SubscribeSetCameraModeVideo<WithSplitStreamingMethod_SubscribeSetCameraModeSurvey<Service > > > > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetInformation<WithStreamedUnaryMethod_SetInProgress<WithSplitStreamingMethod_SubscribeTakePhoto<WithSplitStreamingMethod_SubscribeSetCameraModeImage<WithSplitStreamingMethod_SubscribeSetCameraModeVideo<WithSplitStreamingMethod_SubscribeSetCameraModeSurvey<WithStreamedUnaryMethod_PublishPhoto<Service > > > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeSetCameraZoom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeSetCameraZoom() {
+      ::grpc::Service::MarkMethodStreamed(6,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest, ::mavsdk::rpc::camera_server::SetCameraZoomResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest, ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* streamer) {
+                       return this->StreamedSubscribeSetCameraZoom(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeSetCameraZoom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeSetCameraZoom(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraZoomResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeSetCameraZoom(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::camera_server::SubscribeSetCameraZoomRequest,::mavsdk::rpc::camera_server::SetCameraZoomResponse>* server_split_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeSetCameraFocus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeSetCameraFocus() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest, ::mavsdk::rpc::camera_server::SetCameraFocusResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest, ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* streamer) {
+                       return this->StreamedSubscribeSetCameraFocus(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeSetCameraFocus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeSetCameraFocus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::camera_server::SetCameraFocusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeSetCameraFocus(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::camera_server::SubscribeSetCameraFocusRequest,::mavsdk::rpc::camera_server::SetCameraFocusResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeTakePhoto<WithSplitStreamingMethod_SubscribeSetCameraModeImage<WithSplitStreamingMethod_SubscribeSetCameraModeVideo<WithSplitStreamingMethod_SubscribeSetCameraModeSurvey<WithSplitStreamingMethod_SubscribeSetCameraZoom<WithSplitStreamingMethod_SubscribeSetCameraFocus<Service > > > > > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_SetInformation<WithStreamedUnaryMethod_SetInProgress<WithSplitStreamingMethod_SubscribeTakePhoto<WithSplitStreamingMethod_SubscribeSetCameraModeImage<WithSplitStreamingMethod_SubscribeSetCameraModeVideo<WithSplitStreamingMethod_SubscribeSetCameraModeSurvey<WithSplitStreamingMethod_SubscribeSetCameraZoom<WithSplitStreamingMethod_SubscribeSetCameraFocus<WithStreamedUnaryMethod_PublishPhoto<Service > > > > > > > > > StreamedService;
 };
 
 }  // namespace camera_server
