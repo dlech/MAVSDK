@@ -75,7 +75,7 @@ int main(int argc, char** argv)
          .lens_id = 0,
          .cam_definition_version = 0,
          .cam_definition_uri =
-             "https://gist.githubusercontent.com/dayjaby/a448be3670fbbcf05a5360421c92c27f/raw/b0e75b84f1fad69c5598bac2d96a25f96686c436/camera_info.xml"});
+             "https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml"});
 
     camera_server.set_in_progress(false);
 
