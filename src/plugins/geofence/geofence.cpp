@@ -19,6 +19,11 @@ Geofence::Geofence(std::shared_ptr<System> system) :
     _impl{std::make_unique<GeofenceImpl>(system)}
 {}
 
+Geofence::Geofence(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<GeofenceImpl>(systems)}
+{}
+
 Geofence::~Geofence() {}
 
 void Geofence::upload_geofence_async(std::vector<Polygon> polygons, const ResultCallback callback)

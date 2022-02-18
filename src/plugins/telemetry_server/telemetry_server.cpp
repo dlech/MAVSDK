@@ -48,6 +48,11 @@ TelemetryServer::TelemetryServer(std::shared_ptr<System> system) :
     _impl{std::make_unique<TelemetryServerImpl>(system)}
 {}
 
+TelemetryServer::TelemetryServer(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<TelemetryServerImpl>(systems)}
+{}
+
 TelemetryServer::~TelemetryServer() {}
 
 TelemetryServer::Result TelemetryServer::publish_position(

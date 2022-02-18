@@ -9,17 +9,30 @@ namespace mavsdk {
 
 InfoImpl::InfoImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 InfoImpl::InfoImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+InfoImpl::InfoImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 InfoImpl::~InfoImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 void InfoImpl::init()

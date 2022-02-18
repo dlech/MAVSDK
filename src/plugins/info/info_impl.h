@@ -14,6 +14,7 @@ class InfoImpl : public PluginImplBase {
 public:
     explicit InfoImpl(System& system);
     explicit InfoImpl(std::shared_ptr<System> system);
+    explicit InfoImpl(std::vector<std::shared_ptr<System> > systems);
     ~InfoImpl();
 
     void init() override;

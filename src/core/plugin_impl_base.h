@@ -1,6 +1,7 @@
 #pragma once
 #include "system_impl.h"
 #include <memory>
+#include <vector>
 
 namespace mavsdk {
 
@@ -11,6 +12,7 @@ class PluginImplBase {
 public:
     explicit PluginImplBase(System& system); // to be deprecated
     explicit PluginImplBase(std::shared_ptr<System> system); // new
+    explicit PluginImplBase(std::vector<std::shared_ptr<System>> systems);
     virtual ~PluginImplBase() = default;
 
     /*
@@ -60,6 +62,7 @@ public:
 
 protected:
     std::shared_ptr<SystemImpl> _parent;
+    std::vector<std::shared_ptr<SystemImpl>> _parents;
 };
 
 } // namespace mavsdk

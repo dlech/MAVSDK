@@ -9,6 +9,7 @@ class ParamServerImpl : public PluginImplBase {
 public:
     explicit ParamServerImpl(System& system);
     explicit ParamServerImpl(std::shared_ptr<System> system);
+    explicit ParamServerImpl(std::vector<std::shared_ptr<System> > system);
     ~ParamServerImpl();
 
     void init() override;

@@ -23,6 +23,11 @@ TrackingServer::TrackingServer(std::shared_ptr<System> system) :
     _impl{std::make_unique<TrackingServerImpl>(system)}
 {}
 
+TrackingServer::TrackingServer(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<TrackingServerImpl>(systems)}
+{}
+
 TrackingServer::~TrackingServer() {}
 
 void TrackingServer::set_tracking_point_status(TrackPoint tracked_point) const

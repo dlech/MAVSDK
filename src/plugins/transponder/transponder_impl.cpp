@@ -4,17 +4,30 @@ namespace mavsdk {
 
 TransponderImpl::TransponderImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 TransponderImpl::TransponderImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+TransponderImpl::TransponderImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 TransponderImpl::~TransponderImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 void TransponderImpl::init()

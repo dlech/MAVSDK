@@ -19,6 +19,11 @@ LogFiles::LogFiles(std::shared_ptr<System> system) :
     _impl{std::make_unique<LogFilesImpl>(system)}
 {}
 
+LogFiles::LogFiles(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<LogFilesImpl>(systems)}
+{}
+
 LogFiles::~LogFiles() {}
 
 void LogFiles::get_entries_async(const GetEntriesCallback callback)

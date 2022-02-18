@@ -23,6 +23,11 @@ ActionServer::ActionServer(std::shared_ptr<System> system) :
     _impl{std::make_unique<ActionServerImpl>(system)}
 {}
 
+ActionServer::ActionServer(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ActionServerImpl>(systems)}
+{}
+
 ActionServer::~ActionServer() {}
 
 void ActionServer::subscribe_arm_disarm(ArmDisarmCallback callback)

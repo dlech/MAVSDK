@@ -16,6 +16,11 @@ Shell::Shell(std::shared_ptr<System> system) :
     _impl{std::make_unique<ShellImpl>(system)}
 {}
 
+Shell::Shell(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ShellImpl>(systems)}
+{}
+
 Shell::~Shell() {}
 
 Shell::Result Shell::send(std::string command) const

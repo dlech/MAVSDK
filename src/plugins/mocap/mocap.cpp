@@ -26,6 +26,11 @@ Mocap::Mocap(std::shared_ptr<System> system) :
     _impl{std::make_unique<MocapImpl>(system)}
 {}
 
+Mocap::Mocap(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<MocapImpl>(systems)}
+{}
+
 Mocap::~Mocap() {}
 
 Mocap::Result

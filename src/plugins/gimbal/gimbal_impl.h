@@ -11,6 +11,7 @@ class GimbalImpl : public PluginImplBase {
 public:
     explicit GimbalImpl(System& system);
     explicit GimbalImpl(std::shared_ptr<System> system);
+    explicit GimbalImpl(std::vector<std::shared_ptr<System> > systems);
     ~GimbalImpl();
 
     void init() override;

@@ -23,6 +23,11 @@ ParamServer::ParamServer(std::shared_ptr<System> system) :
     _impl{std::make_unique<ParamServerImpl>(system)}
 {}
 
+ParamServer::ParamServer(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ParamServerImpl>(systems)}
+{}
+
 ParamServer::~ParamServer() {}
 
 std::pair<ParamServer::Result, int32_t> ParamServer::retrieve_param_int(std::string name) const

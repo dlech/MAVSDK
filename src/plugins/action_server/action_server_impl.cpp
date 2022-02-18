@@ -38,17 +38,30 @@ ActionServer::FlightMode telemetry_flight_mode_from_flight_mode(SystemImpl::Flig
 
 ActionServerImpl::ActionServerImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 ActionServerImpl::ActionServerImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+ActionServerImpl::ActionServerImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 ActionServerImpl::~ActionServerImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 void ActionServerImpl::init()

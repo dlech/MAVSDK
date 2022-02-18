@@ -54,6 +54,19 @@ public:
     explicit MissionRawServer(std::shared_ptr<System> system); // new
 
     /**
+     * @brief Constructor. Creates the plugin for multiple Systems.
+     *
+     * The plugin is typically created as shown below:
+     *
+     *     ```cpp
+     *     auto mission_raw_server = MissionRawServer(systems);
+     *     ```
+     *
+     * @param system The specific system associated with this plugin.
+     */
+    explicit MissionRawServer(std::vector<std::shared_ptr<System>> systems);
+
+    /**
      * @brief Destructor (internal use only).
      */
     ~MissionRawServer();

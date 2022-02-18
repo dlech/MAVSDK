@@ -6,17 +6,30 @@ using MissionItem = MissionRawServer::MissionItem;
 
 MissionRawServerImpl::MissionRawServerImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 MissionRawServerImpl::MissionRawServerImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+MissionRawServerImpl::MissionRawServerImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 MissionRawServerImpl::~MissionRawServerImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 MAVLinkMissionTransfer::ItemInt

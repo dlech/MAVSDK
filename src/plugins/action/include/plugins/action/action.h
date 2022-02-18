@@ -52,6 +52,19 @@ public:
     explicit Action(std::shared_ptr<System> system); // new
 
     /**
+     * @brief Constructor. Creates the plugin for multiple Systems.
+     *
+     * The plugin is typically created as shown below:
+     *
+     *     ```cpp
+     *     auto action = Action(systems);
+     *     ```
+     *
+     * @param system The specific system associated with this plugin.
+     */
+    explicit Action(std::vector<std::shared_ptr<System>> systems);
+
+    /**
      * @brief Destructor (internal use only).
      */
     ~Action();

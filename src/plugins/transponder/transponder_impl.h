@@ -9,6 +9,7 @@ class TransponderImpl : public PluginImplBase {
 public:
     explicit TransponderImpl(System& system);
     explicit TransponderImpl(std::shared_ptr<System> system);
+    explicit TransponderImpl(std::vector<std::shared_ptr<System> > system);
     ~TransponderImpl();
 
     void init() override;

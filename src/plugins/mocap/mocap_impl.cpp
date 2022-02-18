@@ -17,17 +17,30 @@ void MocapImpl::disable() {}
 
 MocapImpl::MocapImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 MocapImpl::MocapImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+MocapImpl::MocapImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 MocapImpl::~MocapImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 Mocap::Result MocapImpl::set_vision_position_estimate(

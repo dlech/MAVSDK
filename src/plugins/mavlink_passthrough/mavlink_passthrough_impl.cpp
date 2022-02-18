@@ -7,18 +7,30 @@ namespace mavsdk {
 
 MavlinkPassthroughImpl::MavlinkPassthroughImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
-MavlinkPassthroughImpl::MavlinkPassthroughImpl(std::shared_ptr<System> system) :
-    PluginImplBase(system)
+MavlinkPassthroughImpl::MavlinkPassthroughImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+MavlinkPassthroughImpl::MavlinkPassthroughImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 MavlinkPassthroughImpl::~MavlinkPassthroughImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 void MavlinkPassthroughImpl::init() {}

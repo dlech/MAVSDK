@@ -20,6 +20,11 @@ Param::Param(std::shared_ptr<System> system) :
     _impl{std::make_unique<ParamImpl>(system)}
 {}
 
+Param::Param(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ParamImpl>(systems)}
+{}
+
 Param::~Param() {}
 
 std::pair<Param::Result, int32_t> Param::get_param_int(std::string name) const

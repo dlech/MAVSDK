@@ -4,17 +4,30 @@ namespace mavsdk {
 
 {{ plugin_name.upper_camel_case }}Impl::{{ plugin_name.upper_camel_case }}Impl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 {{ plugin_name.upper_camel_case }}Impl::{{ plugin_name.upper_camel_case }}Impl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+{{ plugin_name.upper_camel_case }}Impl::{{ plugin_name.upper_camel_case }}Impl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(system)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 {{ plugin_name.upper_camel_case }}Impl::~{{ plugin_name.upper_camel_case }}Impl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 void {{ plugin_name.upper_camel_case }}Impl::init() {}

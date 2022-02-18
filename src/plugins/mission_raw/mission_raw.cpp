@@ -23,6 +23,11 @@ MissionRaw::MissionRaw(std::shared_ptr<System> system) :
     _impl{std::make_unique<MissionRawImpl>(system)}
 {}
 
+MissionRaw::MissionRaw(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<MissionRawImpl>(systems)}
+{}
+
 MissionRaw::~MissionRaw() {}
 
 void MissionRaw::upload_mission_async(

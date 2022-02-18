@@ -52,6 +52,19 @@ public:
     explicit {{ plugin_name.upper_camel_case }}(std::shared_ptr<System> system); // new
 
     /**
+     * @brief Constructor. Creates the plugin for multiple Systems.
+     *
+     * The plugin is typically created as shown below:
+     *
+     *     ```cpp
+     *     auto {{ plugin_name.lower_snake_case }} = {{ plugin_name.upper_camel_case }}(systems);
+     *     ```
+     *
+     * @param system The specific system associated with this plugin.
+     */
+    explicit {{ plugin_name.upper_camel_case }}(std::vector<std::shared_ptr<System> > systems);
+
+    /**
      * @brief Destructor (internal use only).
      */
     ~{{ plugin_name.upper_camel_case }}();

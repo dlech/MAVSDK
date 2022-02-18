@@ -10,14 +10,27 @@ FollowMeImpl::FollowMeImpl(System& system) : PluginImplBase(system)
 {
     // (Lat, Lon, Alt) => double, (vx, vy, vz) => float
     _last_location = _target_location = FollowMe::TargetLocation{};
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 FollowMeImpl::FollowMeImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
     // (Lat, Lon, Alt) => double, (vx, vy, vz) => float
     _last_location = _target_location = FollowMe::TargetLocation{};
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+}
+
+FollowMeImpl::FollowMeImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    // (Lat, Lon, Alt) => double, (vx, vy, vz) => float
+    _last_location = _target_location = FollowMe::TargetLocation{};
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
 }
 
 FollowMeImpl::~FollowMeImpl()
@@ -25,7 +38,9 @@ FollowMeImpl::~FollowMeImpl()
     if (_target_location_cookie) {
         _parent->remove_call_every(_target_location_cookie);
     }
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
 }
 
 void FollowMeImpl::init()

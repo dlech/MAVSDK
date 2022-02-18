@@ -47,6 +47,11 @@ Telemetry::Telemetry(std::shared_ptr<System> system) :
     _impl{std::make_unique<TelemetryImpl>(system)}
 {}
 
+Telemetry::Telemetry(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<TelemetryImpl>(systems)}
+{}
+
 Telemetry::~Telemetry() {}
 
 void Telemetry::subscribe_position(PositionCallback callback)

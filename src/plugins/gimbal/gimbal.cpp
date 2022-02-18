@@ -18,6 +18,11 @@ Gimbal::Gimbal(std::shared_ptr<System> system) :
     _impl{std::make_unique<GimbalImpl>(system)}
 {}
 
+Gimbal::Gimbal(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<GimbalImpl>(systems)}
+{}
+
 Gimbal::~Gimbal() {}
 
 void Gimbal::set_pitch_and_yaw_async(float pitch_deg, float yaw_deg, const ResultCallback callback)

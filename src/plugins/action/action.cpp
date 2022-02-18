@@ -16,6 +16,11 @@ Action::Action(std::shared_ptr<System> system) :
     _impl{std::make_unique<ActionImpl>(system)}
 {}
 
+Action::Action(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ActionImpl>(systems)}
+{}
+
 Action::~Action() {}
 
 void Action::arm_async(const ResultCallback callback)

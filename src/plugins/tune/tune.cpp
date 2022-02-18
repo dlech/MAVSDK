@@ -16,6 +16,11 @@ Tune::Tune(System& system) : PluginBase(), _impl{std::make_unique<TuneImpl>(syst
 Tune::Tune(std::shared_ptr<System> system) : PluginBase(), _impl{std::make_unique<TuneImpl>(system)}
 {}
 
+Tune::Tune(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<TuneImpl>(systems)}
+{}
+
 Tune::~Tune() {}
 
 void Tune::play_tune_async(TuneDescription tune_description, const ResultCallback callback)

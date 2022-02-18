@@ -4,18 +4,33 @@ namespace mavsdk {
 
 TelemetryServerImpl::TelemetryServerImpl(System& system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
     _start_time = std::chrono::steady_clock::now();
 }
 
 TelemetryServerImpl::TelemetryServerImpl(std::shared_ptr<System> system) : PluginImplBase(system)
 {
-    _parent->register_plugin(this);
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+    _start_time = std::chrono::steady_clock::now();
+}
+
+TelemetryServerImpl::TelemetryServerImpl(std::vector<std::shared_ptr<System> > systems) : PluginImplBase(systems)
+{
+    for (auto& parent : _parents) {
+        parent->register_plugin(this);
+    }
+    _start_time = std::chrono::steady_clock::now();
 }
 
 TelemetryServerImpl::~TelemetryServerImpl()
 {
-    _parent->unregister_plugin(this);
+    for (auto& parent : _parents) {
+        parent->unregister_plugin(this);
+    }
     std::unique_lock<std::mutex> lock(_interval_mutex);
     for (const auto& request : _interval_requests) {
         _parent->remove_call_every(request.cookie);

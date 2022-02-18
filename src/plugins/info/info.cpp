@@ -19,6 +19,11 @@ Info::Info(System& system) : PluginBase(), _impl{std::make_unique<InfoImpl>(syst
 Info::Info(std::shared_ptr<System> system) : PluginBase(), _impl{std::make_unique<InfoImpl>(system)}
 {}
 
+Info::Info(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<InfoImpl>(systems)}
+{}
+
 Info::~Info() {}
 
 std::pair<Info::Result, Info::FlightInfo> Info::get_flight_information() const

@@ -13,6 +13,7 @@ class OffboardImpl : public PluginImplBase {
 public:
     explicit OffboardImpl(System& system);
     explicit OffboardImpl(std::shared_ptr<System> system);
+    explicit OffboardImpl(std::vector<std::shared_ptr<System> > system);
     ~OffboardImpl();
 
     void init() override;

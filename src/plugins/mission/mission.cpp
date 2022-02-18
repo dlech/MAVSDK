@@ -20,6 +20,11 @@ Mission::Mission(std::shared_ptr<System> system) :
     _impl{std::make_unique<MissionImpl>(system)}
 {}
 
+Mission::Mission(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<MissionImpl>(systems)}
+{}
+
 Mission::~Mission() {}
 
 void Mission::upload_mission_async(MissionPlan mission_plan, const ResultCallback callback)

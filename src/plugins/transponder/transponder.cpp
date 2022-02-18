@@ -21,6 +21,11 @@ Transponder::Transponder(std::shared_ptr<System> system) :
     _impl{std::make_unique<TransponderImpl>(system)}
 {}
 
+Transponder::Transponder(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<TransponderImpl>(systems)}
+{}
+
 Transponder::~Transponder() {}
 
 void Transponder::subscribe_transponder(TransponderCallback callback)

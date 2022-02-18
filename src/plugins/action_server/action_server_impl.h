@@ -9,6 +9,7 @@ class ActionServerImpl : public PluginImplBase {
 public:
     explicit ActionServerImpl(System& system);
     explicit ActionServerImpl(std::shared_ptr<System> system);
+    explicit ActionServerImpl(std::vector<std::shared_ptr<System> > system);
     ~ActionServerImpl();
 
     void init() override;

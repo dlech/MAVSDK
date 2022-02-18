@@ -17,6 +17,7 @@ class TelemetryImpl : public PluginImplBase {
 public:
     explicit TelemetryImpl(System& system);
     explicit TelemetryImpl(std::shared_ptr<System> system);
+    explicit TelemetryImpl(std::vector<std::shared_ptr<System> > system);
     ~TelemetryImpl();
 
     void init() override;

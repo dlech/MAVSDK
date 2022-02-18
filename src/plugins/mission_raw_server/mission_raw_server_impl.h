@@ -9,6 +9,7 @@ class MissionRawServerImpl : public PluginImplBase {
 public:
     explicit MissionRawServerImpl(System& system);
     explicit MissionRawServerImpl(std::shared_ptr<System> system);
+    explicit MissionRawServerImpl(std::vector<std::shared_ptr<System> > systems);
     ~MissionRawServerImpl();
 
     void init() override;

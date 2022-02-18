@@ -14,6 +14,7 @@ class FollowMeImpl : public PluginImplBase {
 public:
     explicit FollowMeImpl(System& system);
     explicit FollowMeImpl(std::shared_ptr<System> system);
+    explicit FollowMeImpl(std::vector<std::shared_ptr<System> > system);
     ~FollowMeImpl();
 
     void init() override;

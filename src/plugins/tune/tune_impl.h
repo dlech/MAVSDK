@@ -11,6 +11,7 @@ class TuneImpl : public PluginImplBase {
 public:
     explicit TuneImpl(System& system);
     explicit TuneImpl(std::shared_ptr<System> system);
+    explicit TuneImpl(std::vector<std::shared_ptr<System> > system);
     ~TuneImpl();
 
     void init() override;

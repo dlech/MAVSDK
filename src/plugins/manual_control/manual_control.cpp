@@ -20,6 +20,11 @@ ManualControl::ManualControl(std::shared_ptr<System> system) :
     _impl{std::make_unique<ManualControlImpl>(system)}
 {}
 
+ManualControl::ManualControl(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ManualControlImpl>(systems)}
+{}
+
 ManualControl::~ManualControl() {}
 
 void ManualControl::start_position_control_async(const ResultCallback callback)

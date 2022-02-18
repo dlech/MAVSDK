@@ -21,6 +21,11 @@ Calibration::Calibration(std::shared_ptr<System> system) :
     _impl{std::make_unique<CalibrationImpl>(system)}
 {}
 
+Calibration::Calibration(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<CalibrationImpl>(systems)}
+{}
+
 Calibration::~Calibration() {}
 
 void Calibration::calibrate_gyro_async(CalibrateGyroCallback callback)

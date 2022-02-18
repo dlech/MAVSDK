@@ -52,6 +52,19 @@ public:
     explicit Failure(std::shared_ptr<System> system); // new
 
     /**
+     * @brief Constructor. Creates the plugin for multiple Systems.
+     *
+     * The plugin is typically created as shown below:
+     *
+     *     ```cpp
+     *     auto failure = Failure(systems);
+     *     ```
+     *
+     * @param system The specific system associated with this plugin.
+     */
+    explicit Failure(std::vector<std::shared_ptr<System>> systems);
+
+    /**
      * @brief Destructor (internal use only).
      */
     ~Failure();

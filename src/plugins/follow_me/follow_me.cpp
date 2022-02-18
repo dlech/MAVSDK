@@ -19,6 +19,11 @@ FollowMe::FollowMe(std::shared_ptr<System> system) :
     _impl{std::make_unique<FollowMeImpl>(system)}
 {}
 
+FollowMe::FollowMe(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<FollowMeImpl>(systems)}
+{}
+
 FollowMe::~FollowMe() {}
 
 FollowMe::Config FollowMe::get_config() const

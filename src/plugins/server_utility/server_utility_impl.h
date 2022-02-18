@@ -11,6 +11,7 @@ class ServerUtilityImpl : public PluginImplBase {
 public:
     explicit ServerUtilityImpl(System& system);
     explicit ServerUtilityImpl(std::shared_ptr<System> system);
+    explicit ServerUtilityImpl(std::vector<std::shared_ptr<System> > system);
     ~ServerUtilityImpl();
 
     void init() override;

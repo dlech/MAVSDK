@@ -20,6 +20,11 @@ ServerUtility::ServerUtility(std::shared_ptr<System> system) :
     _impl{std::make_unique<ServerUtilityImpl>(system)}
 {}
 
+ServerUtility::ServerUtility(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<ServerUtilityImpl>(systems)}
+{}
+
 ServerUtility::~ServerUtility() {}
 
 ServerUtility::Result ServerUtility::send_status_text(StatusTextType type, std::string text) const

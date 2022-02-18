@@ -24,6 +24,11 @@ MissionRawServer::MissionRawServer(std::shared_ptr<System> system) :
     _impl{std::make_unique<MissionRawServerImpl>(system)}
 {}
 
+MissionRawServer::MissionRawServer(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<MissionRawServerImpl>(systems)}
+{}
+
 MissionRawServer::~MissionRawServer() {}
 
 void MissionRawServer::subscribe_incoming_mission(IncomingMissionCallback callback)

@@ -16,6 +16,11 @@ Failure::Failure(std::shared_ptr<System> system) :
     _impl{std::make_unique<FailureImpl>(system)}
 {}
 
+Failure::Failure(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<FailureImpl>(systems)}
+{}
+
 Failure::~Failure() {}
 
 Failure::Result

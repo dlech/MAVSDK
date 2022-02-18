@@ -28,6 +28,11 @@ Camera::Camera(std::shared_ptr<System> system) :
     _impl{std::make_unique<CameraImpl>(system)}
 {}
 
+Camera::Camera(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<CameraImpl>(systems)}
+{}
+
 Camera::~Camera() {}
 
 void Camera::prepare_async(const ResultCallback callback)

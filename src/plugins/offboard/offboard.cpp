@@ -26,6 +26,11 @@ Offboard::Offboard(std::shared_ptr<System> system) :
     _impl{std::make_unique<OffboardImpl>(system)}
 {}
 
+Offboard::Offboard(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<OffboardImpl>(systems)}
+{}
+
 Offboard::~Offboard() {}
 
 void Offboard::start_async(const ResultCallback callback)

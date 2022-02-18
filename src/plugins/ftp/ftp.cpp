@@ -15,6 +15,11 @@ Ftp::Ftp(System& system) : PluginBase(), _impl{std::make_unique<FtpImpl>(system)
 
 Ftp::Ftp(std::shared_ptr<System> system) : PluginBase(), _impl{std::make_unique<FtpImpl>(system)} {}
 
+Ftp::Ftp(std::vector<std::shared_ptr<System>> systems) :
+    PluginBase(),
+    _impl{std::make_unique<FtpImpl>(systems)}
+{}
+
 Ftp::~Ftp() {}
 
 void Ftp::reset_async(const ResultCallback callback)

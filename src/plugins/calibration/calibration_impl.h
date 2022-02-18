@@ -12,6 +12,7 @@ class CalibrationImpl : public PluginImplBase {
 public:
     explicit CalibrationImpl(System& system);
     explicit CalibrationImpl(std::shared_ptr<System> system);
+    explicit CalibrationImpl(std::vector<std::shared_ptr<System> > system);
     ~CalibrationImpl();
 
     void init() override;
