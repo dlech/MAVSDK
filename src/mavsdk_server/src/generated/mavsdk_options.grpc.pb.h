@@ -7,6 +7,7 @@
 #include "mavsdk_options.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
@@ -26,10 +27,7 @@
 #include <grpcpp/impl/codegen/sync_stream.h>
 
 namespace mavsdk {
-namespace options {
+namespace options {} // namespace options
+} // namespace mavsdk
 
-}  // namespace options
-}  // namespace mavsdk
-
-
-#endif  // GRPC_mavsdk_5foptions_2eproto__INCLUDED
+#endif // GRPC_mavsdk_5foptions_2eproto__INCLUDED

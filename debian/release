@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Maintainer script for publishing releases.
+
+set -e
+
+gbp buildpackage --git-tag-only --git-debian-branch=skywrangler
+debuild
+debuild -b --host-arch armhf
+debrelease
+git push --tags

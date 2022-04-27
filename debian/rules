@@ -4,13 +4,15 @@
 #export DH_VERBOSE = 1
 
 %:
-	dh $@ --without=build-stamp --builddirectory=build
+	dh $@
+
+override_dh_missing:
+	dh_missing --fail-missing
 
 override_dh_auto_configure:
-	dh_auto_configure -O--buildsystem=cmake -O--builddirectory=build -- \
-		-DCMAKE_BUILD_TYPE=Release \
+	dh_auto_configure -- \
 		-DBUILD_SHARED_LIBS=ON \
 		-DBUILD_TESTS=OFF \
 		-DSUPERBUILD=OFF \
+		-DBUILD_MAVSDK_SERVER=ON \
 		-DMAVLINK_HEADERS="mavlink-headers/include" \
-		-DCMAKE_INSTALL_PREFIX=/usr

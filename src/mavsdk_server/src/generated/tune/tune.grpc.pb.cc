@@ -29,44 +29,49 @@ static const char* TuneService_method_names[] = {
 
 std::unique_ptr< TuneService::Stub> TuneService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< TuneService::Stub> stub(new TuneService::Stub(channel, options));
+  std::unique_ptr< TuneService::Stub> stub(new TuneService::Stub(channel));
   return stub;
 }
 
-TuneService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_PlayTune_(TuneService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+TuneService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_PlayTune_(TuneService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status TuneService::Stub::PlayTune(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest& request, ::mavsdk::rpc::tune::PlayTuneResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::tune::PlayTuneRequest, ::mavsdk::rpc::tune::PlayTuneResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PlayTune_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PlayTune_, context, request, response);
 }
 
-void TuneService::Stub::async::PlayTune(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest* request, ::mavsdk::rpc::tune::PlayTuneResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::tune::PlayTuneRequest, ::mavsdk::rpc::tune::PlayTuneResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PlayTune_, context, request, response, std::move(f));
+void TuneService::Stub::experimental_async::PlayTune(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest* request, ::mavsdk::rpc::tune::PlayTuneResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PlayTune_, context, request, response, std::move(f));
 }
 
-void TuneService::Stub::async::PlayTune(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest* request, ::mavsdk::rpc::tune::PlayTuneResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PlayTune_, context, request, response, reactor);
+void TuneService::Stub::experimental_async::PlayTune(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::tune::PlayTuneResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PlayTune_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::tune::PlayTuneResponse>* TuneService::Stub::PrepareAsyncPlayTuneRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::tune::PlayTuneResponse, ::mavsdk::rpc::tune::PlayTuneRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PlayTune_, context, request);
+void TuneService::Stub::experimental_async::PlayTune(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest* request, ::mavsdk::rpc::tune::PlayTuneResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PlayTune_, context, request, response, reactor);
+}
+
+void TuneService::Stub::experimental_async::PlayTune(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::tune::PlayTuneResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PlayTune_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::tune::PlayTuneResponse>* TuneService::Stub::AsyncPlayTuneRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPlayTuneRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::tune::PlayTuneResponse>::Create(channel_.get(), cq, rpcmethod_PlayTune_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::tune::PlayTuneResponse>* TuneService::Stub::PrepareAsyncPlayTuneRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::tune::PlayTuneRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::tune::PlayTuneResponse>::Create(channel_.get(), cq, rpcmethod_PlayTune_, context, request, false);
 }
 
 TuneService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TuneService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TuneService::Service, ::mavsdk::rpc::tune::PlayTuneRequest, ::mavsdk::rpc::tune::PlayTuneResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TuneService::Service, ::mavsdk::rpc::tune::PlayTuneRequest, ::mavsdk::rpc::tune::PlayTuneResponse>(
           [](TuneService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::tune::PlayTuneRequest* req,
              ::mavsdk::rpc::tune::PlayTuneResponse* resp) {
                return service->PlayTune(ctx, req, resp);

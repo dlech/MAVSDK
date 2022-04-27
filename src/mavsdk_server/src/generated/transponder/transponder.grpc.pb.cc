@@ -30,52 +30,57 @@ static const char* TransponderService_method_names[] = {
 
 std::unique_ptr< TransponderService::Stub> TransponderService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< TransponderService::Stub> stub(new TransponderService::Stub(channel, options));
+  std::unique_ptr< TransponderService::Stub> stub(new TransponderService::Stub(channel));
   return stub;
 }
 
-TransponderService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_SubscribeTransponder_(TransponderService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_SetRateTransponder_(TransponderService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+TransponderService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_SubscribeTransponder_(TransponderService_method_names[0], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SetRateTransponder_(TransponderService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::ClientReader< ::mavsdk::rpc::transponder::TransponderResponse>* TransponderService::Stub::SubscribeTransponderRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SubscribeTransponderRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(channel_.get(), rpcmethod_SubscribeTransponder_, context, request);
+  return ::grpc_impl::internal::ClientReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(channel_.get(), rpcmethod_SubscribeTransponder_, context, request);
 }
 
-void TransponderService::Stub::async::SubscribeTransponder(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SubscribeTransponderRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::transponder::TransponderResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeTransponder_, context, request, reactor);
+void TransponderService::Stub::experimental_async::SubscribeTransponder(::grpc::ClientContext* context, ::mavsdk::rpc::transponder::SubscribeTransponderRequest* request, ::grpc::experimental::ClientReadReactor< ::mavsdk::rpc::transponder::TransponderResponse>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeTransponder_, context, request, reactor);
 }
 
 ::grpc::ClientAsyncReader< ::mavsdk::rpc::transponder::TransponderResponse>* TransponderService::Stub::AsyncSubscribeTransponderRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SubscribeTransponderRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeTransponder_, context, request, true, tag);
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeTransponder_, context, request, true, tag);
 }
 
 ::grpc::ClientAsyncReader< ::mavsdk::rpc::transponder::TransponderResponse>* TransponderService::Stub::PrepareAsyncSubscribeTransponderRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SubscribeTransponderRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeTransponder_, context, request, false, nullptr);
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::transponder::TransponderResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeTransponder_, context, request, false, nullptr);
 }
 
 ::grpc::Status TransponderService::Stub::SetRateTransponder(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest& request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::transponder::SetRateTransponderRequest, ::mavsdk::rpc::transponder::SetRateTransponderResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetRateTransponder_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetRateTransponder_, context, request, response);
 }
 
-void TransponderService::Stub::async::SetRateTransponder(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest* request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::transponder::SetRateTransponderRequest, ::mavsdk::rpc::transponder::SetRateTransponderResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetRateTransponder_, context, request, response, std::move(f));
+void TransponderService::Stub::experimental_async::SetRateTransponder(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest* request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRateTransponder_, context, request, response, std::move(f));
 }
 
-void TransponderService::Stub::async::SetRateTransponder(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest* request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetRateTransponder_, context, request, response, reactor);
+void TransponderService::Stub::experimental_async::SetRateTransponder(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRateTransponder_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::transponder::SetRateTransponderResponse>* TransponderService::Stub::PrepareAsyncSetRateTransponderRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::transponder::SetRateTransponderResponse, ::mavsdk::rpc::transponder::SetRateTransponderRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetRateTransponder_, context, request);
+void TransponderService::Stub::experimental_async::SetRateTransponder(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest* request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRateTransponder_, context, request, response, reactor);
+}
+
+void TransponderService::Stub::experimental_async::SetRateTransponder(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::transponder::SetRateTransponderResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRateTransponder_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::transponder::SetRateTransponderResponse>* TransponderService::Stub::AsyncSetRateTransponderRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetRateTransponderRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::transponder::SetRateTransponderResponse>::Create(channel_.get(), cq, rpcmethod_SetRateTransponder_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::transponder::SetRateTransponderResponse>* TransponderService::Stub::PrepareAsyncSetRateTransponderRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::transponder::SetRateTransponderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::transponder::SetRateTransponderResponse>::Create(channel_.get(), cq, rpcmethod_SetRateTransponder_, context, request, false);
 }
 
 TransponderService::Service::Service() {
@@ -84,17 +89,17 @@ TransponderService::Service::Service() {
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< TransponderService::Service, ::mavsdk::rpc::transponder::SubscribeTransponderRequest, ::mavsdk::rpc::transponder::TransponderResponse>(
           [](TransponderService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::transponder::SubscribeTransponderRequest* req,
-             ::grpc::ServerWriter<::mavsdk::rpc::transponder::TransponderResponse>* writer) {
+             ::grpc_impl::ServerWriter<::mavsdk::rpc::transponder::TransponderResponse>* writer) {
                return service->SubscribeTransponder(ctx, req, writer);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TransponderService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TransponderService::Service, ::mavsdk::rpc::transponder::SetRateTransponderRequest, ::mavsdk::rpc::transponder::SetRateTransponderResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TransponderService::Service, ::mavsdk::rpc::transponder::SetRateTransponderRequest, ::mavsdk::rpc::transponder::SetRateTransponderResponse>(
           [](TransponderService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::transponder::SetRateTransponderRequest* req,
              ::mavsdk::rpc::transponder::SetRateTransponderResponse* resp) {
                return service->SetRateTransponder(ctx, req, resp);

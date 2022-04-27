@@ -7,6 +7,7 @@
 #include "follow_me/follow_me.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
@@ -33,1178 +34,2836 @@ namespace follow_me {
 // Allow users to command the vehicle to follow a specific target.
 // The target is provided as a GPS coordinate and altitude.
 class FollowMeService final {
- public:
-  static constexpr char const* service_full_name() {
-    return "mavsdk.rpc.follow_me.FollowMeService";
-  }
-  class StubInterface {
-   public:
-    virtual ~StubInterface() {}
-    // Get current configuration.
-    virtual ::grpc::Status GetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::mavsdk::rpc::follow_me::GetConfigResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetConfigResponse>> AsyncGetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetConfigResponse>>(AsyncGetConfigRaw(context, request, cq));
+public:
+    static constexpr char const* service_full_name()
+    {
+        return "mavsdk.rpc.follow_me.FollowMeService";
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetConfigResponse>> PrepareAsyncGetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetConfigResponse>>(PrepareAsyncGetConfigRaw(context, request, cq));
-    }
-    // Apply configuration by sending it to the system.
-    virtual ::grpc::Status SetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::mavsdk::rpc::follow_me::SetConfigResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetConfigResponse>> AsyncSetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetConfigResponse>>(AsyncSetConfigRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetConfigResponse>> PrepareAsyncSetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetConfigResponse>>(PrepareAsyncSetConfigRaw(context, request, cq));
-    }
-    // Check if FollowMe is active.
-    virtual ::grpc::Status IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::mavsdk::rpc::follow_me::IsActiveResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::IsActiveResponse>> AsyncIsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::IsActiveResponse>>(AsyncIsActiveRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::IsActiveResponse>> PrepareAsyncIsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::IsActiveResponse>>(PrepareAsyncIsActiveRaw(context, request, cq));
-    }
-    // Set location of the moving target.
-    virtual ::grpc::Status SetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>> AsyncSetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(AsyncSetTargetLocationRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>> PrepareAsyncSetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(PrepareAsyncSetTargetLocationRaw(context, request, cq));
-    }
-    // Get the last location of the target.
-    virtual ::grpc::Status GetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetLastLocationResponse>> AsyncGetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(AsyncGetLastLocationRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetLastLocationResponse>> PrepareAsyncGetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(PrepareAsyncGetLastLocationRaw(context, request, cq));
-    }
-    // Start FollowMe mode.
-    virtual ::grpc::Status Start(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::mavsdk::rpc::follow_me::StartResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StartResponse>> AsyncStart(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StartResponse>>(AsyncStartRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StartResponse>> PrepareAsyncStart(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StartResponse>>(PrepareAsyncStartRaw(context, request, cq));
-    }
-    // Stop FollowMe mode.
-    virtual ::grpc::Status Stop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::mavsdk::rpc::follow_me::StopResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StopResponse>> AsyncStop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StopResponse>>(AsyncStopRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StopResponse>> PrepareAsyncStop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StopResponse>>(PrepareAsyncStopRaw(context, request, cq));
-    }
-    class async_interface {
-     public:
-      virtual ~async_interface() {}
-      // Get current configuration.
-      virtual void GetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::mavsdk::rpc::follow_me::GetConfigResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::mavsdk::rpc::follow_me::GetConfigResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Apply configuration by sending it to the system.
-      virtual void SetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::mavsdk::rpc::follow_me::SetConfigResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::mavsdk::rpc::follow_me::SetConfigResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Check if FollowMe is active.
-      virtual void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::mavsdk::rpc::follow_me::IsActiveResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::mavsdk::rpc::follow_me::IsActiveResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Set location of the moving target.
-      virtual void SetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Get the last location of the target.
-      virtual void GetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Start FollowMe mode.
-      virtual void Start(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest* request, ::mavsdk::rpc::follow_me::StartResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Start(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest* request, ::mavsdk::rpc::follow_me::StartResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Stop FollowMe mode.
-      virtual void Stop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest* request, ::mavsdk::rpc::follow_me::StopResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Stop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest* request, ::mavsdk::rpc::follow_me::StopResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-    };
-    typedef class async_interface experimental_async_interface;
-    virtual class async_interface* async() { return nullptr; }
-    class async_interface* experimental_async() { return async(); }
-  private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetConfigResponse>* AsyncGetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetConfigResponse>* PrepareAsyncGetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetConfigResponse>* AsyncSetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetConfigResponse>* PrepareAsyncSetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::IsActiveResponse>* AsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::IsActiveResponse>* PrepareAsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* AsyncSetTargetLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* PrepareAsyncSetTargetLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetLastLocationResponse>* AsyncGetLastLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::GetLastLocationResponse>* PrepareAsyncGetLastLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StartResponse>* AsyncStartRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StartResponse>* PrepareAsyncStartRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StopResponse>* AsyncStopRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::follow_me::StopResponse>* PrepareAsyncStopRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) = 0;
-  };
-  class Stub final : public StubInterface {
-   public:
-    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status GetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::mavsdk::rpc::follow_me::GetConfigResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetConfigResponse>> AsyncGetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetConfigResponse>>(AsyncGetConfigRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetConfigResponse>> PrepareAsyncGetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetConfigResponse>>(PrepareAsyncGetConfigRaw(context, request, cq));
-    }
-    ::grpc::Status SetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::mavsdk::rpc::follow_me::SetConfigResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetConfigResponse>> AsyncSetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetConfigResponse>>(AsyncSetConfigRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetConfigResponse>> PrepareAsyncSetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetConfigResponse>>(PrepareAsyncSetConfigRaw(context, request, cq));
-    }
-    ::grpc::Status IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::mavsdk::rpc::follow_me::IsActiveResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::IsActiveResponse>> AsyncIsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::IsActiveResponse>>(AsyncIsActiveRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::IsActiveResponse>> PrepareAsyncIsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::IsActiveResponse>>(PrepareAsyncIsActiveRaw(context, request, cq));
-    }
-    ::grpc::Status SetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>> AsyncSetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(AsyncSetTargetLocationRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>> PrepareAsyncSetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(PrepareAsyncSetTargetLocationRaw(context, request, cq));
-    }
-    ::grpc::Status GetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetLastLocationResponse>> AsyncGetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(AsyncGetLastLocationRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetLastLocationResponse>> PrepareAsyncGetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(PrepareAsyncGetLastLocationRaw(context, request, cq));
-    }
-    ::grpc::Status Start(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::mavsdk::rpc::follow_me::StartResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StartResponse>> AsyncStart(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StartResponse>>(AsyncStartRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StartResponse>> PrepareAsyncStart(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StartResponse>>(PrepareAsyncStartRaw(context, request, cq));
-    }
-    ::grpc::Status Stop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::mavsdk::rpc::follow_me::StopResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StopResponse>> AsyncStop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StopResponse>>(AsyncStopRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StopResponse>> PrepareAsyncStop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StopResponse>>(PrepareAsyncStopRaw(context, request, cq));
-    }
-    class async final :
-      public StubInterface::async_interface {
-     public:
-      void GetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::mavsdk::rpc::follow_me::GetConfigResponse* response, std::function<void(::grpc::Status)>) override;
-      void GetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::mavsdk::rpc::follow_me::GetConfigResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::mavsdk::rpc::follow_me::SetConfigResponse* response, std::function<void(::grpc::Status)>) override;
-      void SetConfig(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::mavsdk::rpc::follow_me::SetConfigResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::mavsdk::rpc::follow_me::IsActiveResponse* response, std::function<void(::grpc::Status)>) override;
-      void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::mavsdk::rpc::follow_me::IsActiveResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response, std::function<void(::grpc::Status)>) override;
-      void SetTargetLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response, std::function<void(::grpc::Status)>) override;
-      void GetLastLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void Start(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest* request, ::mavsdk::rpc::follow_me::StartResponse* response, std::function<void(::grpc::Status)>) override;
-      void Start(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest* request, ::mavsdk::rpc::follow_me::StartResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void Stop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest* request, ::mavsdk::rpc::follow_me::StopResponse* response, std::function<void(::grpc::Status)>) override;
-      void Stop(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest* request, ::mavsdk::rpc::follow_me::StopResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-     private:
-      friend class Stub;
-      explicit async(Stub* stub): stub_(stub) { }
-      Stub* stub() { return stub_; }
-      Stub* stub_;
-    };
-    class async* async() override { return &async_stub_; }
+    class StubInterface {
+    public:
+        virtual ~StubInterface() {}
+        // Get current configuration.
+        virtual ::grpc::Status GetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* response) = 0;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::GetConfigResponse>>
+        AsyncGetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::GetConfigResponse>>(
+                AsyncGetConfigRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::GetConfigResponse>>
+        PrepareAsyncGetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::GetConfigResponse>>(
+                PrepareAsyncGetConfigRaw(context, request, cq));
+        }
+        // Apply configuration by sending it to the system.
+        virtual ::grpc::Status SetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* response) = 0;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::SetConfigResponse>>
+        AsyncSetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::SetConfigResponse>>(
+                AsyncSetConfigRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::SetConfigResponse>>
+        PrepareAsyncSetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::SetConfigResponse>>(
+                PrepareAsyncSetConfigRaw(context, request, cq));
+        }
+        // Check if FollowMe is active.
+        virtual ::grpc::Status IsActive(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* response) = 0;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::IsActiveResponse>>
+        AsyncIsActive(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::IsActiveResponse>>(
+                AsyncIsActiveRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::IsActiveResponse>>
+        PrepareAsyncIsActive(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::IsActiveResponse>>(
+                PrepareAsyncIsActiveRaw(context, request, cq));
+        }
+        // Set location of the moving target.
+        virtual ::grpc::Status SetTargetLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response) = 0;
+        std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>
+        AsyncSetTargetLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(
+                AsyncSetTargetLocationRaw(context, request, cq));
+        }
+        std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>
+        PrepareAsyncSetTargetLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(
+                PrepareAsyncSetTargetLocationRaw(context, request, cq));
+        }
+        // Get the last location of the target.
+        virtual ::grpc::Status GetLastLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* response) = 0;
+        std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse>>
+        AsyncGetLastLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(
+                AsyncGetLastLocationRaw(context, request, cq));
+        }
+        std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse>>
+        PrepareAsyncGetLastLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(
+                PrepareAsyncGetLastLocationRaw(context, request, cq));
+        }
+        // Start FollowMe mode.
+        virtual ::grpc::Status Start(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::mavsdk::rpc::follow_me::StartResponse* response) = 0;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StartResponse>>
+        AsyncStart(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::StartResponse>>(AsyncStartRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StartResponse>>
+        PrepareAsyncStart(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReaderInterface<
+                ::mavsdk::rpc::follow_me::StartResponse>>(
+                PrepareAsyncStartRaw(context, request, cq));
+        }
+        // Stop FollowMe mode.
+        virtual ::grpc::Status Stop(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::mavsdk::rpc::follow_me::StopResponse* response) = 0;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StopResponse>>
+        AsyncStop(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StopResponse>>(
+                AsyncStopRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StopResponse>>
+        PrepareAsyncStop(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StopResponse>>(
+                PrepareAsyncStopRaw(context, request, cq));
+        }
+        class experimental_async_interface {
+        public:
+            virtual ~experimental_async_interface() {}
+            // Get current configuration.
+            virtual void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+            // Apply configuration by sending it to the system.
+            virtual void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+            // Check if FollowMe is active.
+            virtual void IsActive(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void IsActive(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void IsActive(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void IsActive(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void IsActive(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void IsActive(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+            // Set location of the moving target.
+            virtual void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+            // Get the last location of the target.
+            virtual void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+            // Start FollowMe mode.
+            virtual void Start(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StartRequest* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void Start(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void Start(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StartRequest* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void Start(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StartRequest* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void Start(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void Start(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+            // Stop FollowMe mode.
+            virtual void Stop(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StopRequest* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+            virtual void Stop(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                std::function<void(::grpc::Status)>) = 0;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void Stop(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StopRequest* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void Stop(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StopRequest* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            virtual void Stop(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) = 0;
+#else
+            virtual void Stop(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+#endif
+        };
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        typedef class experimental_async_interface async_interface;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        async_interface* async() { return experimental_async(); }
+#endif
+        virtual class experimental_async_interface* experimental_async() { return nullptr; }
 
-   private:
-    std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetConfigResponse>* AsyncGetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetConfigResponse>* PrepareAsyncGetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetConfigResponse>* AsyncSetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetConfigResponse>* PrepareAsyncSetConfigRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::IsActiveResponse>* AsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::IsActiveResponse>* PrepareAsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* AsyncSetTargetLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* PrepareAsyncSetTargetLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetLastLocationResponse>* AsyncGetLastLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::GetLastLocationResponse>* PrepareAsyncGetLastLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StartResponse>* AsyncStartRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StartResponse>* PrepareAsyncStartRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StartRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StopResponse>* AsyncStopRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::follow_me::StopResponse>* PrepareAsyncStopRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::follow_me::StopRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_GetConfig_;
-    const ::grpc::internal::RpcMethod rpcmethod_SetConfig_;
-    const ::grpc::internal::RpcMethod rpcmethod_IsActive_;
-    const ::grpc::internal::RpcMethod rpcmethod_SetTargetLocation_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetLastLocation_;
-    const ::grpc::internal::RpcMethod rpcmethod_Start_;
-    const ::grpc::internal::RpcMethod rpcmethod_Stop_;
-  };
-  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    private:
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::GetConfigResponse>*
+        AsyncGetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::GetConfigResponse>*
+        PrepareAsyncGetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::SetConfigResponse>*
+        AsyncSetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::SetConfigResponse>*
+        PrepareAsyncSetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::IsActiveResponse>*
+        AsyncIsActiveRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::IsActiveResponse>*
+        PrepareAsyncIsActiveRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse>*
+        AsyncSetTargetLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse>*
+        PrepareAsyncSetTargetLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse>*
+        AsyncGetLastLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse>*
+        PrepareAsyncGetLastLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StartResponse>*
+        AsyncStartRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StartResponse>*
+        PrepareAsyncStartRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StopResponse>*
+        AsyncStopRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+        virtual ::grpc::ClientAsyncResponseReaderInterface<::mavsdk::rpc::follow_me::StopResponse>*
+        PrepareAsyncStopRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq) = 0;
+    };
+    class Stub final : public StubInterface {
+    public:
+        Stub(const std::shared_ptr<::grpc::ChannelInterface>& channel);
+        ::grpc::Status GetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* response) override;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetConfigResponse>>
+        AsyncGetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetConfigResponse>>(
+                AsyncGetConfigRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetConfigResponse>>
+        PrepareAsyncGetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetConfigResponse>>(
+                PrepareAsyncGetConfigRaw(context, request, cq));
+        }
+        ::grpc::Status SetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* response) override;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetConfigResponse>>
+        AsyncSetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetConfigResponse>>(
+                AsyncSetConfigRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetConfigResponse>>
+        PrepareAsyncSetConfig(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetConfigResponse>>(
+                PrepareAsyncSetConfigRaw(context, request, cq));
+        }
+        ::grpc::Status IsActive(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* response) override;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::IsActiveResponse>>
+        AsyncIsActive(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::IsActiveResponse>>(
+                AsyncIsActiveRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::IsActiveResponse>>
+        PrepareAsyncIsActive(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::IsActiveResponse>>(
+                PrepareAsyncIsActiveRaw(context, request, cq));
+        }
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response) override;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetTargetLocationResponse>>
+        AsyncSetTargetLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReader<
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(
+                AsyncSetTargetLocationRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetTargetLocationResponse>>
+        PrepareAsyncSetTargetLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReader<
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>>(
+                PrepareAsyncSetTargetLocationRaw(context, request, cq));
+        }
+        ::grpc::Status GetLastLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* response) override;
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetLastLocationResponse>>
+        AsyncGetLastLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReader<
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(
+                AsyncGetLastLocationRaw(context, request, cq));
+        }
+        std::unique_ptr<
+            ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetLastLocationResponse>>
+        PrepareAsyncGetLastLocation(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<::grpc::ClientAsyncResponseReader<
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>>(
+                PrepareAsyncGetLastLocationRaw(context, request, cq));
+        }
+        ::grpc::Status Start(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::mavsdk::rpc::follow_me::StartResponse* response) override;
+        std::unique_ptr<::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StartResponse>>
+        AsyncStart(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StartResponse>>(
+                AsyncStartRaw(context, request, cq));
+        }
+        std::unique_ptr<::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StartResponse>>
+        PrepareAsyncStart(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StartResponse>>(
+                PrepareAsyncStartRaw(context, request, cq));
+        }
+        ::grpc::Status Stop(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::mavsdk::rpc::follow_me::StopResponse* response) override;
+        std::unique_ptr<::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StopResponse>>
+        AsyncStop(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StopResponse>>(
+                AsyncStopRaw(context, request, cq));
+        }
+        std::unique_ptr<::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StopResponse>>
+        PrepareAsyncStop(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq)
+        {
+            return std::unique_ptr<
+                ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StopResponse>>(
+                PrepareAsyncStopRaw(context, request, cq));
+        }
+        class experimental_async final : public StubInterface::experimental_async_interface {
+        public:
+            void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void GetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+            void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void SetConfig(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetConfigResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+            void IsActive(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void IsActive(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void IsActive(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void IsActive(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void IsActive(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void IsActive(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::IsActiveResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+            void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void SetTargetLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+            void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void GetLastLocation(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+            void Start(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StartRequest* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void Start(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void Start(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StartRequest* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void Start(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StartRequest* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void Start(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void Start(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StartResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+            void Stop(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StopRequest* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                std::function<void(::grpc::Status)>) override;
+            void Stop(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                std::function<void(::grpc::Status)>) override;
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void Stop(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StopRequest* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void Stop(
+                ::grpc::ClientContext* context,
+                const ::mavsdk::rpc::follow_me::StopRequest* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            void Stop(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::ClientUnaryReactor* reactor) override;
+#else
+            void Stop(
+                ::grpc::ClientContext* context,
+                const ::grpc::ByteBuffer* request,
+                ::mavsdk::rpc::follow_me::StopResponse* response,
+                ::grpc::experimental::ClientUnaryReactor* reactor) override;
+#endif
+        private:
+            friend class Stub;
+            explicit experimental_async(Stub* stub) : stub_(stub) {}
+            Stub* stub() { return stub_; }
+            Stub* stub_;
+        };
+        class experimental_async_interface* experimental_async() override { return &async_stub_; }
 
-  class Service : public ::grpc::Service {
-   public:
-    Service();
-    virtual ~Service();
-    // Get current configuration.
-    virtual ::grpc::Status GetConfig(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::mavsdk::rpc::follow_me::GetConfigResponse* response);
-    // Apply configuration by sending it to the system.
-    virtual ::grpc::Status SetConfig(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::mavsdk::rpc::follow_me::SetConfigResponse* response);
-    // Check if FollowMe is active.
-    virtual ::grpc::Status IsActive(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::mavsdk::rpc::follow_me::IsActiveResponse* response);
-    // Set location of the moving target.
-    virtual ::grpc::Status SetTargetLocation(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response);
-    // Get the last location of the target.
-    virtual ::grpc::Status GetLastLocation(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response);
-    // Start FollowMe mode.
-    virtual ::grpc::Status Start(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::StartRequest* request, ::mavsdk::rpc::follow_me::StartResponse* response);
-    // Stop FollowMe mode.
-    virtual ::grpc::Status Stop(::grpc::ServerContext* context, const ::mavsdk::rpc::follow_me::StopRequest* request, ::mavsdk::rpc::follow_me::StopResponse* response);
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetConfig() {
-      ::grpc::Service::MarkMethodAsync(0);
-    }
-    ~WithAsyncMethod_GetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetConfig(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::GetConfigResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_SetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_SetConfig() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_SetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSetConfig(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::SetConfigResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_IsActive : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_IsActive() {
-      ::grpc::Service::MarkMethodAsync(2);
-    }
-    ~WithAsyncMethod_IsActive() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status IsActive(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestIsActive(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::IsActiveResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_SetTargetLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_SetTargetLocation() {
-      ::grpc::Service::MarkMethodAsync(3);
-    }
-    ~WithAsyncMethod_SetTargetLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetTargetLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSetTargetLocation(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetLastLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetLastLocation() {
-      ::grpc::Service::MarkMethodAsync(4);
-    }
-    ~WithAsyncMethod_GetLastLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetLastLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetLastLocation(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::GetLastLocationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_Start : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_Start() {
-      ::grpc::Service::MarkMethodAsync(5);
-    }
-    ~WithAsyncMethod_Start() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Start(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestStart(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::StartRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::StartResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_Stop : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_Stop() {
-      ::grpc::Service::MarkMethodAsync(6);
-    }
-    ~WithAsyncMethod_Stop() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Stop(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestStop(::grpc::ServerContext* context, ::mavsdk::rpc::follow_me::StopRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::follow_me::StopResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_GetConfig<WithAsyncMethod_SetConfig<WithAsyncMethod_IsActive<WithAsyncMethod_SetTargetLocation<WithAsyncMethod_GetLastLocation<WithAsyncMethod_Start<WithAsyncMethod_Stop<Service > > > > > > > AsyncService;
-  template <class BaseClass>
-  class WithCallbackMethod_GetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetConfig() {
-      ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::GetConfigRequest, ::mavsdk::rpc::follow_me::GetConfigResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::GetConfigRequest* request, ::mavsdk::rpc::follow_me::GetConfigResponse* response) { return this->GetConfig(context, request, response); }));}
-    void SetMessageAllocatorFor_GetConfig(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::GetConfigRequest, ::mavsdk::rpc::follow_me::GetConfigResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::GetConfigRequest, ::mavsdk::rpc::follow_me::GetConfigResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetConfig(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_SetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_SetConfig() {
-      ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::SetConfigRequest, ::mavsdk::rpc::follow_me::SetConfigResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::SetConfigRequest* request, ::mavsdk::rpc::follow_me::SetConfigResponse* response) { return this->SetConfig(context, request, response); }));}
-    void SetMessageAllocatorFor_SetConfig(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::SetConfigRequest, ::mavsdk::rpc::follow_me::SetConfigResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::SetConfigRequest, ::mavsdk::rpc::follow_me::SetConfigResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_SetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SetConfig(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_IsActive : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_IsActive() {
-      ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::IsActiveRequest, ::mavsdk::rpc::follow_me::IsActiveResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::IsActiveRequest* request, ::mavsdk::rpc::follow_me::IsActiveResponse* response) { return this->IsActive(context, request, response); }));}
-    void SetMessageAllocatorFor_IsActive(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::IsActiveRequest, ::mavsdk::rpc::follow_me::IsActiveResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::IsActiveRequest, ::mavsdk::rpc::follow_me::IsActiveResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_IsActive() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status IsActive(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* IsActive(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_SetTargetLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_SetTargetLocation() {
-      ::grpc::Service::MarkMethodCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::SetTargetLocationRequest, ::mavsdk::rpc::follow_me::SetTargetLocationResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response) { return this->SetTargetLocation(context, request, response); }));}
-    void SetMessageAllocatorFor_SetTargetLocation(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::SetTargetLocationRequest, ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::SetTargetLocationRequest, ::mavsdk::rpc::follow_me::SetTargetLocationResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_SetTargetLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetTargetLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SetTargetLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_GetLastLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetLastLocation() {
-      ::grpc::Service::MarkMethodCallback(4,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::GetLastLocationRequest, ::mavsdk::rpc::follow_me::GetLastLocationResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request, ::mavsdk::rpc::follow_me::GetLastLocationResponse* response) { return this->GetLastLocation(context, request, response); }));}
-    void SetMessageAllocatorFor_GetLastLocation(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::GetLastLocationRequest, ::mavsdk::rpc::follow_me::GetLastLocationResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::GetLastLocationRequest, ::mavsdk::rpc::follow_me::GetLastLocationResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetLastLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetLastLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetLastLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_Start : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_Start() {
-      ::grpc::Service::MarkMethodCallback(5,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::StartRequest, ::mavsdk::rpc::follow_me::StartResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::StartRequest* request, ::mavsdk::rpc::follow_me::StartResponse* response) { return this->Start(context, request, response); }));}
-    void SetMessageAllocatorFor_Start(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::StartRequest, ::mavsdk::rpc::follow_me::StartResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::StartRequest, ::mavsdk::rpc::follow_me::StartResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_Start() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Start(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* Start(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_Stop : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_Stop() {
-      ::grpc::Service::MarkMethodCallback(6,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::StopRequest, ::mavsdk::rpc::follow_me::StopResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::follow_me::StopRequest* request, ::mavsdk::rpc::follow_me::StopResponse* response) { return this->Stop(context, request, response); }));}
-    void SetMessageAllocatorFor_Stop(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::follow_me::StopRequest, ::mavsdk::rpc::follow_me::StopResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::follow_me::StopRequest, ::mavsdk::rpc::follow_me::StopResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_Stop() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Stop(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* Stop(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_GetConfig<WithCallbackMethod_SetConfig<WithCallbackMethod_IsActive<WithCallbackMethod_SetTargetLocation<WithCallbackMethod_GetLastLocation<WithCallbackMethod_Start<WithCallbackMethod_Stop<Service > > > > > > > CallbackService;
-  typedef CallbackService ExperimentalCallbackService;
-  template <class BaseClass>
-  class WithGenericMethod_GetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetConfig() {
-      ::grpc::Service::MarkMethodGeneric(0);
-    }
-    ~WithGenericMethod_GetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_SetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_SetConfig() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_SetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_IsActive : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_IsActive() {
-      ::grpc::Service::MarkMethodGeneric(2);
-    }
-    ~WithGenericMethod_IsActive() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status IsActive(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_SetTargetLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_SetTargetLocation() {
-      ::grpc::Service::MarkMethodGeneric(3);
-    }
-    ~WithGenericMethod_SetTargetLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetTargetLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_GetLastLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetLastLocation() {
-      ::grpc::Service::MarkMethodGeneric(4);
-    }
-    ~WithGenericMethod_GetLastLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetLastLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_Start : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_Start() {
-      ::grpc::Service::MarkMethodGeneric(5);
-    }
-    ~WithGenericMethod_Start() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Start(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_Stop : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_Stop() {
-      ::grpc::Service::MarkMethodGeneric(6);
-    }
-    ~WithGenericMethod_Stop() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Stop(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetConfig() {
-      ::grpc::Service::MarkMethodRaw(0);
-    }
-    ~WithRawMethod_GetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetConfig(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_SetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_SetConfig() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_SetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSetConfig(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_IsActive : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_IsActive() {
-      ::grpc::Service::MarkMethodRaw(2);
-    }
-    ~WithRawMethod_IsActive() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status IsActive(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestIsActive(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_SetTargetLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_SetTargetLocation() {
-      ::grpc::Service::MarkMethodRaw(3);
-    }
-    ~WithRawMethod_SetTargetLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetTargetLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSetTargetLocation(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetLastLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetLastLocation() {
-      ::grpc::Service::MarkMethodRaw(4);
-    }
-    ~WithRawMethod_GetLastLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetLastLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetLastLocation(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_Start : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_Start() {
-      ::grpc::Service::MarkMethodRaw(5);
-    }
-    ~WithRawMethod_Start() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Start(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestStart(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_Stop : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_Stop() {
-      ::grpc::Service::MarkMethodRaw(6);
-    }
-    ~WithRawMethod_Stop() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Stop(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestStop(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetConfig() {
-      ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetConfig(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetConfig(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_SetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_SetConfig() {
-      ::grpc::Service::MarkMethodRawCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetConfig(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_SetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SetConfig(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_IsActive : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_IsActive() {
-      ::grpc::Service::MarkMethodRawCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->IsActive(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_IsActive() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status IsActive(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* IsActive(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_SetTargetLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_SetTargetLocation() {
-      ::grpc::Service::MarkMethodRawCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetTargetLocation(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_SetTargetLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetTargetLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SetTargetLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetLastLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetLastLocation() {
-      ::grpc::Service::MarkMethodRawCallback(4,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetLastLocation(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetLastLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetLastLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetLastLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_Start : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_Start() {
-      ::grpc::Service::MarkMethodRawCallback(5,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Start(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_Start() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Start(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* Start(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_Stop : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_Stop() {
-      ::grpc::Service::MarkMethodRawCallback(6,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Stop(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_Stop() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Stop(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* Stop(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetConfig() {
-      ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::GetConfigRequest, ::mavsdk::rpc::follow_me::GetConfigResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::GetConfigRequest, ::mavsdk::rpc::follow_me::GetConfigResponse>* streamer) {
-                       return this->StreamedGetConfig(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetConfig(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::GetConfigRequest,::mavsdk::rpc::follow_me::GetConfigResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_SetConfig : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_SetConfig() {
-      ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::SetConfigRequest, ::mavsdk::rpc::follow_me::SetConfigResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::SetConfigRequest, ::mavsdk::rpc::follow_me::SetConfigResponse>* streamer) {
-                       return this->StreamedSetConfig(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_SetConfig() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status SetConfig(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/, ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSetConfig(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::SetConfigRequest,::mavsdk::rpc::follow_me::SetConfigResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_IsActive : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_IsActive() {
-      ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::IsActiveRequest, ::mavsdk::rpc::follow_me::IsActiveResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::IsActiveRequest, ::mavsdk::rpc::follow_me::IsActiveResponse>* streamer) {
-                       return this->StreamedIsActive(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_IsActive() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status IsActive(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/, ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedIsActive(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::IsActiveRequest,::mavsdk::rpc::follow_me::IsActiveResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_SetTargetLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_SetTargetLocation() {
-      ::grpc::Service::MarkMethodStreamed(3,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::SetTargetLocationRequest, ::mavsdk::rpc::follow_me::SetTargetLocationResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::SetTargetLocationRequest, ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* streamer) {
-                       return this->StreamedSetTargetLocation(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_SetTargetLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status SetTargetLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSetTargetLocation(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::SetTargetLocationRequest,::mavsdk::rpc::follow_me::SetTargetLocationResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetLastLocation : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetLastLocation() {
-      ::grpc::Service::MarkMethodStreamed(4,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::GetLastLocationRequest, ::mavsdk::rpc::follow_me::GetLastLocationResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::GetLastLocationRequest, ::mavsdk::rpc::follow_me::GetLastLocationResponse>* streamer) {
-                       return this->StreamedGetLastLocation(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetLastLocation() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetLastLocation(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/, ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetLastLocation(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::GetLastLocationRequest,::mavsdk::rpc::follow_me::GetLastLocationResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_Start : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_Start() {
-      ::grpc::Service::MarkMethodStreamed(5,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::StartRequest, ::mavsdk::rpc::follow_me::StartResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::StartRequest, ::mavsdk::rpc::follow_me::StartResponse>* streamer) {
-                       return this->StreamedStart(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_Start() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status Start(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StartRequest* /*request*/, ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedStart(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::StartRequest,::mavsdk::rpc::follow_me::StartResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_Stop : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_Stop() {
-      ::grpc::Service::MarkMethodStreamed(6,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::follow_me::StopRequest, ::mavsdk::rpc::follow_me::StopResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::follow_me::StopRequest, ::mavsdk::rpc::follow_me::StopResponse>* streamer) {
-                       return this->StreamedStop(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_Stop() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status Stop(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::follow_me::StopRequest* /*request*/, ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedStop(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::follow_me::StopRequest,::mavsdk::rpc::follow_me::StopResponse>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_GetConfig<WithStreamedUnaryMethod_SetConfig<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetTargetLocation<WithStreamedUnaryMethod_GetLastLocation<WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<Service > > > > > > > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetConfig<WithStreamedUnaryMethod_SetConfig<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetTargetLocation<WithStreamedUnaryMethod_GetLastLocation<WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<Service > > > > > > > StreamedService;
+    private:
+        std::shared_ptr<::grpc::ChannelInterface> channel_;
+        class experimental_async async_stub_ {
+            this
+        };
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetConfigResponse>*
+        AsyncGetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetConfigResponse>*
+        PrepareAsyncGetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetConfigResponse>*
+        AsyncSetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetConfigResponse>*
+        PrepareAsyncSetConfigRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::IsActiveResponse>*
+        AsyncIsActiveRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::IsActiveResponse>*
+        PrepareAsyncIsActiveRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetTargetLocationResponse>*
+        AsyncSetTargetLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::SetTargetLocationResponse>*
+        PrepareAsyncSetTargetLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetLastLocationResponse>*
+        AsyncGetLastLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::GetLastLocationResponse>*
+        PrepareAsyncGetLastLocationRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StartResponse>* AsyncStartRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StartResponse>*
+        PrepareAsyncStartRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StopResponse>* AsyncStopRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        ::grpc::ClientAsyncResponseReader<::mavsdk::rpc::follow_me::StopResponse>*
+        PrepareAsyncStopRaw(
+            ::grpc::ClientContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest& request,
+            ::grpc::CompletionQueue* cq) override;
+        const ::grpc::internal::RpcMethod rpcmethod_GetConfig_;
+        const ::grpc::internal::RpcMethod rpcmethod_SetConfig_;
+        const ::grpc::internal::RpcMethod rpcmethod_IsActive_;
+        const ::grpc::internal::RpcMethod rpcmethod_SetTargetLocation_;
+        const ::grpc::internal::RpcMethod rpcmethod_GetLastLocation_;
+        const ::grpc::internal::RpcMethod rpcmethod_Start_;
+        const ::grpc::internal::RpcMethod rpcmethod_Stop_;
+    };
+    static std::unique_ptr<Stub> NewStub(
+        const std::shared_ptr<::grpc::ChannelInterface>& channel,
+        const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+    class Service : public ::grpc::Service {
+    public:
+        Service();
+        virtual ~Service();
+        // Get current configuration.
+        virtual ::grpc::Status GetConfig(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* response);
+        // Apply configuration by sending it to the system.
+        virtual ::grpc::Status SetConfig(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* response);
+        // Check if FollowMe is active.
+        virtual ::grpc::Status IsActive(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* response);
+        // Set location of the moving target.
+        virtual ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response);
+        // Get the last location of the target.
+        virtual ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* response);
+        // Start FollowMe mode.
+        virtual ::grpc::Status Start(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::StartRequest* request,
+            ::mavsdk::rpc::follow_me::StartResponse* response);
+        // Stop FollowMe mode.
+        virtual ::grpc::Status Stop(
+            ::grpc::ServerContext* context,
+            const ::mavsdk::rpc::follow_me::StopRequest* request,
+            ::mavsdk::rpc::follow_me::StopResponse* response);
+    };
+    template<class BaseClass> class WithAsyncMethod_GetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_GetConfig() { ::grpc::Service::MarkMethodAsync(0); }
+        ~WithAsyncMethod_GetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status GetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestGetConfig(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::GetConfigResponse>*
+                response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                0, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithAsyncMethod_SetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_SetConfig() { ::grpc::Service::MarkMethodAsync(1); }
+        ~WithAsyncMethod_SetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status SetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestSetConfig(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::SetConfigResponse>*
+                response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                1, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithAsyncMethod_IsActive : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_IsActive() { ::grpc::Service::MarkMethodAsync(2); }
+        ~WithAsyncMethod_IsActive() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status IsActive(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestIsActive(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::IsActiveResponse>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                2, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithAsyncMethod_SetTargetLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_SetTargetLocation() { ::grpc::Service::MarkMethodAsync(3); }
+        ~WithAsyncMethod_SetTargetLocation() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestSetTargetLocation(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::SetTargetLocationResponse>*
+                response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                3, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithAsyncMethod_GetLastLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_GetLastLocation() { ::grpc::Service::MarkMethodAsync(4); }
+        ~WithAsyncMethod_GetLastLocation() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestGetLastLocation(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::GetLastLocationResponse>*
+                response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                4, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithAsyncMethod_Start : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_Start() { ::grpc::Service::MarkMethodAsync(5); }
+        ~WithAsyncMethod_Start() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Start(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestStart(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::StartRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::StartResponse>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                5, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithAsyncMethod_Stop : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithAsyncMethod_Stop() { ::grpc::Service::MarkMethodAsync(6); }
+        ~WithAsyncMethod_Stop() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Stop(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestStop(
+            ::grpc::ServerContext* context,
+            ::mavsdk::rpc::follow_me::StopRequest* request,
+            ::grpc::ServerAsyncResponseWriter<::mavsdk::rpc::follow_me::StopResponse>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                6, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    typedef WithAsyncMethod_GetConfig<WithAsyncMethod_SetConfig<
+        WithAsyncMethod_IsActive<WithAsyncMethod_SetTargetLocation<WithAsyncMethod_GetLastLocation<
+            WithAsyncMethod_Start<WithAsyncMethod_Stop<Service>>>>>>>
+        AsyncService;
+    template<class BaseClass> class ExperimentalWithCallbackMethod_GetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_GetConfig()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    0,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::GetConfigRequest,
+                        ::mavsdk::rpc::follow_me::GetConfigResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::GetConfigRequest* request,
+                            ::mavsdk::rpc::follow_me::GetConfigResponse* response) {
+                            return this->GetConfig(context, request, response);
+                        }));
+        }
+        void
+        SetMessageAllocatorFor_GetConfig(::grpc::experimental::MessageAllocator<
+                                         ::mavsdk::rpc::follow_me::GetConfigRequest,
+                                         ::mavsdk::rpc::follow_me::GetConfigResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(0);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::GetConfigRequest,
+                ::mavsdk::rpc::follow_me::GetConfigResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_GetConfig() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status GetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* GetConfig(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* GetConfig(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithCallbackMethod_SetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_SetConfig()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    1,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::SetConfigRequest,
+                        ::mavsdk::rpc::follow_me::SetConfigResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::SetConfigRequest* request,
+                            ::mavsdk::rpc::follow_me::SetConfigResponse* response) {
+                            return this->SetConfig(context, request, response);
+                        }));
+        }
+        void
+        SetMessageAllocatorFor_SetConfig(::grpc::experimental::MessageAllocator<
+                                         ::mavsdk::rpc::follow_me::SetConfigRequest,
+                                         ::mavsdk::rpc::follow_me::SetConfigResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(1);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::SetConfigRequest,
+                ::mavsdk::rpc::follow_me::SetConfigResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_SetConfig() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status SetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* SetConfig(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* SetConfig(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithCallbackMethod_IsActive : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_IsActive()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    2,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::IsActiveRequest,
+                        ::mavsdk::rpc::follow_me::IsActiveResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::IsActiveRequest* request,
+                            ::mavsdk::rpc::follow_me::IsActiveResponse* response) {
+                            return this->IsActive(context, request, response);
+                        }));
+        }
+        void SetMessageAllocatorFor_IsActive(::grpc::experimental::MessageAllocator<
+                                             ::mavsdk::rpc::follow_me::IsActiveRequest,
+                                             ::mavsdk::rpc::follow_me::IsActiveResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(2);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::IsActiveRequest,
+                ::mavsdk::rpc::follow_me::IsActiveResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_IsActive() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status IsActive(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* IsActive(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* IsActive(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass>
+    class ExperimentalWithCallbackMethod_SetTargetLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_SetTargetLocation()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    3,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::SetTargetLocationRequest,
+                        ::mavsdk::rpc::follow_me::SetTargetLocationResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* request,
+                            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* response) {
+                            return this->SetTargetLocation(context, request, response);
+                        }));
+        }
+        void SetMessageAllocatorFor_SetTargetLocation(
+            ::grpc::experimental::MessageAllocator<
+                ::mavsdk::rpc::follow_me::SetTargetLocationRequest,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(3);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::SetTargetLocationRequest,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_SetTargetLocation() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* SetTargetLocation(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* SetTargetLocation(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass>
+    class ExperimentalWithCallbackMethod_GetLastLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_GetLastLocation()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    4,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::GetLastLocationRequest,
+                        ::mavsdk::rpc::follow_me::GetLastLocationResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* request,
+                            ::mavsdk::rpc::follow_me::GetLastLocationResponse* response) {
+                            return this->GetLastLocation(context, request, response);
+                        }));
+        }
+        void SetMessageAllocatorFor_GetLastLocation(
+            ::grpc::experimental::MessageAllocator<
+                ::mavsdk::rpc::follow_me::GetLastLocationRequest,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(4);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::GetLastLocationRequest,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_GetLastLocation() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* GetLastLocation(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* GetLastLocation(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithCallbackMethod_Start : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_Start()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    5,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::StartRequest,
+                        ::mavsdk::rpc::follow_me::StartResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::StartRequest* request,
+                            ::mavsdk::rpc::follow_me::StartResponse* response) {
+                            return this->Start(context, request, response);
+                        }));
+        }
+        void SetMessageAllocatorFor_Start(::grpc::experimental::MessageAllocator<
+                                          ::mavsdk::rpc::follow_me::StartRequest,
+                                          ::mavsdk::rpc::follow_me::StartResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(5);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::StartRequest,
+                ::mavsdk::rpc::follow_me::StartResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_Start() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status Start(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* Start(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* Start(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithCallbackMethod_Stop : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithCallbackMethod_Stop()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodCallback(
+                    6,
+                    new ::grpc_impl::internal::CallbackUnaryHandler<
+                        ::mavsdk::rpc::follow_me::StopRequest,
+                        ::mavsdk::rpc::follow_me::StopResponse>(
+                        [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                            ::grpc::CallbackServerContext*
+#else
+                            ::grpc::experimental::CallbackServerContext*
+#endif
+                                context,
+                            const ::mavsdk::rpc::follow_me::StopRequest* request,
+                            ::mavsdk::rpc::follow_me::StopResponse* response) {
+                            return this->Stop(context, request, response);
+                        }));
+        }
+        void SetMessageAllocatorFor_Stop(::grpc::experimental::MessageAllocator<
+                                         ::mavsdk::rpc::follow_me::StopRequest,
+                                         ::mavsdk::rpc::follow_me::StopResponse>* allocator)
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+#else
+            ::grpc::internal::MethodHandler* const handler =
+                ::grpc::Service::experimental().GetHandler(6);
+#endif
+            static_cast<::grpc_impl::internal::CallbackUnaryHandler<
+                ::mavsdk::rpc::follow_me::StopRequest,
+                ::mavsdk::rpc::follow_me::StopResponse>*>(handler)
+                ->SetMessageAllocator(allocator);
+        }
+        ~ExperimentalWithCallbackMethod_Stop() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Stop(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* Stop(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* Stop(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef ExperimentalWithCallbackMethod_GetConfig<ExperimentalWithCallbackMethod_SetConfig<
+        ExperimentalWithCallbackMethod_IsActive<ExperimentalWithCallbackMethod_SetTargetLocation<
+            ExperimentalWithCallbackMethod_GetLastLocation<ExperimentalWithCallbackMethod_Start<
+                ExperimentalWithCallbackMethod_Stop<Service>>>>>>>
+        CallbackService;
+#endif
+
+    typedef ExperimentalWithCallbackMethod_GetConfig<ExperimentalWithCallbackMethod_SetConfig<
+        ExperimentalWithCallbackMethod_IsActive<ExperimentalWithCallbackMethod_SetTargetLocation<
+            ExperimentalWithCallbackMethod_GetLastLocation<ExperimentalWithCallbackMethod_Start<
+                ExperimentalWithCallbackMethod_Stop<Service>>>>>>>
+        ExperimentalCallbackService;
+    template<class BaseClass> class WithGenericMethod_GetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_GetConfig() { ::grpc::Service::MarkMethodGeneric(0); }
+        ~WithGenericMethod_GetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status GetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithGenericMethod_SetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_SetConfig() { ::grpc::Service::MarkMethodGeneric(1); }
+        ~WithGenericMethod_SetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status SetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithGenericMethod_IsActive : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_IsActive() { ::grpc::Service::MarkMethodGeneric(2); }
+        ~WithGenericMethod_IsActive() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status IsActive(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithGenericMethod_SetTargetLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_SetTargetLocation() { ::grpc::Service::MarkMethodGeneric(3); }
+        ~WithGenericMethod_SetTargetLocation() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithGenericMethod_GetLastLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_GetLastLocation() { ::grpc::Service::MarkMethodGeneric(4); }
+        ~WithGenericMethod_GetLastLocation() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithGenericMethod_Start : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_Start() { ::grpc::Service::MarkMethodGeneric(5); }
+        ~WithGenericMethod_Start() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Start(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithGenericMethod_Stop : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithGenericMethod_Stop() { ::grpc::Service::MarkMethodGeneric(6); }
+        ~WithGenericMethod_Stop() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Stop(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+    };
+    template<class BaseClass> class WithRawMethod_GetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_GetConfig() { ::grpc::Service::MarkMethodRaw(0); }
+        ~WithRawMethod_GetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status GetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestGetConfig(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                0, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithRawMethod_SetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_SetConfig() { ::grpc::Service::MarkMethodRaw(1); }
+        ~WithRawMethod_SetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status SetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestSetConfig(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                1, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithRawMethod_IsActive : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_IsActive() { ::grpc::Service::MarkMethodRaw(2); }
+        ~WithRawMethod_IsActive() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status IsActive(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestIsActive(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                2, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithRawMethod_SetTargetLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_SetTargetLocation() { ::grpc::Service::MarkMethodRaw(3); }
+        ~WithRawMethod_SetTargetLocation() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestSetTargetLocation(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                3, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithRawMethod_GetLastLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_GetLastLocation() { ::grpc::Service::MarkMethodRaw(4); }
+        ~WithRawMethod_GetLastLocation() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestGetLastLocation(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                4, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithRawMethod_Start : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_Start() { ::grpc::Service::MarkMethodRaw(5); }
+        ~WithRawMethod_Start() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Start(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestStart(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                5, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class WithRawMethod_Stop : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithRawMethod_Stop() { ::grpc::Service::MarkMethodRaw(6); }
+        ~WithRawMethod_Stop() override { BaseClassMustBeDerivedFromService(this); }
+        // disable synchronous version of this method
+        ::grpc::Status Stop(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        void RequestStop(
+            ::grpc::ServerContext* context,
+            ::grpc::ByteBuffer* request,
+            ::grpc::ServerAsyncResponseWriter<::grpc::ByteBuffer>* response,
+            ::grpc::CompletionQueue* new_call_cq,
+            ::grpc::ServerCompletionQueue* notification_cq,
+            void* tag)
+        {
+            ::grpc::Service::RequestAsyncUnary(
+                6, context, request, response, new_call_cq, notification_cq, tag);
+        }
+    };
+    template<class BaseClass> class ExperimentalWithRawCallbackMethod_GetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_GetConfig()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    0,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->GetConfig(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_GetConfig() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status GetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* GetConfig(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* GetConfig(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithRawCallbackMethod_SetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_SetConfig()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    1,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->SetConfig(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_SetConfig() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status SetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* SetConfig(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* SetConfig(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithRawCallbackMethod_IsActive : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_IsActive()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    2,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->IsActive(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_IsActive() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status IsActive(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* IsActive(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* IsActive(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass>
+    class ExperimentalWithRawCallbackMethod_SetTargetLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_SetTargetLocation()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    3,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->SetTargetLocation(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_SetTargetLocation() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* SetTargetLocation(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* SetTargetLocation(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass>
+    class ExperimentalWithRawCallbackMethod_GetLastLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_GetLastLocation()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    4,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->GetLastLocation(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_GetLastLocation() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* GetLastLocation(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* GetLastLocation(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithRawCallbackMethod_Start : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_Start()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    5,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->Start(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_Start() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status Start(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* Start(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* Start(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class ExperimentalWithRawCallbackMethod_Stop : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        ExperimentalWithRawCallbackMethod_Stop()
+        {
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+            ::grpc::Service::
+#else
+            ::grpc::Service::experimental().
+#endif
+                MarkMethodRawCallback(
+                    6,
+                    new ::grpc_impl::internal::
+                        CallbackUnaryHandler<::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+                            [this](
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                                ::grpc::CallbackServerContext*
+#else
+                                ::grpc::experimental::CallbackServerContext*
+#endif
+                                    context,
+                                const ::grpc::ByteBuffer* request,
+                                ::grpc::ByteBuffer* response) {
+                                return this->Stop(context, request, response);
+                            }));
+        }
+        ~ExperimentalWithRawCallbackMethod_Stop() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable synchronous version of this method
+        ::grpc::Status Stop(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+#ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        virtual ::grpc::ServerUnaryReactor* Stop(
+            ::grpc::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#else
+        virtual ::grpc::experimental::ServerUnaryReactor* Stop(
+            ::grpc::experimental::CallbackServerContext* /*context*/,
+            const ::grpc::ByteBuffer* /*request*/,
+            ::grpc::ByteBuffer* /*response*/)
+#endif
+        {
+            return nullptr;
+        }
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_GetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_GetConfig()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                0,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::GetConfigRequest,
+                    ::mavsdk::rpc::follow_me::GetConfigResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::GetConfigRequest,
+                            ::mavsdk::rpc::follow_me::GetConfigResponse>* streamer) {
+                        return this->StreamedGetConfig(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_GetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable regular version of this method
+        ::grpc::Status GetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedGetConfig(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::GetConfigRequest,
+                ::mavsdk::rpc::follow_me::GetConfigResponse>* server_unary_streamer) = 0;
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_SetConfig : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_SetConfig()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                1,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::SetConfigRequest,
+                    ::mavsdk::rpc::follow_me::SetConfigResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::SetConfigRequest,
+                            ::mavsdk::rpc::follow_me::SetConfigResponse>* streamer) {
+                        return this->StreamedSetConfig(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_SetConfig() override { BaseClassMustBeDerivedFromService(this); }
+        // disable regular version of this method
+        ::grpc::Status SetConfig(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetConfigRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetConfigResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedSetConfig(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::SetConfigRequest,
+                ::mavsdk::rpc::follow_me::SetConfigResponse>* server_unary_streamer) = 0;
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_IsActive : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_IsActive()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                2,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::IsActiveRequest,
+                    ::mavsdk::rpc::follow_me::IsActiveResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::IsActiveRequest,
+                            ::mavsdk::rpc::follow_me::IsActiveResponse>* streamer) {
+                        return this->StreamedIsActive(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_IsActive() override { BaseClassMustBeDerivedFromService(this); }
+        // disable regular version of this method
+        ::grpc::Status IsActive(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::IsActiveRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::IsActiveResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedIsActive(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::IsActiveRequest,
+                ::mavsdk::rpc::follow_me::IsActiveResponse>* server_unary_streamer) = 0;
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_SetTargetLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_SetTargetLocation()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                3,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::SetTargetLocationRequest,
+                    ::mavsdk::rpc::follow_me::SetTargetLocationResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::SetTargetLocationRequest,
+                            ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* streamer) {
+                        return this->StreamedSetTargetLocation(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_SetTargetLocation() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable regular version of this method
+        ::grpc::Status SetTargetLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::SetTargetLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::SetTargetLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedSetTargetLocation(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::SetTargetLocationRequest,
+                ::mavsdk::rpc::follow_me::SetTargetLocationResponse>* server_unary_streamer) = 0;
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_GetLastLocation : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_GetLastLocation()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                4,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::GetLastLocationRequest,
+                    ::mavsdk::rpc::follow_me::GetLastLocationResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::GetLastLocationRequest,
+                            ::mavsdk::rpc::follow_me::GetLastLocationResponse>* streamer) {
+                        return this->StreamedGetLastLocation(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_GetLastLocation() override
+        {
+            BaseClassMustBeDerivedFromService(this);
+        }
+        // disable regular version of this method
+        ::grpc::Status GetLastLocation(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::GetLastLocationRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::GetLastLocationResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedGetLastLocation(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::GetLastLocationRequest,
+                ::mavsdk::rpc::follow_me::GetLastLocationResponse>* server_unary_streamer) = 0;
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_Start : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_Start()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                5,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::StartRequest,
+                    ::mavsdk::rpc::follow_me::StartResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::StartRequest,
+                            ::mavsdk::rpc::follow_me::StartResponse>* streamer) {
+                        return this->StreamedStart(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_Start() override { BaseClassMustBeDerivedFromService(this); }
+        // disable regular version of this method
+        ::grpc::Status Start(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StartRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StartResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedStart(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::StartRequest,
+                ::mavsdk::rpc::follow_me::StartResponse>* server_unary_streamer) = 0;
+    };
+    template<class BaseClass> class WithStreamedUnaryMethod_Stop : public BaseClass {
+    private:
+        void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+
+    public:
+        WithStreamedUnaryMethod_Stop()
+        {
+            ::grpc::Service::MarkMethodStreamed(
+                6,
+                new ::grpc::internal::StreamedUnaryHandler<
+                    ::mavsdk::rpc::follow_me::StopRequest,
+                    ::mavsdk::rpc::follow_me::StopResponse>(
+                    [this](
+                        ::grpc_impl::ServerContext* context,
+                        ::grpc_impl::ServerUnaryStreamer<
+                            ::mavsdk::rpc::follow_me::StopRequest,
+                            ::mavsdk::rpc::follow_me::StopResponse>* streamer) {
+                        return this->StreamedStop(context, streamer);
+                    }));
+        }
+        ~WithStreamedUnaryMethod_Stop() override { BaseClassMustBeDerivedFromService(this); }
+        // disable regular version of this method
+        ::grpc::Status Stop(
+            ::grpc::ServerContext* /*context*/,
+            const ::mavsdk::rpc::follow_me::StopRequest* /*request*/,
+            ::mavsdk::rpc::follow_me::StopResponse* /*response*/) override
+        {
+            abort();
+            return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+        }
+        // replace default version of method with streamed unary
+        virtual ::grpc::Status StreamedStop(
+            ::grpc::ServerContext* context,
+            ::grpc::ServerUnaryStreamer<
+                ::mavsdk::rpc::follow_me::StopRequest,
+                ::mavsdk::rpc::follow_me::StopResponse>* server_unary_streamer) = 0;
+    };
+    typedef WithStreamedUnaryMethod_GetConfig<
+        WithStreamedUnaryMethod_SetConfig<WithStreamedUnaryMethod_IsActive<
+            WithStreamedUnaryMethod_SetTargetLocation<WithStreamedUnaryMethod_GetLastLocation<
+                WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<Service>>>>>>>
+        StreamedUnaryService;
+    typedef Service SplitStreamedService;
+    typedef WithStreamedUnaryMethod_GetConfig<
+        WithStreamedUnaryMethod_SetConfig<WithStreamedUnaryMethod_IsActive<
+            WithStreamedUnaryMethod_SetTargetLocation<WithStreamedUnaryMethod_GetLastLocation<
+                WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<Service>>>>>>>
+        StreamedService;
 };
 
-}  // namespace follow_me
-}  // namespace rpc
-}  // namespace mavsdk
+} // namespace follow_me
+} // namespace rpc
+} // namespace mavsdk
 
-
-#endif  // GRPC_follow_5fme_2ffollow_5fme_2eproto__INCLUDED
+#endif // GRPC_follow_5fme_2ffollow_5fme_2eproto__INCLUDED

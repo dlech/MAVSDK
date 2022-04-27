@@ -50,548 +50,658 @@ static const char* ActionService_method_names[] = {
 
 std::unique_ptr< ActionService::Stub> ActionService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< ActionService::Stub> stub(new ActionService::Stub(channel, options));
+  std::unique_ptr< ActionService::Stub> stub(new ActionService::Stub(channel));
   return stub;
 }
 
-ActionService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_Arm_(ActionService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Disarm_(ActionService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Takeoff_(ActionService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Land_(ActionService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Reboot_(ActionService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Shutdown_(ActionService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Terminate_(ActionService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Kill_(ActionService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ReturnToLaunch_(ActionService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GotoLocation_(ActionService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DoOrbit_(ActionService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Hold_(ActionService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetActuator_(ActionService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TransitionToFixedwing_(ActionService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TransitionToMulticopter_(ActionService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetTakeoffAltitude_(ActionService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetTakeoffAltitude_(ActionService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMaximumSpeed_(ActionService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMaximumSpeed_(ActionService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetReturnToLaunchAltitude_(ActionService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetReturnToLaunchAltitude_(ActionService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetCurrentSpeed_(ActionService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+ActionService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_Arm_(ActionService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Disarm_(ActionService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Takeoff_(ActionService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Land_(ActionService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Reboot_(ActionService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Shutdown_(ActionService_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Terminate_(ActionService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Kill_(ActionService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ReturnToLaunch_(ActionService_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GotoLocation_(ActionService_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DoOrbit_(ActionService_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Hold_(ActionService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetActuator_(ActionService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_TransitionToFixedwing_(ActionService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_TransitionToMulticopter_(ActionService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetTakeoffAltitude_(ActionService_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetTakeoffAltitude_(ActionService_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMaximumSpeed_(ActionService_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMaximumSpeed_(ActionService_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetReturnToLaunchAltitude_(ActionService_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetReturnToLaunchAltitude_(ActionService_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetCurrentSpeed_(ActionService_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status ActionService::Stub::Arm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest& request, ::mavsdk::rpc::action::ArmResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::ArmRequest, ::mavsdk::rpc::action::ArmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Arm_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Arm_, context, request, response);
 }
 
-void ActionService::Stub::async::Arm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest* request, ::mavsdk::rpc::action::ArmResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::ArmRequest, ::mavsdk::rpc::action::ArmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Arm_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Arm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest* request, ::mavsdk::rpc::action::ArmResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Arm_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Arm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest* request, ::mavsdk::rpc::action::ArmResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Arm_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Arm(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::ArmResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Arm_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ArmResponse>* ActionService::Stub::PrepareAsyncArmRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::ArmResponse, ::mavsdk::rpc::action::ArmRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Arm_, context, request);
+void ActionService::Stub::experimental_async::Arm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest* request, ::mavsdk::rpc::action::ArmResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Arm_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Arm(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::ArmResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Arm_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ArmResponse>* ActionService::Stub::AsyncArmRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncArmRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::ArmResponse>::Create(channel_.get(), cq, rpcmethod_Arm_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ArmResponse>* ActionService::Stub::PrepareAsyncArmRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ArmRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::ArmResponse>::Create(channel_.get(), cq, rpcmethod_Arm_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Disarm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest& request, ::mavsdk::rpc::action::DisarmResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::DisarmRequest, ::mavsdk::rpc::action::DisarmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Disarm_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Disarm_, context, request, response);
 }
 
-void ActionService::Stub::async::Disarm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest* request, ::mavsdk::rpc::action::DisarmResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::DisarmRequest, ::mavsdk::rpc::action::DisarmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Disarm_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Disarm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest* request, ::mavsdk::rpc::action::DisarmResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Disarm_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Disarm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest* request, ::mavsdk::rpc::action::DisarmResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Disarm_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Disarm(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::DisarmResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Disarm_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::DisarmResponse>* ActionService::Stub::PrepareAsyncDisarmRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::DisarmResponse, ::mavsdk::rpc::action::DisarmRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Disarm_, context, request);
+void ActionService::Stub::experimental_async::Disarm(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest* request, ::mavsdk::rpc::action::DisarmResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Disarm_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Disarm(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::DisarmResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Disarm_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::DisarmResponse>* ActionService::Stub::AsyncDisarmRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncDisarmRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::DisarmResponse>::Create(channel_.get(), cq, rpcmethod_Disarm_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::DisarmResponse>* ActionService::Stub::PrepareAsyncDisarmRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DisarmRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::DisarmResponse>::Create(channel_.get(), cq, rpcmethod_Disarm_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Takeoff(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest& request, ::mavsdk::rpc::action::TakeoffResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::TakeoffRequest, ::mavsdk::rpc::action::TakeoffResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Takeoff_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Takeoff_, context, request, response);
 }
 
-void ActionService::Stub::async::Takeoff(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest* request, ::mavsdk::rpc::action::TakeoffResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::TakeoffRequest, ::mavsdk::rpc::action::TakeoffResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Takeoff_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Takeoff(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest* request, ::mavsdk::rpc::action::TakeoffResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Takeoff_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Takeoff(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest* request, ::mavsdk::rpc::action::TakeoffResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Takeoff_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Takeoff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TakeoffResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Takeoff_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TakeoffResponse>* ActionService::Stub::PrepareAsyncTakeoffRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::TakeoffResponse, ::mavsdk::rpc::action::TakeoffRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Takeoff_, context, request);
+void ActionService::Stub::experimental_async::Takeoff(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest* request, ::mavsdk::rpc::action::TakeoffResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Takeoff_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Takeoff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TakeoffResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Takeoff_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TakeoffResponse>* ActionService::Stub::AsyncTakeoffRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncTakeoffRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TakeoffResponse>::Create(channel_.get(), cq, rpcmethod_Takeoff_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TakeoffResponse>* ActionService::Stub::PrepareAsyncTakeoffRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TakeoffRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TakeoffResponse>::Create(channel_.get(), cq, rpcmethod_Takeoff_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Land(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest& request, ::mavsdk::rpc::action::LandResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::LandRequest, ::mavsdk::rpc::action::LandResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Land_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Land_, context, request, response);
 }
 
-void ActionService::Stub::async::Land(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest* request, ::mavsdk::rpc::action::LandResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::LandRequest, ::mavsdk::rpc::action::LandResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Land_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Land(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest* request, ::mavsdk::rpc::action::LandResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Land_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Land(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest* request, ::mavsdk::rpc::action::LandResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Land_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Land(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::LandResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Land_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::LandResponse>* ActionService::Stub::PrepareAsyncLandRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::LandResponse, ::mavsdk::rpc::action::LandRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Land_, context, request);
+void ActionService::Stub::experimental_async::Land(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest* request, ::mavsdk::rpc::action::LandResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Land_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Land(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::LandResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Land_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::LandResponse>* ActionService::Stub::AsyncLandRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncLandRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::LandResponse>::Create(channel_.get(), cq, rpcmethod_Land_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::LandResponse>* ActionService::Stub::PrepareAsyncLandRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::LandRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::LandResponse>::Create(channel_.get(), cq, rpcmethod_Land_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Reboot(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest& request, ::mavsdk::rpc::action::RebootResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::RebootRequest, ::mavsdk::rpc::action::RebootResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Reboot_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Reboot_, context, request, response);
 }
 
-void ActionService::Stub::async::Reboot(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest* request, ::mavsdk::rpc::action::RebootResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::RebootRequest, ::mavsdk::rpc::action::RebootResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Reboot_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Reboot(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest* request, ::mavsdk::rpc::action::RebootResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Reboot_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Reboot(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest* request, ::mavsdk::rpc::action::RebootResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Reboot_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Reboot(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::RebootResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Reboot_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::RebootResponse>* ActionService::Stub::PrepareAsyncRebootRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::RebootResponse, ::mavsdk::rpc::action::RebootRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Reboot_, context, request);
+void ActionService::Stub::experimental_async::Reboot(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest* request, ::mavsdk::rpc::action::RebootResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Reboot_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Reboot(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::RebootResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Reboot_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::RebootResponse>* ActionService::Stub::AsyncRebootRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncRebootRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::RebootResponse>::Create(channel_.get(), cq, rpcmethod_Reboot_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::RebootResponse>* ActionService::Stub::PrepareAsyncRebootRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::RebootRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::RebootResponse>::Create(channel_.get(), cq, rpcmethod_Reboot_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Shutdown(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest& request, ::mavsdk::rpc::action::ShutdownResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::ShutdownRequest, ::mavsdk::rpc::action::ShutdownResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Shutdown_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Shutdown_, context, request, response);
 }
 
-void ActionService::Stub::async::Shutdown(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest* request, ::mavsdk::rpc::action::ShutdownResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::ShutdownRequest, ::mavsdk::rpc::action::ShutdownResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Shutdown_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Shutdown(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest* request, ::mavsdk::rpc::action::ShutdownResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Shutdown_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Shutdown(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest* request, ::mavsdk::rpc::action::ShutdownResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Shutdown_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Shutdown(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::ShutdownResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Shutdown_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ShutdownResponse>* ActionService::Stub::PrepareAsyncShutdownRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::ShutdownResponse, ::mavsdk::rpc::action::ShutdownRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Shutdown_, context, request);
+void ActionService::Stub::experimental_async::Shutdown(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest* request, ::mavsdk::rpc::action::ShutdownResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Shutdown_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Shutdown(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::ShutdownResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Shutdown_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ShutdownResponse>* ActionService::Stub::AsyncShutdownRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncShutdownRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::ShutdownResponse>::Create(channel_.get(), cq, rpcmethod_Shutdown_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ShutdownResponse>* ActionService::Stub::PrepareAsyncShutdownRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::ShutdownResponse>::Create(channel_.get(), cq, rpcmethod_Shutdown_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Terminate(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest& request, ::mavsdk::rpc::action::TerminateResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::TerminateRequest, ::mavsdk::rpc::action::TerminateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Terminate_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Terminate_, context, request, response);
 }
 
-void ActionService::Stub::async::Terminate(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest* request, ::mavsdk::rpc::action::TerminateResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::TerminateRequest, ::mavsdk::rpc::action::TerminateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Terminate_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Terminate(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest* request, ::mavsdk::rpc::action::TerminateResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Terminate_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Terminate(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest* request, ::mavsdk::rpc::action::TerminateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Terminate_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Terminate(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TerminateResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Terminate_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TerminateResponse>* ActionService::Stub::PrepareAsyncTerminateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::TerminateResponse, ::mavsdk::rpc::action::TerminateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Terminate_, context, request);
+void ActionService::Stub::experimental_async::Terminate(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest* request, ::mavsdk::rpc::action::TerminateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Terminate_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Terminate(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TerminateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Terminate_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TerminateResponse>* ActionService::Stub::AsyncTerminateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncTerminateRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TerminateResponse>::Create(channel_.get(), cq, rpcmethod_Terminate_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TerminateResponse>* ActionService::Stub::PrepareAsyncTerminateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TerminateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TerminateResponse>::Create(channel_.get(), cq, rpcmethod_Terminate_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Kill(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest& request, ::mavsdk::rpc::action::KillResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::KillRequest, ::mavsdk::rpc::action::KillResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Kill_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Kill_, context, request, response);
 }
 
-void ActionService::Stub::async::Kill(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest* request, ::mavsdk::rpc::action::KillResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::KillRequest, ::mavsdk::rpc::action::KillResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Kill_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Kill(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest* request, ::mavsdk::rpc::action::KillResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Kill_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Kill(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest* request, ::mavsdk::rpc::action::KillResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Kill_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Kill(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::KillResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Kill_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::KillResponse>* ActionService::Stub::PrepareAsyncKillRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::KillResponse, ::mavsdk::rpc::action::KillRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Kill_, context, request);
+void ActionService::Stub::experimental_async::Kill(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest* request, ::mavsdk::rpc::action::KillResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Kill_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Kill(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::KillResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Kill_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::KillResponse>* ActionService::Stub::AsyncKillRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncKillRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::KillResponse>::Create(channel_.get(), cq, rpcmethod_Kill_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::KillResponse>* ActionService::Stub::PrepareAsyncKillRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::KillRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::KillResponse>::Create(channel_.get(), cq, rpcmethod_Kill_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::ReturnToLaunch(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest& request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::ReturnToLaunchRequest, ::mavsdk::rpc::action::ReturnToLaunchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ReturnToLaunch_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_ReturnToLaunch_, context, request, response);
 }
 
-void ActionService::Stub::async::ReturnToLaunch(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest* request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::ReturnToLaunchRequest, ::mavsdk::rpc::action::ReturnToLaunchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ReturnToLaunch_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::ReturnToLaunch(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest* request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ReturnToLaunch_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::ReturnToLaunch(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest* request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ReturnToLaunch_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::ReturnToLaunch(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ReturnToLaunch_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ReturnToLaunchResponse>* ActionService::Stub::PrepareAsyncReturnToLaunchRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::ReturnToLaunchResponse, ::mavsdk::rpc::action::ReturnToLaunchRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ReturnToLaunch_, context, request);
+void ActionService::Stub::experimental_async::ReturnToLaunch(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest* request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ReturnToLaunch_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::ReturnToLaunch(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::ReturnToLaunchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ReturnToLaunch_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ReturnToLaunchResponse>* ActionService::Stub::AsyncReturnToLaunchRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncReturnToLaunchRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::ReturnToLaunchResponse>::Create(channel_.get(), cq, rpcmethod_ReturnToLaunch_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::ReturnToLaunchResponse>* ActionService::Stub::PrepareAsyncReturnToLaunchRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::ReturnToLaunchRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::ReturnToLaunchResponse>::Create(channel_.get(), cq, rpcmethod_ReturnToLaunch_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::GotoLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest& request, ::mavsdk::rpc::action::GotoLocationResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::GotoLocationRequest, ::mavsdk::rpc::action::GotoLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GotoLocation_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GotoLocation_, context, request, response);
 }
 
-void ActionService::Stub::async::GotoLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest* request, ::mavsdk::rpc::action::GotoLocationResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::GotoLocationRequest, ::mavsdk::rpc::action::GotoLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GotoLocation_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::GotoLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest* request, ::mavsdk::rpc::action::GotoLocationResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GotoLocation_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::GotoLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest* request, ::mavsdk::rpc::action::GotoLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GotoLocation_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::GotoLocation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GotoLocationResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GotoLocation_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GotoLocationResponse>* ActionService::Stub::PrepareAsyncGotoLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::GotoLocationResponse, ::mavsdk::rpc::action::GotoLocationRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GotoLocation_, context, request);
+void ActionService::Stub::experimental_async::GotoLocation(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest* request, ::mavsdk::rpc::action::GotoLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GotoLocation_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::GotoLocation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GotoLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GotoLocation_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GotoLocationResponse>* ActionService::Stub::AsyncGotoLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGotoLocationRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GotoLocationResponse>::Create(channel_.get(), cq, rpcmethod_GotoLocation_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GotoLocationResponse>* ActionService::Stub::PrepareAsyncGotoLocationRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GotoLocationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GotoLocationResponse>::Create(channel_.get(), cq, rpcmethod_GotoLocation_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::DoOrbit(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest& request, ::mavsdk::rpc::action::DoOrbitResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::DoOrbitRequest, ::mavsdk::rpc::action::DoOrbitResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DoOrbit_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_DoOrbit_, context, request, response);
 }
 
-void ActionService::Stub::async::DoOrbit(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest* request, ::mavsdk::rpc::action::DoOrbitResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::DoOrbitRequest, ::mavsdk::rpc::action::DoOrbitResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DoOrbit_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::DoOrbit(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest* request, ::mavsdk::rpc::action::DoOrbitResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_DoOrbit_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::DoOrbit(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest* request, ::mavsdk::rpc::action::DoOrbitResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DoOrbit_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::DoOrbit(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::DoOrbitResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_DoOrbit_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::DoOrbitResponse>* ActionService::Stub::PrepareAsyncDoOrbitRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::DoOrbitResponse, ::mavsdk::rpc::action::DoOrbitRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_DoOrbit_, context, request);
+void ActionService::Stub::experimental_async::DoOrbit(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest* request, ::mavsdk::rpc::action::DoOrbitResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_DoOrbit_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::DoOrbit(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::DoOrbitResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_DoOrbit_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::DoOrbitResponse>* ActionService::Stub::AsyncDoOrbitRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncDoOrbitRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::DoOrbitResponse>::Create(channel_.get(), cq, rpcmethod_DoOrbit_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::DoOrbitResponse>* ActionService::Stub::PrepareAsyncDoOrbitRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::DoOrbitRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::DoOrbitResponse>::Create(channel_.get(), cq, rpcmethod_DoOrbit_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::Hold(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest& request, ::mavsdk::rpc::action::HoldResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::HoldRequest, ::mavsdk::rpc::action::HoldResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Hold_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Hold_, context, request, response);
 }
 
-void ActionService::Stub::async::Hold(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest* request, ::mavsdk::rpc::action::HoldResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::HoldRequest, ::mavsdk::rpc::action::HoldResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Hold_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::Hold(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest* request, ::mavsdk::rpc::action::HoldResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Hold_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::Hold(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest* request, ::mavsdk::rpc::action::HoldResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Hold_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::Hold(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::HoldResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Hold_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::HoldResponse>* ActionService::Stub::PrepareAsyncHoldRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::HoldResponse, ::mavsdk::rpc::action::HoldRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Hold_, context, request);
+void ActionService::Stub::experimental_async::Hold(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest* request, ::mavsdk::rpc::action::HoldResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Hold_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::Hold(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::HoldResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Hold_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::HoldResponse>* ActionService::Stub::AsyncHoldRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncHoldRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::HoldResponse>::Create(channel_.get(), cq, rpcmethod_Hold_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::HoldResponse>* ActionService::Stub::PrepareAsyncHoldRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::HoldRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::HoldResponse>::Create(channel_.get(), cq, rpcmethod_Hold_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::SetActuator(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest& request, ::mavsdk::rpc::action::SetActuatorResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::SetActuatorRequest, ::mavsdk::rpc::action::SetActuatorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetActuator_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetActuator_, context, request, response);
 }
 
-void ActionService::Stub::async::SetActuator(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest* request, ::mavsdk::rpc::action::SetActuatorResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::SetActuatorRequest, ::mavsdk::rpc::action::SetActuatorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetActuator_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::SetActuator(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest* request, ::mavsdk::rpc::action::SetActuatorResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetActuator_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::SetActuator(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest* request, ::mavsdk::rpc::action::SetActuatorResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetActuator_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::SetActuator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetActuatorResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetActuator_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetActuatorResponse>* ActionService::Stub::PrepareAsyncSetActuatorRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::SetActuatorResponse, ::mavsdk::rpc::action::SetActuatorRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetActuator_, context, request);
+void ActionService::Stub::experimental_async::SetActuator(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest* request, ::mavsdk::rpc::action::SetActuatorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetActuator_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::SetActuator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetActuatorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetActuator_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetActuatorResponse>* ActionService::Stub::AsyncSetActuatorRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetActuatorRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetActuatorResponse>::Create(channel_.get(), cq, rpcmethod_SetActuator_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetActuatorResponse>* ActionService::Stub::PrepareAsyncSetActuatorRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetActuatorRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetActuatorResponse>::Create(channel_.get(), cq, rpcmethod_SetActuator_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::TransitionToFixedwing(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest& request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::TransitionToFixedwingRequest, ::mavsdk::rpc::action::TransitionToFixedwingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_TransitionToFixedwing_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_TransitionToFixedwing_, context, request, response);
 }
 
-void ActionService::Stub::async::TransitionToFixedwing(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest* request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::TransitionToFixedwingRequest, ::mavsdk::rpc::action::TransitionToFixedwingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TransitionToFixedwing_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::TransitionToFixedwing(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest* request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TransitionToFixedwing_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::TransitionToFixedwing(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest* request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TransitionToFixedwing_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::TransitionToFixedwing(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TransitionToFixedwing_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TransitionToFixedwingResponse>* ActionService::Stub::PrepareAsyncTransitionToFixedwingRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::TransitionToFixedwingResponse, ::mavsdk::rpc::action::TransitionToFixedwingRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_TransitionToFixedwing_, context, request);
+void ActionService::Stub::experimental_async::TransitionToFixedwing(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest* request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TransitionToFixedwing_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::TransitionToFixedwing(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TransitionToFixedwingResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TransitionToFixedwing_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TransitionToFixedwingResponse>* ActionService::Stub::AsyncTransitionToFixedwingRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncTransitionToFixedwingRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TransitionToFixedwingResponse>::Create(channel_.get(), cq, rpcmethod_TransitionToFixedwing_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TransitionToFixedwingResponse>* ActionService::Stub::PrepareAsyncTransitionToFixedwingRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToFixedwingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TransitionToFixedwingResponse>::Create(channel_.get(), cq, rpcmethod_TransitionToFixedwing_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::TransitionToMulticopter(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest& request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::TransitionToMulticopterRequest, ::mavsdk::rpc::action::TransitionToMulticopterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_TransitionToMulticopter_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_TransitionToMulticopter_, context, request, response);
 }
 
-void ActionService::Stub::async::TransitionToMulticopter(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest* request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::TransitionToMulticopterRequest, ::mavsdk::rpc::action::TransitionToMulticopterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TransitionToMulticopter_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::TransitionToMulticopter(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest* request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TransitionToMulticopter_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::TransitionToMulticopter(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest* request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TransitionToMulticopter_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::TransitionToMulticopter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TransitionToMulticopter_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TransitionToMulticopterResponse>* ActionService::Stub::PrepareAsyncTransitionToMulticopterRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::TransitionToMulticopterResponse, ::mavsdk::rpc::action::TransitionToMulticopterRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_TransitionToMulticopter_, context, request);
+void ActionService::Stub::experimental_async::TransitionToMulticopter(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest* request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TransitionToMulticopter_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::TransitionToMulticopter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::TransitionToMulticopterResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TransitionToMulticopter_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TransitionToMulticopterResponse>* ActionService::Stub::AsyncTransitionToMulticopterRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncTransitionToMulticopterRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TransitionToMulticopterResponse>::Create(channel_.get(), cq, rpcmethod_TransitionToMulticopter_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::TransitionToMulticopterResponse>* ActionService::Stub::PrepareAsyncTransitionToMulticopterRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::TransitionToMulticopterRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::TransitionToMulticopterResponse>::Create(channel_.get(), cq, rpcmethod_TransitionToMulticopter_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::GetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest& request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::GetTakeoffAltitudeRequest, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetTakeoffAltitude_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetTakeoffAltitude_, context, request, response);
 }
 
-void ActionService::Stub::async::GetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::GetTakeoffAltitudeRequest, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetTakeoffAltitude_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::GetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetTakeoffAltitude_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::GetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetTakeoffAltitude_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::GetTakeoffAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetTakeoffAltitude_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetTakeoffAltitudeResponse>* ActionService::Stub::PrepareAsyncGetTakeoffAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::GetTakeoffAltitudeResponse, ::mavsdk::rpc::action::GetTakeoffAltitudeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetTakeoffAltitude_, context, request);
+void ActionService::Stub::experimental_async::GetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetTakeoffAltitude_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::GetTakeoffAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetTakeoffAltitude_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetTakeoffAltitudeResponse>* ActionService::Stub::AsyncGetTakeoffAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetTakeoffAltitudeRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GetTakeoffAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_GetTakeoffAltitude_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetTakeoffAltitudeResponse>* ActionService::Stub::PrepareAsyncGetTakeoffAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GetTakeoffAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_GetTakeoffAltitude_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::SetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest& request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::SetTakeoffAltitudeRequest, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetTakeoffAltitude_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetTakeoffAltitude_, context, request, response);
 }
 
-void ActionService::Stub::async::SetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::SetTakeoffAltitudeRequest, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetTakeoffAltitude_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::SetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetTakeoffAltitude_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::SetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetTakeoffAltitude_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::SetTakeoffAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetTakeoffAltitude_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetTakeoffAltitudeResponse>* ActionService::Stub::PrepareAsyncSetTakeoffAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::SetTakeoffAltitudeResponse, ::mavsdk::rpc::action::SetTakeoffAltitudeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetTakeoffAltitude_, context, request);
+void ActionService::Stub::experimental_async::SetTakeoffAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest* request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetTakeoffAltitude_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::SetTakeoffAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetTakeoffAltitude_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetTakeoffAltitudeResponse>* ActionService::Stub::AsyncSetTakeoffAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetTakeoffAltitudeRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetTakeoffAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_SetTakeoffAltitude_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetTakeoffAltitudeResponse>* ActionService::Stub::PrepareAsyncSetTakeoffAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetTakeoffAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_SetTakeoffAltitude_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::GetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest& request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::GetMaximumSpeedRequest, ::mavsdk::rpc::action::GetMaximumSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetMaximumSpeed_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetMaximumSpeed_, context, request, response);
 }
 
-void ActionService::Stub::async::GetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest* request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::GetMaximumSpeedRequest, ::mavsdk::rpc::action::GetMaximumSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMaximumSpeed_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::GetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest* request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetMaximumSpeed_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::GetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest* request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMaximumSpeed_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::GetMaximumSpeed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetMaximumSpeed_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetMaximumSpeedResponse>* ActionService::Stub::PrepareAsyncGetMaximumSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::GetMaximumSpeedResponse, ::mavsdk::rpc::action::GetMaximumSpeedRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetMaximumSpeed_, context, request);
+void ActionService::Stub::experimental_async::GetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest* request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetMaximumSpeed_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::GetMaximumSpeed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GetMaximumSpeedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetMaximumSpeed_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetMaximumSpeedResponse>* ActionService::Stub::AsyncGetMaximumSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetMaximumSpeedRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GetMaximumSpeedResponse>::Create(channel_.get(), cq, rpcmethod_GetMaximumSpeed_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetMaximumSpeedResponse>* ActionService::Stub::PrepareAsyncGetMaximumSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetMaximumSpeedRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GetMaximumSpeedResponse>::Create(channel_.get(), cq, rpcmethod_GetMaximumSpeed_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::SetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest& request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::SetMaximumSpeedRequest, ::mavsdk::rpc::action::SetMaximumSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetMaximumSpeed_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetMaximumSpeed_, context, request, response);
 }
 
-void ActionService::Stub::async::SetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest* request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::SetMaximumSpeedRequest, ::mavsdk::rpc::action::SetMaximumSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetMaximumSpeed_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::SetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest* request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetMaximumSpeed_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::SetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest* request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetMaximumSpeed_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::SetMaximumSpeed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetMaximumSpeed_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetMaximumSpeedResponse>* ActionService::Stub::PrepareAsyncSetMaximumSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::SetMaximumSpeedResponse, ::mavsdk::rpc::action::SetMaximumSpeedRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetMaximumSpeed_, context, request);
+void ActionService::Stub::experimental_async::SetMaximumSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest* request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetMaximumSpeed_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::SetMaximumSpeed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetMaximumSpeedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetMaximumSpeed_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetMaximumSpeedResponse>* ActionService::Stub::AsyncSetMaximumSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetMaximumSpeedRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetMaximumSpeedResponse>::Create(channel_.get(), cq, rpcmethod_SetMaximumSpeed_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetMaximumSpeedResponse>* ActionService::Stub::PrepareAsyncSetMaximumSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetMaximumSpeedRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetMaximumSpeedResponse>::Create(channel_.get(), cq, rpcmethod_SetMaximumSpeed_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest& request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetReturnToLaunchAltitude_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetReturnToLaunchAltitude_, context, request, response);
 }
 
-void ActionService::Stub::async::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetReturnToLaunchAltitude_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetReturnToLaunchAltitude_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetReturnToLaunchAltitude_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetReturnToLaunchAltitude_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse>* ActionService::Stub::PrepareAsyncGetReturnToLaunchAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetReturnToLaunchAltitude_, context, request);
+void ActionService::Stub::experimental_async::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetReturnToLaunchAltitude_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::GetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetReturnToLaunchAltitude_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse>* ActionService::Stub::AsyncGetReturnToLaunchAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetReturnToLaunchAltitudeRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_GetReturnToLaunchAltitude_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse>* ActionService::Stub::PrepareAsyncGetReturnToLaunchAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_GetReturnToLaunchAltitude_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest& request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetReturnToLaunchAltitude_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetReturnToLaunchAltitude_, context, request, response);
 }
 
-void ActionService::Stub::async::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetReturnToLaunchAltitude_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetReturnToLaunchAltitude_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetReturnToLaunchAltitude_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetReturnToLaunchAltitude_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse>* ActionService::Stub::PrepareAsyncSetReturnToLaunchAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetReturnToLaunchAltitude_, context, request);
+void ActionService::Stub::experimental_async::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest* request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetReturnToLaunchAltitude_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::SetReturnToLaunchAltitude(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetReturnToLaunchAltitude_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse>* ActionService::Stub::AsyncSetReturnToLaunchAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetReturnToLaunchAltitudeRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_SetReturnToLaunchAltitude_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse>* ActionService::Stub::PrepareAsyncSetReturnToLaunchAltitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse>::Create(channel_.get(), cq, rpcmethod_SetReturnToLaunchAltitude_, context, request, false);
 }
 
 ::grpc::Status ActionService::Stub::SetCurrentSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest& request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::action::SetCurrentSpeedRequest, ::mavsdk::rpc::action::SetCurrentSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetCurrentSpeed_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetCurrentSpeed_, context, request, response);
 }
 
-void ActionService::Stub::async::SetCurrentSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest* request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::action::SetCurrentSpeedRequest, ::mavsdk::rpc::action::SetCurrentSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetCurrentSpeed_, context, request, response, std::move(f));
+void ActionService::Stub::experimental_async::SetCurrentSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest* request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetCurrentSpeed_, context, request, response, std::move(f));
 }
 
-void ActionService::Stub::async::SetCurrentSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest* request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetCurrentSpeed_, context, request, response, reactor);
+void ActionService::Stub::experimental_async::SetCurrentSpeed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetCurrentSpeed_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetCurrentSpeedResponse>* ActionService::Stub::PrepareAsyncSetCurrentSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::action::SetCurrentSpeedResponse, ::mavsdk::rpc::action::SetCurrentSpeedRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetCurrentSpeed_, context, request);
+void ActionService::Stub::experimental_async::SetCurrentSpeed(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest* request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetCurrentSpeed_, context, request, response, reactor);
+}
+
+void ActionService::Stub::experimental_async::SetCurrentSpeed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::action::SetCurrentSpeedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetCurrentSpeed_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetCurrentSpeedResponse>* ActionService::Stub::AsyncSetCurrentSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetCurrentSpeedRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetCurrentSpeedResponse>::Create(channel_.get(), cq, rpcmethod_SetCurrentSpeed_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::action::SetCurrentSpeedResponse>* ActionService::Stub::PrepareAsyncSetCurrentSpeedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::action::SetCurrentSpeedRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::action::SetCurrentSpeedResponse>::Create(channel_.get(), cq, rpcmethod_SetCurrentSpeed_, context, request, false);
 }
 
 ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::ArmRequest, ::mavsdk::rpc::action::ArmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::ArmRequest, ::mavsdk::rpc::action::ArmResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::ArmRequest* req,
              ::mavsdk::rpc::action::ArmResponse* resp) {
                return service->Arm(ctx, req, resp);
@@ -599,9 +709,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::DisarmRequest, ::mavsdk::rpc::action::DisarmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::DisarmRequest, ::mavsdk::rpc::action::DisarmResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::DisarmRequest* req,
              ::mavsdk::rpc::action::DisarmResponse* resp) {
                return service->Disarm(ctx, req, resp);
@@ -609,9 +719,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TakeoffRequest, ::mavsdk::rpc::action::TakeoffResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TakeoffRequest, ::mavsdk::rpc::action::TakeoffResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::TakeoffRequest* req,
              ::mavsdk::rpc::action::TakeoffResponse* resp) {
                return service->Takeoff(ctx, req, resp);
@@ -619,9 +729,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[3],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::LandRequest, ::mavsdk::rpc::action::LandResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::LandRequest, ::mavsdk::rpc::action::LandResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::LandRequest* req,
              ::mavsdk::rpc::action::LandResponse* resp) {
                return service->Land(ctx, req, resp);
@@ -629,9 +739,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::RebootRequest, ::mavsdk::rpc::action::RebootResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::RebootRequest, ::mavsdk::rpc::action::RebootResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::RebootRequest* req,
              ::mavsdk::rpc::action::RebootResponse* resp) {
                return service->Reboot(ctx, req, resp);
@@ -639,9 +749,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::ShutdownRequest, ::mavsdk::rpc::action::ShutdownResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::ShutdownRequest, ::mavsdk::rpc::action::ShutdownResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::ShutdownRequest* req,
              ::mavsdk::rpc::action::ShutdownResponse* resp) {
                return service->Shutdown(ctx, req, resp);
@@ -649,9 +759,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TerminateRequest, ::mavsdk::rpc::action::TerminateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TerminateRequest, ::mavsdk::rpc::action::TerminateResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::TerminateRequest* req,
              ::mavsdk::rpc::action::TerminateResponse* resp) {
                return service->Terminate(ctx, req, resp);
@@ -659,9 +769,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::KillRequest, ::mavsdk::rpc::action::KillResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::KillRequest, ::mavsdk::rpc::action::KillResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::KillRequest* req,
              ::mavsdk::rpc::action::KillResponse* resp) {
                return service->Kill(ctx, req, resp);
@@ -669,9 +779,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::ReturnToLaunchRequest, ::mavsdk::rpc::action::ReturnToLaunchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::ReturnToLaunchRequest, ::mavsdk::rpc::action::ReturnToLaunchResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::ReturnToLaunchRequest* req,
              ::mavsdk::rpc::action::ReturnToLaunchResponse* resp) {
                return service->ReturnToLaunch(ctx, req, resp);
@@ -679,9 +789,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GotoLocationRequest, ::mavsdk::rpc::action::GotoLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GotoLocationRequest, ::mavsdk::rpc::action::GotoLocationResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::GotoLocationRequest* req,
              ::mavsdk::rpc::action::GotoLocationResponse* resp) {
                return service->GotoLocation(ctx, req, resp);
@@ -689,9 +799,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::DoOrbitRequest, ::mavsdk::rpc::action::DoOrbitResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::DoOrbitRequest, ::mavsdk::rpc::action::DoOrbitResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::DoOrbitRequest* req,
              ::mavsdk::rpc::action::DoOrbitResponse* resp) {
                return service->DoOrbit(ctx, req, resp);
@@ -699,9 +809,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::HoldRequest, ::mavsdk::rpc::action::HoldResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::HoldRequest, ::mavsdk::rpc::action::HoldResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::HoldRequest* req,
              ::mavsdk::rpc::action::HoldResponse* resp) {
                return service->Hold(ctx, req, resp);
@@ -709,9 +819,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetActuatorRequest, ::mavsdk::rpc::action::SetActuatorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetActuatorRequest, ::mavsdk::rpc::action::SetActuatorResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::SetActuatorRequest* req,
              ::mavsdk::rpc::action::SetActuatorResponse* resp) {
                return service->SetActuator(ctx, req, resp);
@@ -719,9 +829,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TransitionToFixedwingRequest, ::mavsdk::rpc::action::TransitionToFixedwingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TransitionToFixedwingRequest, ::mavsdk::rpc::action::TransitionToFixedwingResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::TransitionToFixedwingRequest* req,
              ::mavsdk::rpc::action::TransitionToFixedwingResponse* resp) {
                return service->TransitionToFixedwing(ctx, req, resp);
@@ -729,9 +839,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TransitionToMulticopterRequest, ::mavsdk::rpc::action::TransitionToMulticopterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::TransitionToMulticopterRequest, ::mavsdk::rpc::action::TransitionToMulticopterResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::TransitionToMulticopterRequest* req,
              ::mavsdk::rpc::action::TransitionToMulticopterResponse* resp) {
                return service->TransitionToMulticopter(ctx, req, resp);
@@ -739,9 +849,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[15],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GetTakeoffAltitudeRequest, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GetTakeoffAltitudeRequest, ::mavsdk::rpc::action::GetTakeoffAltitudeResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::GetTakeoffAltitudeRequest* req,
              ::mavsdk::rpc::action::GetTakeoffAltitudeResponse* resp) {
                return service->GetTakeoffAltitude(ctx, req, resp);
@@ -749,9 +859,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetTakeoffAltitudeRequest, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetTakeoffAltitudeRequest, ::mavsdk::rpc::action::SetTakeoffAltitudeResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::SetTakeoffAltitudeRequest* req,
              ::mavsdk::rpc::action::SetTakeoffAltitudeResponse* resp) {
                return service->SetTakeoffAltitude(ctx, req, resp);
@@ -759,9 +869,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GetMaximumSpeedRequest, ::mavsdk::rpc::action::GetMaximumSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GetMaximumSpeedRequest, ::mavsdk::rpc::action::GetMaximumSpeedResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::GetMaximumSpeedRequest* req,
              ::mavsdk::rpc::action::GetMaximumSpeedResponse* resp) {
                return service->GetMaximumSpeed(ctx, req, resp);
@@ -769,9 +879,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetMaximumSpeedRequest, ::mavsdk::rpc::action::SetMaximumSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetMaximumSpeedRequest, ::mavsdk::rpc::action::SetMaximumSpeedResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::SetMaximumSpeedRequest* req,
              ::mavsdk::rpc::action::SetMaximumSpeedResponse* resp) {
                return service->SetMaximumSpeed(ctx, req, resp);
@@ -779,9 +889,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[19],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::GetReturnToLaunchAltitudeRequest* req,
              ::mavsdk::rpc::action::GetReturnToLaunchAltitudeResponse* resp) {
                return service->GetReturnToLaunchAltitude(ctx, req, resp);
@@ -789,9 +899,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest, ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::SetReturnToLaunchAltitudeRequest* req,
              ::mavsdk::rpc::action::SetReturnToLaunchAltitudeResponse* resp) {
                return service->SetReturnToLaunchAltitude(ctx, req, resp);
@@ -799,9 +909,9 @@ ActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ActionService_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetCurrentSpeedRequest, ::mavsdk::rpc::action::SetCurrentSpeedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ActionService::Service, ::mavsdk::rpc::action::SetCurrentSpeedRequest, ::mavsdk::rpc::action::SetCurrentSpeedResponse>(
           [](ActionService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::action::SetCurrentSpeedRequest* req,
              ::mavsdk::rpc::action::SetCurrentSpeedResponse* resp) {
                return service->SetCurrentSpeed(ctx, req, resp);

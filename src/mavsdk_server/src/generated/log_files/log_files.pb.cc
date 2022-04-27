@@ -14,140 +14,202 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
+extern PROTOBUF_INTERNAL_EXPORT_log_5ffiles_2flog_5ffiles_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_log_5ffiles_2flog_5ffiles_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_log_5ffiles_2flog_5ffiles_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto;
 namespace mavsdk {
 namespace rpc {
 namespace log_files {
-constexpr GetEntriesRequest::GetEntriesRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
-struct GetEntriesRequestDefaultTypeInternal {
-  constexpr GetEntriesRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetEntriesRequestDefaultTypeInternal() {}
-  union {
-    GetEntriesRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetEntriesRequestDefaultTypeInternal _GetEntriesRequest_default_instance_;
-constexpr GetEntriesResponse::GetEntriesResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : entries_()
-  , log_files_result_(nullptr){}
-struct GetEntriesResponseDefaultTypeInternal {
-  constexpr GetEntriesResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetEntriesResponseDefaultTypeInternal() {}
-  union {
-    GetEntriesResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetEntriesResponseDefaultTypeInternal _GetEntriesResponse_default_instance_;
-constexpr SubscribeDownloadLogFileRequest::SubscribeDownloadLogFileRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : path_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , entry_(nullptr){}
-struct SubscribeDownloadLogFileRequestDefaultTypeInternal {
-  constexpr SubscribeDownloadLogFileRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SubscribeDownloadLogFileRequestDefaultTypeInternal() {}
-  union {
-    SubscribeDownloadLogFileRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SubscribeDownloadLogFileRequestDefaultTypeInternal _SubscribeDownloadLogFileRequest_default_instance_;
-constexpr DownloadLogFileResponse::DownloadLogFileResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : log_files_result_(nullptr)
-  , progress_(nullptr){}
-struct DownloadLogFileResponseDefaultTypeInternal {
-  constexpr DownloadLogFileResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~DownloadLogFileResponseDefaultTypeInternal() {}
-  union {
-    DownloadLogFileResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DownloadLogFileResponseDefaultTypeInternal _DownloadLogFileResponse_default_instance_;
-constexpr DownloadLogFileRequest::DownloadLogFileRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : path_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , entry_(nullptr){}
-struct DownloadLogFileRequestDefaultTypeInternal {
-  constexpr DownloadLogFileRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~DownloadLogFileRequestDefaultTypeInternal() {}
-  union {
-    DownloadLogFileRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DownloadLogFileRequestDefaultTypeInternal _DownloadLogFileRequest_default_instance_;
-constexpr EraseAllLogFilesRequest::EraseAllLogFilesRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
-struct EraseAllLogFilesRequestDefaultTypeInternal {
-  constexpr EraseAllLogFilesRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~EraseAllLogFilesRequestDefaultTypeInternal() {}
-  union {
-    EraseAllLogFilesRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EraseAllLogFilesRequestDefaultTypeInternal _EraseAllLogFilesRequest_default_instance_;
-constexpr EraseAllLogFilesResponse::EraseAllLogFilesResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : log_files_result_(nullptr){}
-struct EraseAllLogFilesResponseDefaultTypeInternal {
-  constexpr EraseAllLogFilesResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~EraseAllLogFilesResponseDefaultTypeInternal() {}
-  union {
-    EraseAllLogFilesResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EraseAllLogFilesResponseDefaultTypeInternal _EraseAllLogFilesResponse_default_instance_;
-constexpr ProgressData::ProgressData(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : progress_(0){}
-struct ProgressDataDefaultTypeInternal {
-  constexpr ProgressDataDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ProgressDataDefaultTypeInternal() {}
-  union {
-    ProgressData _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ProgressDataDefaultTypeInternal _ProgressData_default_instance_;
-constexpr Entry::Entry(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : date_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , id_(0u)
-  , size_bytes_(0u){}
-struct EntryDefaultTypeInternal {
-  constexpr EntryDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~EntryDefaultTypeInternal() {}
-  union {
-    Entry _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EntryDefaultTypeInternal _Entry_default_instance_;
-constexpr LogFilesResult::LogFilesResult(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : result_str_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , result_(0)
-{}
-struct LogFilesResultDefaultTypeInternal {
-  constexpr LogFilesResultDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~LogFilesResultDefaultTypeInternal() {}
-  union {
-    LogFilesResult _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT LogFilesResultDefaultTypeInternal _LogFilesResult_default_instance_;
+class GetEntriesRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetEntriesRequest> _instance;
+} _GetEntriesRequest_default_instance_;
+class GetEntriesResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetEntriesResponse> _instance;
+} _GetEntriesResponse_default_instance_;
+class SubscribeDownloadLogFileRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SubscribeDownloadLogFileRequest> _instance;
+} _SubscribeDownloadLogFileRequest_default_instance_;
+class DownloadLogFileResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DownloadLogFileResponse> _instance;
+} _DownloadLogFileResponse_default_instance_;
+class DownloadLogFileRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DownloadLogFileRequest> _instance;
+} _DownloadLogFileRequest_default_instance_;
+class EraseAllLogFilesRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<EraseAllLogFilesRequest> _instance;
+} _EraseAllLogFilesRequest_default_instance_;
+class EraseAllLogFilesResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<EraseAllLogFilesResponse> _instance;
+} _EraseAllLogFilesResponse_default_instance_;
+class ProgressDataDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ProgressData> _instance;
+} _ProgressData_default_instance_;
+class EntryDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Entry> _instance;
+} _Entry_default_instance_;
+class LogFilesResultDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LogFilesResult> _instance;
+} _LogFilesResult_default_instance_;
 }  // namespace log_files
 }  // namespace rpc
 }  // namespace mavsdk
+static void InitDefaultsscc_info_DownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_DownloadLogFileRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::DownloadLogFileRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::DownloadLogFileRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto}, {
+      &scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto.base,}};
+
+static void InitDefaultsscc_info_DownloadLogFileResponse_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_DownloadLogFileResponse_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::DownloadLogFileResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::DownloadLogFileResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DownloadLogFileResponse_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DownloadLogFileResponse_log_5ffiles_2flog_5ffiles_2eproto}, {
+      &scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto.base,
+      &scc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto.base,}};
+
+static void InitDefaultsscc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_Entry_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::Entry();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::Entry::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto}, {}};
+
+static void InitDefaultsscc_info_EraseAllLogFilesRequest_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_EraseAllLogFilesRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::EraseAllLogFilesRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::EraseAllLogFilesRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_EraseAllLogFilesRequest_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_EraseAllLogFilesRequest_log_5ffiles_2flog_5ffiles_2eproto}, {}};
+
+static void InitDefaultsscc_info_EraseAllLogFilesResponse_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_EraseAllLogFilesResponse_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::EraseAllLogFilesResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::EraseAllLogFilesResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_EraseAllLogFilesResponse_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_EraseAllLogFilesResponse_log_5ffiles_2flog_5ffiles_2eproto}, {
+      &scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto.base,}};
+
+static void InitDefaultsscc_info_GetEntriesRequest_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_GetEntriesRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::GetEntriesRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::GetEntriesRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetEntriesRequest_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_GetEntriesRequest_log_5ffiles_2flog_5ffiles_2eproto}, {}};
+
+static void InitDefaultsscc_info_GetEntriesResponse_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_GetEntriesResponse_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::GetEntriesResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::GetEntriesResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_GetEntriesResponse_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_GetEntriesResponse_log_5ffiles_2flog_5ffiles_2eproto}, {
+      &scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto.base,
+      &scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto.base,}};
+
+static void InitDefaultsscc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_LogFilesResult_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::LogFilesResult();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::LogFilesResult::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto}, {}};
+
+static void InitDefaultsscc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_ProgressData_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::ProgressData();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::ProgressData::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto}, {}};
+
+static void InitDefaultsscc_info_SubscribeDownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::log_files::_SubscribeDownloadLogFileRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::log_files::SubscribeDownloadLogFileRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::log_files::SubscribeDownloadLogFileRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SubscribeDownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SubscribeDownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto}, {
+      &scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto.base,}};
+
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[10];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_log_5ffiles_2flog_5ffiles_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_log_5ffiles_2flog_5ffiles_2eproto = nullptr;
@@ -291,19 +353,28 @@ const char descriptor_table_protodef_log_5ffiles_2flog_5ffiles_2eproto[] PROTOBU
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_deps[1] = {
   &::descriptor_table_mavsdk_5foptions_2eproto,
 };
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_sccs[10] = {
+  &scc_info_DownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_DownloadLogFileResponse_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_EraseAllLogFilesRequest_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_EraseAllLogFilesResponse_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_GetEntriesRequest_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_GetEntriesResponse_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto.base,
+  &scc_info_SubscribeDownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto.base,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_log_5ffiles_2flog_5ffiles_2eproto = {
-  false, false, 1604, descriptor_table_protodef_log_5ffiles_2flog_5ffiles_2eproto, "log_files/log_files.proto", 
-  &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once, descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_deps, 1, 10,
+  false, false, descriptor_table_protodef_log_5ffiles_2flog_5ffiles_2eproto, "log_files/log_files.proto", 1604,
+  &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once, descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_sccs, descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_deps, 10, 1,
   schemas, file_default_instances, TableStruct_log_5ffiles_2flog_5ffiles_2eproto::offsets,
-  file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto, file_level_enum_descriptors_log_5ffiles_2flog_5ffiles_2eproto, file_level_service_descriptors_log_5ffiles_2flog_5ffiles_2eproto,
+  file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto, 10, file_level_enum_descriptors_log_5ffiles_2flog_5ffiles_2eproto, file_level_service_descriptors_log_5ffiles_2flog_5ffiles_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter() {
-  return &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto;
-}
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_log_5ffiles_2flog_5ffiles_2eproto(&descriptor_table_log_5ffiles_2flog_5ffiles_2eproto);
+static bool dynamic_init_dummy_log_5ffiles_2flog_5ffiles_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_log_5ffiles_2flog_5ffiles_2eproto)), true);
 namespace mavsdk {
 namespace rpc {
 namespace log_files {
@@ -343,17 +414,16 @@ constexpr int LogFilesResult::Result_ARRAYSIZE;
 
 // ===================================================================
 
+void GetEntriesRequest::InitAsDefaultInstance() {
+}
 class GetEntriesRequest::_Internal {
  public:
 };
 
-GetEntriesRequest::GetEntriesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+GetEntriesRequest::GetEntriesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.GetEntriesRequest)
 }
 GetEntriesRequest::GetEntriesRequest(const GetEntriesRequest& from)
@@ -362,18 +432,17 @@ GetEntriesRequest::GetEntriesRequest(const GetEntriesRequest& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.GetEntriesRequest)
 }
 
-inline void GetEntriesRequest::SharedCtor() {
+void GetEntriesRequest::SharedCtor() {
 }
 
 GetEntriesRequest::~GetEntriesRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.GetEntriesRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void GetEntriesRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void GetEntriesRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void GetEntriesRequest::ArenaDtor(void* object) {
@@ -385,6 +454,11 @@ void GetEntriesRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void GetEntriesRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const GetEntriesRequest& GetEntriesRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GetEntriesRequest_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void GetEntriesRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.GetEntriesRequest)
@@ -397,11 +471,12 @@ void GetEntriesRequest::Clear() {
 
 const char* GetEntriesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -450,26 +525,35 @@ size_t GetEntriesRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetEntriesRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetEntriesRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetEntriesRequest::GetClassData() const { return &_class_data_; }
-
-void GetEntriesRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<GetEntriesRequest *>(to)->MergeFrom(
-      static_cast<const GetEntriesRequest &>(from));
+void GetEntriesRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.GetEntriesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetEntriesRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GetEntriesRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.GetEntriesRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.GetEntriesRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void GetEntriesRequest::MergeFrom(const GetEntriesRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.GetEntriesRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetEntriesRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.GetEntriesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void GetEntriesRequest::CopyFrom(const GetEntriesRequest& from) {
@@ -485,17 +569,20 @@ bool GetEntriesRequest::IsInitialized() const {
 
 void GetEntriesRequest::InternalSwap(GetEntriesRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GetEntriesRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void GetEntriesResponse::InitAsDefaultInstance() {
+  ::mavsdk::rpc::log_files::_GetEntriesResponse_default_instance_._instance.get_mutable()->log_files_result_ = const_cast< ::mavsdk::rpc::log_files::LogFilesResult*>(
+      ::mavsdk::rpc::log_files::LogFilesResult::internal_default_instance());
+}
 class GetEntriesResponse::_Internal {
  public:
   static const ::mavsdk::rpc::log_files::LogFilesResult& log_files_result(const GetEntriesResponse* msg);
@@ -505,14 +592,11 @@ const ::mavsdk::rpc::log_files::LogFilesResult&
 GetEntriesResponse::_Internal::log_files_result(const GetEntriesResponse* msg) {
   return *msg->log_files_result_;
 }
-GetEntriesResponse::GetEntriesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+GetEntriesResponse::GetEntriesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   entries_(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.GetEntriesResponse)
 }
 GetEntriesResponse::GetEntriesResponse(const GetEntriesResponse& from)
@@ -527,19 +611,19 @@ GetEntriesResponse::GetEntriesResponse(const GetEntriesResponse& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.GetEntriesResponse)
 }
 
-inline void GetEntriesResponse::SharedCtor() {
-log_files_result_ = nullptr;
+void GetEntriesResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetEntriesResponse_log_5ffiles_2flog_5ffiles_2eproto.base);
+  log_files_result_ = nullptr;
 }
 
 GetEntriesResponse::~GetEntriesResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.GetEntriesResponse)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void GetEntriesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void GetEntriesResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete log_files_result_;
 }
 
@@ -552,6 +636,11 @@ void GetEntriesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void GetEntriesResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const GetEntriesResponse& GetEntriesResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GetEntriesResponse_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void GetEntriesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.GetEntriesResponse)
@@ -560,7 +649,7 @@ void GetEntriesResponse::Clear() {
   (void) cached_has_bits;
 
   entries_.Clear();
-  if (GetArenaForAllocation() == nullptr && log_files_result_ != nullptr) {
+  if (GetArena() == nullptr && log_files_result_ != nullptr) {
     delete log_files_result_;
   }
   log_files_result_ = nullptr;
@@ -569,9 +658,11 @@ void GetEntriesResponse::Clear() {
 
 const char* GetEntriesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
       case 1:
@@ -594,8 +685,7 @@ const char* GetEntriesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -622,7 +712,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
-  if (this->_internal_has_log_files_result()) {
+  if (this->has_log_files_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -661,7 +751,7 @@ size_t GetEntriesResponse::ByteSizeLong() const {
   }
 
   // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
-  if (this->_internal_has_log_files_result()) {
+  if (this->has_log_files_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *log_files_result_);
@@ -676,30 +766,39 @@ size_t GetEntriesResponse::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetEntriesResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetEntriesResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetEntriesResponse::GetClassData() const { return &_class_data_; }
-
-void GetEntriesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<GetEntriesResponse *>(to)->MergeFrom(
-      static_cast<const GetEntriesResponse &>(from));
+void GetEntriesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.GetEntriesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetEntriesResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GetEntriesResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.GetEntriesResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.GetEntriesResponse)
+    MergeFrom(*source);
+  }
 }
-
 
 void GetEntriesResponse::MergeFrom(const GetEntriesResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.GetEntriesResponse)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   entries_.MergeFrom(from.entries_);
-  if (from._internal_has_log_files_result()) {
+  if (from.has_log_files_result()) {
     _internal_mutable_log_files_result()->::mavsdk::rpc::log_files::LogFilesResult::MergeFrom(from._internal_log_files_result());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetEntriesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.GetEntriesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void GetEntriesResponse::CopyFrom(const GetEntriesResponse& from) {
@@ -715,19 +814,22 @@ bool GetEntriesResponse::IsInitialized() const {
 
 void GetEntriesResponse::InternalSwap(GetEntriesResponse* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   entries_.InternalSwap(&other->entries_);
   swap(log_files_result_, other->log_files_result_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GetEntriesResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[1]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void SubscribeDownloadLogFileRequest::InitAsDefaultInstance() {
+  ::mavsdk::rpc::log_files::_SubscribeDownloadLogFileRequest_default_instance_._instance.get_mutable()->entry_ = const_cast< ::mavsdk::rpc::log_files::Entry*>(
+      ::mavsdk::rpc::log_files::Entry::internal_default_instance());
+}
 class SubscribeDownloadLogFileRequest::_Internal {
  public:
   static const ::mavsdk::rpc::log_files::Entry& entry(const SubscribeDownloadLogFileRequest* msg);
@@ -737,13 +839,10 @@ const ::mavsdk::rpc::log_files::Entry&
 SubscribeDownloadLogFileRequest::_Internal::entry(const SubscribeDownloadLogFileRequest* msg) {
   return *msg->entry_;
 }
-SubscribeDownloadLogFileRequest::SubscribeDownloadLogFileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+SubscribeDownloadLogFileRequest::SubscribeDownloadLogFileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
 }
 SubscribeDownloadLogFileRequest::SubscribeDownloadLogFileRequest(const SubscribeDownloadLogFileRequest& from)
@@ -751,8 +850,8 @@ SubscribeDownloadLogFileRequest::SubscribeDownloadLogFileRequest(const Subscribe
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_path().empty()) {
-    path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_path(), 
-      GetArenaForAllocation());
+    path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_path(),
+      GetArena());
   }
   if (from._internal_has_entry()) {
     entry_ = new ::mavsdk::rpc::log_files::Entry(*from.entry_);
@@ -762,20 +861,20 @@ SubscribeDownloadLogFileRequest::SubscribeDownloadLogFileRequest(const Subscribe
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
 }
 
-inline void SubscribeDownloadLogFileRequest::SharedCtor() {
-path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-entry_ = nullptr;
+void SubscribeDownloadLogFileRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SubscribeDownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto.base);
+  path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  entry_ = nullptr;
 }
 
 SubscribeDownloadLogFileRequest::~SubscribeDownloadLogFileRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void SubscribeDownloadLogFileRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void SubscribeDownloadLogFileRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   path_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete entry_;
 }
@@ -789,6 +888,11 @@ void SubscribeDownloadLogFileRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID:
 void SubscribeDownloadLogFileRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const SubscribeDownloadLogFileRequest& SubscribeDownloadLogFileRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SubscribeDownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void SubscribeDownloadLogFileRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
@@ -796,8 +900,8 @@ void SubscribeDownloadLogFileRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  path_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && entry_ != nullptr) {
+  path_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && entry_ != nullptr) {
     delete entry_;
   }
   entry_ = nullptr;
@@ -806,9 +910,11 @@ void SubscribeDownloadLogFileRequest::Clear() {
 
 const char* SubscribeDownloadLogFileRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.log_files.Entry entry = 1;
       case 1:
@@ -828,8 +934,7 @@ const char* SubscribeDownloadLogFileRequest::_InternalParse(const char* ptr, ::P
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -856,7 +961,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.Entry entry = 1;
-  if (this->_internal_has_entry()) {
+  if (this->has_entry()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -864,7 +969,7 @@ failure:
   }
 
   // string path = 2;
-  if (!this->_internal_path().empty()) {
+  if (this->path().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_path().data(), static_cast<int>(this->_internal_path().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -890,14 +995,14 @@ size_t SubscribeDownloadLogFileRequest::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // string path = 2;
-  if (!this->_internal_path().empty()) {
+  if (this->path().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_path());
   }
 
   // .mavsdk.rpc.log_files.Entry entry = 1;
-  if (this->_internal_has_entry()) {
+  if (this->has_entry()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *entry_);
@@ -912,32 +1017,41 @@ size_t SubscribeDownloadLogFileRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SubscribeDownloadLogFileRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    SubscribeDownloadLogFileRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubscribeDownloadLogFileRequest::GetClassData() const { return &_class_data_; }
-
-void SubscribeDownloadLogFileRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<SubscribeDownloadLogFileRequest *>(to)->MergeFrom(
-      static_cast<const SubscribeDownloadLogFileRequest &>(from));
+void SubscribeDownloadLogFileRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SubscribeDownloadLogFileRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SubscribeDownloadLogFileRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void SubscribeDownloadLogFileRequest::MergeFrom(const SubscribeDownloadLogFileRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_path().empty()) {
+  if (from.path().size() > 0) {
     _internal_set_path(from._internal_path());
   }
-  if (from._internal_has_entry()) {
+  if (from.has_entry()) {
     _internal_mutable_entry()->::mavsdk::rpc::log_files::Entry::MergeFrom(from._internal_entry());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubscribeDownloadLogFileRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.SubscribeDownloadLogFileRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void SubscribeDownloadLogFileRequest::CopyFrom(const SubscribeDownloadLogFileRequest& from) {
@@ -953,23 +1067,24 @@ bool SubscribeDownloadLogFileRequest::IsInitialized() const {
 
 void SubscribeDownloadLogFileRequest::InternalSwap(SubscribeDownloadLogFileRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &path_, GetArenaForAllocation(),
-      &other->path_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  path_.Swap(&other->path_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(entry_, other->entry_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SubscribeDownloadLogFileRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[2]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void DownloadLogFileResponse::InitAsDefaultInstance() {
+  ::mavsdk::rpc::log_files::_DownloadLogFileResponse_default_instance_._instance.get_mutable()->log_files_result_ = const_cast< ::mavsdk::rpc::log_files::LogFilesResult*>(
+      ::mavsdk::rpc::log_files::LogFilesResult::internal_default_instance());
+  ::mavsdk::rpc::log_files::_DownloadLogFileResponse_default_instance_._instance.get_mutable()->progress_ = const_cast< ::mavsdk::rpc::log_files::ProgressData*>(
+      ::mavsdk::rpc::log_files::ProgressData::internal_default_instance());
+}
 class DownloadLogFileResponse::_Internal {
  public:
   static const ::mavsdk::rpc::log_files::LogFilesResult& log_files_result(const DownloadLogFileResponse* msg);
@@ -984,13 +1099,10 @@ const ::mavsdk::rpc::log_files::ProgressData&
 DownloadLogFileResponse::_Internal::progress(const DownloadLogFileResponse* msg) {
   return *msg->progress_;
 }
-DownloadLogFileResponse::DownloadLogFileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+DownloadLogFileResponse::DownloadLogFileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.DownloadLogFileResponse)
 }
 DownloadLogFileResponse::DownloadLogFileResponse(const DownloadLogFileResponse& from)
@@ -1009,22 +1121,21 @@ DownloadLogFileResponse::DownloadLogFileResponse(const DownloadLogFileResponse& 
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.DownloadLogFileResponse)
 }
 
-inline void DownloadLogFileResponse::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&log_files_result_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&progress_) -
-    reinterpret_cast<char*>(&log_files_result_)) + sizeof(progress_));
+void DownloadLogFileResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DownloadLogFileResponse_log_5ffiles_2flog_5ffiles_2eproto.base);
+  ::memset(&log_files_result_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&progress_) -
+      reinterpret_cast<char*>(&log_files_result_)) + sizeof(progress_));
 }
 
 DownloadLogFileResponse::~DownloadLogFileResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.DownloadLogFileResponse)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void DownloadLogFileResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void DownloadLogFileResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete log_files_result_;
   if (this != internal_default_instance()) delete progress_;
 }
@@ -1038,6 +1149,11 @@ void DownloadLogFileResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*)
 void DownloadLogFileResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const DownloadLogFileResponse& DownloadLogFileResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DownloadLogFileResponse_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void DownloadLogFileResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.DownloadLogFileResponse)
@@ -1045,11 +1161,11 @@ void DownloadLogFileResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && log_files_result_ != nullptr) {
+  if (GetArena() == nullptr && log_files_result_ != nullptr) {
     delete log_files_result_;
   }
   log_files_result_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && progress_ != nullptr) {
+  if (GetArena() == nullptr && progress_ != nullptr) {
     delete progress_;
   }
   progress_ = nullptr;
@@ -1058,9 +1174,11 @@ void DownloadLogFileResponse::Clear() {
 
 const char* DownloadLogFileResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
       case 1:
@@ -1078,8 +1196,7 @@ const char* DownloadLogFileResponse::_InternalParse(const char* ptr, ::PROTOBUF_
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -1106,7 +1223,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
-  if (this->_internal_has_log_files_result()) {
+  if (this->has_log_files_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -1114,7 +1231,7 @@ failure:
   }
 
   // .mavsdk.rpc.log_files.ProgressData progress = 2;
-  if (this->_internal_has_progress()) {
+  if (this->has_progress()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -1138,14 +1255,14 @@ size_t DownloadLogFileResponse::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
-  if (this->_internal_has_log_files_result()) {
+  if (this->has_log_files_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *log_files_result_);
   }
 
   // .mavsdk.rpc.log_files.ProgressData progress = 2;
-  if (this->_internal_has_progress()) {
+  if (this->has_progress()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *progress_);
@@ -1160,32 +1277,41 @@ size_t DownloadLogFileResponse::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DownloadLogFileResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    DownloadLogFileResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DownloadLogFileResponse::GetClassData() const { return &_class_data_; }
-
-void DownloadLogFileResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<DownloadLogFileResponse *>(to)->MergeFrom(
-      static_cast<const DownloadLogFileResponse &>(from));
+void DownloadLogFileResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.DownloadLogFileResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DownloadLogFileResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DownloadLogFileResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.DownloadLogFileResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.DownloadLogFileResponse)
+    MergeFrom(*source);
+  }
 }
-
 
 void DownloadLogFileResponse::MergeFrom(const DownloadLogFileResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.DownloadLogFileResponse)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_log_files_result()) {
+  if (from.has_log_files_result()) {
     _internal_mutable_log_files_result()->::mavsdk::rpc::log_files::LogFilesResult::MergeFrom(from._internal_log_files_result());
   }
-  if (from._internal_has_progress()) {
+  if (from.has_progress()) {
     _internal_mutable_progress()->::mavsdk::rpc::log_files::ProgressData::MergeFrom(from._internal_progress());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DownloadLogFileResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.DownloadLogFileResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void DownloadLogFileResponse::CopyFrom(const DownloadLogFileResponse& from) {
@@ -1201,7 +1327,7 @@ bool DownloadLogFileResponse::IsInitialized() const {
 
 void DownloadLogFileResponse::InternalSwap(DownloadLogFileResponse* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DownloadLogFileResponse, progress_)
       + sizeof(DownloadLogFileResponse::progress_)
@@ -1211,13 +1337,16 @@ void DownloadLogFileResponse::InternalSwap(DownloadLogFileResponse* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DownloadLogFileResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[3]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void DownloadLogFileRequest::InitAsDefaultInstance() {
+  ::mavsdk::rpc::log_files::_DownloadLogFileRequest_default_instance_._instance.get_mutable()->entry_ = const_cast< ::mavsdk::rpc::log_files::Entry*>(
+      ::mavsdk::rpc::log_files::Entry::internal_default_instance());
+}
 class DownloadLogFileRequest::_Internal {
  public:
   static const ::mavsdk::rpc::log_files::Entry& entry(const DownloadLogFileRequest* msg);
@@ -1227,13 +1356,10 @@ const ::mavsdk::rpc::log_files::Entry&
 DownloadLogFileRequest::_Internal::entry(const DownloadLogFileRequest* msg) {
   return *msg->entry_;
 }
-DownloadLogFileRequest::DownloadLogFileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+DownloadLogFileRequest::DownloadLogFileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.DownloadLogFileRequest)
 }
 DownloadLogFileRequest::DownloadLogFileRequest(const DownloadLogFileRequest& from)
@@ -1241,8 +1367,8 @@ DownloadLogFileRequest::DownloadLogFileRequest(const DownloadLogFileRequest& fro
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_path().empty()) {
-    path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_path(), 
-      GetArenaForAllocation());
+    path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_path(),
+      GetArena());
   }
   if (from._internal_has_entry()) {
     entry_ = new ::mavsdk::rpc::log_files::Entry(*from.entry_);
@@ -1252,20 +1378,20 @@ DownloadLogFileRequest::DownloadLogFileRequest(const DownloadLogFileRequest& fro
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.DownloadLogFileRequest)
 }
 
-inline void DownloadLogFileRequest::SharedCtor() {
-path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-entry_ = nullptr;
+void DownloadLogFileRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto.base);
+  path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  entry_ = nullptr;
 }
 
 DownloadLogFileRequest::~DownloadLogFileRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.DownloadLogFileRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void DownloadLogFileRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void DownloadLogFileRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   path_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete entry_;
 }
@@ -1279,6 +1405,11 @@ void DownloadLogFileRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) 
 void DownloadLogFileRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const DownloadLogFileRequest& DownloadLogFileRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DownloadLogFileRequest_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void DownloadLogFileRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.DownloadLogFileRequest)
@@ -1286,8 +1417,8 @@ void DownloadLogFileRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  path_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && entry_ != nullptr) {
+  path_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && entry_ != nullptr) {
     delete entry_;
   }
   entry_ = nullptr;
@@ -1296,9 +1427,11 @@ void DownloadLogFileRequest::Clear() {
 
 const char* DownloadLogFileRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.log_files.Entry entry = 1;
       case 1:
@@ -1318,8 +1451,7 @@ const char* DownloadLogFileRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -1346,7 +1478,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.Entry entry = 1;
-  if (this->_internal_has_entry()) {
+  if (this->has_entry()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -1354,7 +1486,7 @@ failure:
   }
 
   // string path = 2;
-  if (!this->_internal_path().empty()) {
+  if (this->path().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_path().data(), static_cast<int>(this->_internal_path().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -1380,14 +1512,14 @@ size_t DownloadLogFileRequest::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // string path = 2;
-  if (!this->_internal_path().empty()) {
+  if (this->path().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_path());
   }
 
   // .mavsdk.rpc.log_files.Entry entry = 1;
-  if (this->_internal_has_entry()) {
+  if (this->has_entry()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *entry_);
@@ -1402,32 +1534,41 @@ size_t DownloadLogFileRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DownloadLogFileRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    DownloadLogFileRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DownloadLogFileRequest::GetClassData() const { return &_class_data_; }
-
-void DownloadLogFileRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<DownloadLogFileRequest *>(to)->MergeFrom(
-      static_cast<const DownloadLogFileRequest &>(from));
+void DownloadLogFileRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.DownloadLogFileRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DownloadLogFileRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DownloadLogFileRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.DownloadLogFileRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.DownloadLogFileRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void DownloadLogFileRequest::MergeFrom(const DownloadLogFileRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.DownloadLogFileRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_path().empty()) {
+  if (from.path().size() > 0) {
     _internal_set_path(from._internal_path());
   }
-  if (from._internal_has_entry()) {
+  if (from.has_entry()) {
     _internal_mutable_entry()->::mavsdk::rpc::log_files::Entry::MergeFrom(from._internal_entry());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DownloadLogFileRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.DownloadLogFileRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void DownloadLogFileRequest::CopyFrom(const DownloadLogFileRequest& from) {
@@ -1443,34 +1584,28 @@ bool DownloadLogFileRequest::IsInitialized() const {
 
 void DownloadLogFileRequest::InternalSwap(DownloadLogFileRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &path_, GetArenaForAllocation(),
-      &other->path_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  path_.Swap(&other->path_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(entry_, other->entry_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DownloadLogFileRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[4]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void EraseAllLogFilesRequest::InitAsDefaultInstance() {
+}
 class EraseAllLogFilesRequest::_Internal {
  public:
 };
 
-EraseAllLogFilesRequest::EraseAllLogFilesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+EraseAllLogFilesRequest::EraseAllLogFilesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
 }
 EraseAllLogFilesRequest::EraseAllLogFilesRequest(const EraseAllLogFilesRequest& from)
@@ -1479,18 +1614,17 @@ EraseAllLogFilesRequest::EraseAllLogFilesRequest(const EraseAllLogFilesRequest& 
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
 }
 
-inline void EraseAllLogFilesRequest::SharedCtor() {
+void EraseAllLogFilesRequest::SharedCtor() {
 }
 
 EraseAllLogFilesRequest::~EraseAllLogFilesRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void EraseAllLogFilesRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void EraseAllLogFilesRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void EraseAllLogFilesRequest::ArenaDtor(void* object) {
@@ -1502,6 +1636,11 @@ void EraseAllLogFilesRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*)
 void EraseAllLogFilesRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const EraseAllLogFilesRequest& EraseAllLogFilesRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_EraseAllLogFilesRequest_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void EraseAllLogFilesRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
@@ -1514,11 +1653,12 @@ void EraseAllLogFilesRequest::Clear() {
 
 const char* EraseAllLogFilesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -1567,26 +1707,35 @@ size_t EraseAllLogFilesRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EraseAllLogFilesRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    EraseAllLogFilesRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EraseAllLogFilesRequest::GetClassData() const { return &_class_data_; }
-
-void EraseAllLogFilesRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<EraseAllLogFilesRequest *>(to)->MergeFrom(
-      static_cast<const EraseAllLogFilesRequest &>(from));
+void EraseAllLogFilesRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const EraseAllLogFilesRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<EraseAllLogFilesRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void EraseAllLogFilesRequest::MergeFrom(const EraseAllLogFilesRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EraseAllLogFilesRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.EraseAllLogFilesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void EraseAllLogFilesRequest::CopyFrom(const EraseAllLogFilesRequest& from) {
@@ -1602,17 +1751,20 @@ bool EraseAllLogFilesRequest::IsInitialized() const {
 
 void EraseAllLogFilesRequest::InternalSwap(EraseAllLogFilesRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata EraseAllLogFilesRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[5]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void EraseAllLogFilesResponse::InitAsDefaultInstance() {
+  ::mavsdk::rpc::log_files::_EraseAllLogFilesResponse_default_instance_._instance.get_mutable()->log_files_result_ = const_cast< ::mavsdk::rpc::log_files::LogFilesResult*>(
+      ::mavsdk::rpc::log_files::LogFilesResult::internal_default_instance());
+}
 class EraseAllLogFilesResponse::_Internal {
  public:
   static const ::mavsdk::rpc::log_files::LogFilesResult& log_files_result(const EraseAllLogFilesResponse* msg);
@@ -1622,13 +1774,10 @@ const ::mavsdk::rpc::log_files::LogFilesResult&
 EraseAllLogFilesResponse::_Internal::log_files_result(const EraseAllLogFilesResponse* msg) {
   return *msg->log_files_result_;
 }
-EraseAllLogFilesResponse::EraseAllLogFilesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+EraseAllLogFilesResponse::EraseAllLogFilesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
 }
 EraseAllLogFilesResponse::EraseAllLogFilesResponse(const EraseAllLogFilesResponse& from)
@@ -1642,19 +1791,19 @@ EraseAllLogFilesResponse::EraseAllLogFilesResponse(const EraseAllLogFilesRespons
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
 }
 
-inline void EraseAllLogFilesResponse::SharedCtor() {
-log_files_result_ = nullptr;
+void EraseAllLogFilesResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_EraseAllLogFilesResponse_log_5ffiles_2flog_5ffiles_2eproto.base);
+  log_files_result_ = nullptr;
 }
 
 EraseAllLogFilesResponse::~EraseAllLogFilesResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void EraseAllLogFilesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void EraseAllLogFilesResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete log_files_result_;
 }
 
@@ -1667,6 +1816,11 @@ void EraseAllLogFilesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*
 void EraseAllLogFilesResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const EraseAllLogFilesResponse& EraseAllLogFilesResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_EraseAllLogFilesResponse_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void EraseAllLogFilesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
@@ -1674,7 +1828,7 @@ void EraseAllLogFilesResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && log_files_result_ != nullptr) {
+  if (GetArena() == nullptr && log_files_result_ != nullptr) {
     delete log_files_result_;
   }
   log_files_result_ = nullptr;
@@ -1683,9 +1837,11 @@ void EraseAllLogFilesResponse::Clear() {
 
 const char* EraseAllLogFilesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
       case 1:
@@ -1696,8 +1852,7 @@ const char* EraseAllLogFilesResponse::_InternalParse(const char* ptr, ::PROTOBUF
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -1724,7 +1879,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
-  if (this->_internal_has_log_files_result()) {
+  if (this->has_log_files_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -1748,7 +1903,7 @@ size_t EraseAllLogFilesResponse::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.LogFilesResult log_files_result = 1;
-  if (this->_internal_has_log_files_result()) {
+  if (this->has_log_files_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *log_files_result_);
@@ -1763,29 +1918,38 @@ size_t EraseAllLogFilesResponse::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EraseAllLogFilesResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    EraseAllLogFilesResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EraseAllLogFilesResponse::GetClassData() const { return &_class_data_; }
-
-void EraseAllLogFilesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<EraseAllLogFilesResponse *>(to)->MergeFrom(
-      static_cast<const EraseAllLogFilesResponse &>(from));
+void EraseAllLogFilesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const EraseAllLogFilesResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<EraseAllLogFilesResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
+    MergeFrom(*source);
+  }
 }
-
 
 void EraseAllLogFilesResponse::MergeFrom(const EraseAllLogFilesResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_log_files_result()) {
+  if (from.has_log_files_result()) {
     _internal_mutable_log_files_result()->::mavsdk::rpc::log_files::LogFilesResult::MergeFrom(from._internal_log_files_result());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EraseAllLogFilesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.EraseAllLogFilesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void EraseAllLogFilesResponse::CopyFrom(const EraseAllLogFilesResponse& from) {
@@ -1801,29 +1965,27 @@ bool EraseAllLogFilesResponse::IsInitialized() const {
 
 void EraseAllLogFilesResponse::InternalSwap(EraseAllLogFilesResponse* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(log_files_result_, other->log_files_result_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata EraseAllLogFilesResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[6]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void ProgressData::InitAsDefaultInstance() {
+}
 class ProgressData::_Internal {
  public:
 };
 
-ProgressData::ProgressData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+ProgressData::ProgressData(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.ProgressData)
 }
 ProgressData::ProgressData(const ProgressData& from)
@@ -1833,19 +1995,18 @@ ProgressData::ProgressData(const ProgressData& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.ProgressData)
 }
 
-inline void ProgressData::SharedCtor() {
-progress_ = 0;
+void ProgressData::SharedCtor() {
+  progress_ = 0;
 }
 
 ProgressData::~ProgressData() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.ProgressData)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ProgressData::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void ProgressData::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void ProgressData::ArenaDtor(void* object) {
@@ -1857,6 +2018,11 @@ void ProgressData::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void ProgressData::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const ProgressData& ProgressData::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ProgressData_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void ProgressData::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.ProgressData)
@@ -1870,9 +2036,11 @@ void ProgressData::Clear() {
 
 const char* ProgressData::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // float progress = 1 [(.mavsdk.options.default_value) = "NaN"];
       case 1:
@@ -1883,8 +2051,7 @@ const char* ProgressData::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -1911,7 +2078,7 @@ failure:
   (void) cached_has_bits;
 
   // float progress = 1 [(.mavsdk.options.default_value) = "NaN"];
-  if (!(this->_internal_progress() <= 0 && this->_internal_progress() >= 0)) {
+  if (!(this->progress() <= 0 && this->progress() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_progress(), target);
   }
@@ -1933,7 +2100,7 @@ size_t ProgressData::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // float progress = 1 [(.mavsdk.options.default_value) = "NaN"];
-  if (!(this->_internal_progress() <= 0 && this->_internal_progress() >= 0)) {
+  if (!(this->progress() <= 0 && this->progress() >= 0)) {
     total_size += 1 + 4;
   }
 
@@ -1946,29 +2113,38 @@ size_t ProgressData::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProgressData::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ProgressData::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProgressData::GetClassData() const { return &_class_data_; }
-
-void ProgressData::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ProgressData *>(to)->MergeFrom(
-      static_cast<const ProgressData &>(from));
+void ProgressData::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.ProgressData)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ProgressData* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ProgressData>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.ProgressData)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.ProgressData)
+    MergeFrom(*source);
+  }
 }
-
 
 void ProgressData::MergeFrom(const ProgressData& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.ProgressData)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from._internal_progress() <= 0 && from._internal_progress() >= 0)) {
+  if (!(from.progress() <= 0 && from.progress() >= 0)) {
     _internal_set_progress(from._internal_progress());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ProgressData::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.ProgressData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void ProgressData::CopyFrom(const ProgressData& from) {
@@ -1984,29 +2160,27 @@ bool ProgressData::IsInitialized() const {
 
 void ProgressData::InternalSwap(ProgressData* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(progress_, other->progress_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ProgressData::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[7]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void Entry::InitAsDefaultInstance() {
+}
 class Entry::_Internal {
  public:
 };
 
-Entry::Entry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+Entry::Entry(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.Entry)
 }
 Entry::Entry(const Entry& from)
@@ -2014,8 +2188,8 @@ Entry::Entry(const Entry& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_date().empty()) {
-    date_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_date(), 
-      GetArenaForAllocation());
+    date_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_date(),
+      GetArena());
   }
   ::memcpy(&id_, &from.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&size_bytes_) -
@@ -2023,23 +2197,22 @@ Entry::Entry(const Entry& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.Entry)
 }
 
-inline void Entry::SharedCtor() {
-date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&size_bytes_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(size_bytes_));
+void Entry::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto.base);
+  date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&size_bytes_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(size_bytes_));
 }
 
 Entry::~Entry() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.Entry)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void Entry::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void Entry::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   date_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -2052,6 +2225,11 @@ void Entry::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void Entry::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const Entry& Entry::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Entry_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void Entry::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.Entry)
@@ -2059,7 +2237,7 @@ void Entry::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  date_.ClearToEmpty();
+  date_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&size_bytes_) -
       reinterpret_cast<char*>(&id_)) + sizeof(size_bytes_));
@@ -2068,9 +2246,11 @@ void Entry::Clear() {
 
 const char* Entry::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // uint32 id = 1;
       case 1:
@@ -2097,8 +2277,7 @@ const char* Entry::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -2125,13 +2304,13 @@ failure:
   (void) cached_has_bits;
 
   // uint32 id = 1;
-  if (this->_internal_id() != 0) {
+  if (this->id() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
   }
 
   // string date = 2;
-  if (!this->_internal_date().empty()) {
+  if (this->date().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_date().data(), static_cast<int>(this->_internal_date().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -2141,7 +2320,7 @@ failure:
   }
 
   // uint32 size_bytes = 3;
-  if (this->_internal_size_bytes() != 0) {
+  if (this->size_bytes() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_size_bytes(), target);
   }
@@ -2163,21 +2342,21 @@ size_t Entry::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // string date = 2;
-  if (!this->_internal_date().empty()) {
+  if (this->date().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_date());
   }
 
   // uint32 id = 1;
-  if (this->_internal_id() != 0) {
+  if (this->id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_id());
   }
 
   // uint32 size_bytes = 3;
-  if (this->_internal_size_bytes() != 0) {
+  if (this->size_bytes() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_size_bytes());
@@ -2192,35 +2371,44 @@ size_t Entry::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Entry::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Entry::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Entry::GetClassData() const { return &_class_data_; }
-
-void Entry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<Entry *>(to)->MergeFrom(
-      static_cast<const Entry &>(from));
+void Entry::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.Entry)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Entry* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Entry>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.Entry)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.Entry)
+    MergeFrom(*source);
+  }
 }
-
 
 void Entry::MergeFrom(const Entry& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.Entry)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_date().empty()) {
+  if (from.date().size() > 0) {
     _internal_set_date(from._internal_date());
   }
-  if (from._internal_id() != 0) {
+  if (from.id() != 0) {
     _internal_set_id(from._internal_id());
   }
-  if (from._internal_size_bytes() != 0) {
+  if (from.size_bytes() != 0) {
     _internal_set_size_bytes(from._internal_size_bytes());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Entry::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.Entry)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void Entry::CopyFrom(const Entry& from) {
@@ -2236,12 +2424,8 @@ bool Entry::IsInitialized() const {
 
 void Entry::InternalSwap(Entry* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &date_, GetArenaForAllocation(),
-      &other->date_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  date_.Swap(&other->date_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Entry, size_bytes_)
       + sizeof(Entry::size_bytes_)
@@ -2251,24 +2435,22 @@ void Entry::InternalSwap(Entry* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Entry::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[8]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void LogFilesResult::InitAsDefaultInstance() {
+}
 class LogFilesResult::_Internal {
  public:
 };
 
-LogFilesResult::LogFilesResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+LogFilesResult::LogFilesResult(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.log_files.LogFilesResult)
 }
 LogFilesResult::LogFilesResult(const LogFilesResult& from)
@@ -2276,27 +2458,27 @@ LogFilesResult::LogFilesResult(const LogFilesResult& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   result_str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_result_str().empty()) {
-    result_str_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_result_str(), 
-      GetArenaForAllocation());
+    result_str_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_result_str(),
+      GetArena());
   }
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.log_files.LogFilesResult)
 }
 
-inline void LogFilesResult::SharedCtor() {
-result_str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-result_ = 0;
+void LogFilesResult::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto.base);
+  result_str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  result_ = 0;
 }
 
 LogFilesResult::~LogFilesResult() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.log_files.LogFilesResult)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void LogFilesResult::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void LogFilesResult::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   result_str_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -2309,6 +2491,11 @@ void LogFilesResult::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void LogFilesResult::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const LogFilesResult& LogFilesResult::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_LogFilesResult_log_5ffiles_2flog_5ffiles_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void LogFilesResult::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.log_files.LogFilesResult)
@@ -2316,16 +2503,18 @@ void LogFilesResult::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  result_str_.ClearToEmpty();
+  result_str_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   result_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* LogFilesResult::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.log_files.LogFilesResult.Result result = 1;
       case 1:
@@ -2346,8 +2535,7 @@ const char* LogFilesResult::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -2374,14 +2562,14 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.log_files.LogFilesResult.Result result = 1;
-  if (this->_internal_result() != 0) {
+  if (this->result() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
       1, this->_internal_result(), target);
   }
 
   // string result_str = 2;
-  if (!this->_internal_result_str().empty()) {
+  if (this->result_str().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_result_str().data(), static_cast<int>(this->_internal_result_str().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -2407,14 +2595,14 @@ size_t LogFilesResult::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // string result_str = 2;
-  if (!this->_internal_result_str().empty()) {
+  if (this->result_str().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_result_str());
   }
 
   // .mavsdk.rpc.log_files.LogFilesResult.Result result = 1;
-  if (this->_internal_result() != 0) {
+  if (this->result() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_result());
   }
@@ -2428,32 +2616,41 @@ size_t LogFilesResult::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LogFilesResult::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    LogFilesResult::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LogFilesResult::GetClassData() const { return &_class_data_; }
-
-void LogFilesResult::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<LogFilesResult *>(to)->MergeFrom(
-      static_cast<const LogFilesResult &>(from));
+void LogFilesResult::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.log_files.LogFilesResult)
+  GOOGLE_DCHECK_NE(&from, this);
+  const LogFilesResult* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<LogFilesResult>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.log_files.LogFilesResult)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.log_files.LogFilesResult)
+    MergeFrom(*source);
+  }
 }
-
 
 void LogFilesResult::MergeFrom(const LogFilesResult& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.log_files.LogFilesResult)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_result_str().empty()) {
+  if (from.result_str().size() > 0) {
     _internal_set_result_str(from._internal_result_str());
   }
-  if (from._internal_result() != 0) {
+  if (from.result() != 0) {
     _internal_set_result(from._internal_result());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LogFilesResult::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.log_files.LogFilesResult)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void LogFilesResult::CopyFrom(const LogFilesResult& from) {
@@ -2469,20 +2666,15 @@ bool LogFilesResult::IsInitialized() const {
 
 void LogFilesResult::InternalSwap(LogFilesResult* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &result_str_, GetArenaForAllocation(),
-      &other->result_str_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  result_str_.Swap(&other->result_str_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(result_, other->result_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata LogFilesResult::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_getter, &descriptor_table_log_5ffiles_2flog_5ffiles_2eproto_once,
-      file_level_metadata_log_5ffiles_2flog_5ffiles_2eproto[9]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace log_files

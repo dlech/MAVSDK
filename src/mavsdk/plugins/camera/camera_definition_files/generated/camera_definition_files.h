@@ -3,31 +3,30 @@
    https://github.com/orex/cpp_rsc
    This is a header file*/
 
-
 #ifndef CAMERA_DEFINITION_FILES_H
 #define CAMERA_DEFINITION_FILES_H
-  extern const char cgoetxml[];
-  
-  const int cgoetxml_size = 16097; 
+extern const char cgoetxml[];
 
-  extern const char e10txml[];
-  
-  const int e10txml_size = 13781; 
+const int cgoetxml_size = 16097;
 
-  extern const char e30zxml[];
-  
-  const int e30zxml_size = 20658; 
+extern const char e10txml[];
 
-  extern const char e50xml[];
-  
-  const int e50xml_size = 30430; 
+const int e10txml_size = 13781;
 
-  extern const char e90xml[];
-  
-  const int e90xml_size = 63539; 
+extern const char e30zxml[];
 
-  extern const char ILCE7RM4xml[];
-  
-  const int ILCE7RM4xml_size = 16816; 
+const int e30zxml_size = 20658;
+
+extern const char e50xml[];
+
+const int e50xml_size = 30430;
+
+extern const char e90xml[];
+
+const int e90xml_size = 63539;
+
+extern const char ILCE7RM4xml[];
+
+const int ILCE7RM4xml_size = 16816;
 
 #endif /*CAMERA_DEFINITION_FILES_H */

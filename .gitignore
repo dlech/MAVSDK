@@ -2,6 +2,7 @@
 build*/
 install/
 logs/
+obj-*/
 .vscode
 # auto-generated files (below) from Qt Creator
 *.config

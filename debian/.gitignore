@@ -1,1 +1,9 @@
-changelog
+debhelper-build-stamp
+files
+.debhelper/
+libmavsdk-dev/
+libmavsdk1/
+mavsdk-server/
+tmp/
+*.log
+*.substvars

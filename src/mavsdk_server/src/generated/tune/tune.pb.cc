@@ -14,66 +14,88 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
+extern PROTOBUF_INTERNAL_EXPORT_tune_2ftune_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TuneDescription_tune_2ftune_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_tune_2ftune_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TuneResult_tune_2ftune_2eproto;
 namespace mavsdk {
 namespace rpc {
 namespace tune {
-constexpr PlayTuneRequest::PlayTuneRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : tune_description_(nullptr){}
-struct PlayTuneRequestDefaultTypeInternal {
-  constexpr PlayTuneRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~PlayTuneRequestDefaultTypeInternal() {}
-  union {
-    PlayTuneRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PlayTuneRequestDefaultTypeInternal _PlayTuneRequest_default_instance_;
-constexpr PlayTuneResponse::PlayTuneResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : tune_result_(nullptr){}
-struct PlayTuneResponseDefaultTypeInternal {
-  constexpr PlayTuneResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~PlayTuneResponseDefaultTypeInternal() {}
-  union {
-    PlayTuneResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PlayTuneResponseDefaultTypeInternal _PlayTuneResponse_default_instance_;
-constexpr TuneDescription::TuneDescription(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : song_elements_()
-  , _song_elements_cached_byte_size_(0)
-  , tempo_(0){}
-struct TuneDescriptionDefaultTypeInternal {
-  constexpr TuneDescriptionDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~TuneDescriptionDefaultTypeInternal() {}
-  union {
-    TuneDescription _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TuneDescriptionDefaultTypeInternal _TuneDescription_default_instance_;
-constexpr TuneResult::TuneResult(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : result_str_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , result_(0)
-{}
-struct TuneResultDefaultTypeInternal {
-  constexpr TuneResultDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~TuneResultDefaultTypeInternal() {}
-  union {
-    TuneResult _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TuneResultDefaultTypeInternal _TuneResult_default_instance_;
+class PlayTuneRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PlayTuneRequest> _instance;
+} _PlayTuneRequest_default_instance_;
+class PlayTuneResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PlayTuneResponse> _instance;
+} _PlayTuneResponse_default_instance_;
+class TuneDescriptionDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TuneDescription> _instance;
+} _TuneDescription_default_instance_;
+class TuneResultDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TuneResult> _instance;
+} _TuneResult_default_instance_;
 }  // namespace tune
 }  // namespace rpc
 }  // namespace mavsdk
+static void InitDefaultsscc_info_PlayTuneRequest_tune_2ftune_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::tune::_PlayTuneRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::tune::PlayTuneRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::tune::PlayTuneRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PlayTuneRequest_tune_2ftune_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_PlayTuneRequest_tune_2ftune_2eproto}, {
+      &scc_info_TuneDescription_tune_2ftune_2eproto.base,}};
+
+static void InitDefaultsscc_info_PlayTuneResponse_tune_2ftune_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::tune::_PlayTuneResponse_default_instance_;
+    new (ptr) ::mavsdk::rpc::tune::PlayTuneResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::tune::PlayTuneResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PlayTuneResponse_tune_2ftune_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_PlayTuneResponse_tune_2ftune_2eproto}, {
+      &scc_info_TuneResult_tune_2ftune_2eproto.base,}};
+
+static void InitDefaultsscc_info_TuneDescription_tune_2ftune_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::tune::_TuneDescription_default_instance_;
+    new (ptr) ::mavsdk::rpc::tune::TuneDescription();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::tune::TuneDescription::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TuneDescription_tune_2ftune_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TuneDescription_tune_2ftune_2eproto}, {}};
+
+static void InitDefaultsscc_info_TuneResult_tune_2ftune_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::tune::_TuneResult_default_instance_;
+    new (ptr) ::mavsdk::rpc::tune::TuneResult();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::tune::TuneResult::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TuneResult_tune_2ftune_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TuneResult_tune_2ftune_2eproto}, {}};
+
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_tune_2ftune_2eproto[4];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_tune_2ftune_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_tune_2ftune_2eproto = nullptr;
@@ -153,19 +175,24 @@ const char descriptor_table_protodef_tune_2ftune_2eproto[] PROTOBUF_SECTION_VARI
   "mavsdk.rpc.tune.PlayTuneResponse\"\000B\033\n\016io"
   ".mavsdk.tuneB\tTuneProtob\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_tune_2ftune_2eproto_deps[1] = {
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_tune_2ftune_2eproto_sccs[4] = {
+  &scc_info_PlayTuneRequest_tune_2ftune_2eproto.base,
+  &scc_info_PlayTuneResponse_tune_2ftune_2eproto.base,
+  &scc_info_TuneDescription_tune_2ftune_2eproto.base,
+  &scc_info_TuneResult_tune_2ftune_2eproto.base,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_tune_2ftune_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_tune_2ftune_2eproto = {
-  false, false, 1231, descriptor_table_protodef_tune_2ftune_2eproto, "tune/tune.proto", 
-  &descriptor_table_tune_2ftune_2eproto_once, nullptr, 0, 4,
+  false, false, descriptor_table_protodef_tune_2ftune_2eproto, "tune/tune.proto", 1231,
+  &descriptor_table_tune_2ftune_2eproto_once, descriptor_table_tune_2ftune_2eproto_sccs, descriptor_table_tune_2ftune_2eproto_deps, 4, 0,
   schemas, file_default_instances, TableStruct_tune_2ftune_2eproto::offsets,
-  file_level_metadata_tune_2ftune_2eproto, file_level_enum_descriptors_tune_2ftune_2eproto, file_level_service_descriptors_tune_2ftune_2eproto,
+  file_level_metadata_tune_2ftune_2eproto, 4, file_level_enum_descriptors_tune_2ftune_2eproto, file_level_service_descriptors_tune_2ftune_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_tune_2ftune_2eproto_getter() {
-  return &descriptor_table_tune_2ftune_2eproto;
-}
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_tune_2ftune_2eproto(&descriptor_table_tune_2ftune_2eproto);
+static bool dynamic_init_dummy_tune_2ftune_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_tune_2ftune_2eproto)), true);
 namespace mavsdk {
 namespace rpc {
 namespace tune {
@@ -234,6 +261,10 @@ bool SongElement_IsValid(int value) {
 
 // ===================================================================
 
+void PlayTuneRequest::InitAsDefaultInstance() {
+  ::mavsdk::rpc::tune::_PlayTuneRequest_default_instance_._instance.get_mutable()->tune_description_ = const_cast< ::mavsdk::rpc::tune::TuneDescription*>(
+      ::mavsdk::rpc::tune::TuneDescription::internal_default_instance());
+}
 class PlayTuneRequest::_Internal {
  public:
   static const ::mavsdk::rpc::tune::TuneDescription& tune_description(const PlayTuneRequest* msg);
@@ -243,13 +274,10 @@ const ::mavsdk::rpc::tune::TuneDescription&
 PlayTuneRequest::_Internal::tune_description(const PlayTuneRequest* msg) {
   return *msg->tune_description_;
 }
-PlayTuneRequest::PlayTuneRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+PlayTuneRequest::PlayTuneRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.tune.PlayTuneRequest)
 }
 PlayTuneRequest::PlayTuneRequest(const PlayTuneRequest& from)
@@ -263,19 +291,19 @@ PlayTuneRequest::PlayTuneRequest(const PlayTuneRequest& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.tune.PlayTuneRequest)
 }
 
-inline void PlayTuneRequest::SharedCtor() {
-tune_description_ = nullptr;
+void PlayTuneRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PlayTuneRequest_tune_2ftune_2eproto.base);
+  tune_description_ = nullptr;
 }
 
 PlayTuneRequest::~PlayTuneRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.tune.PlayTuneRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void PlayTuneRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void PlayTuneRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete tune_description_;
 }
 
@@ -288,6 +316,11 @@ void PlayTuneRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void PlayTuneRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const PlayTuneRequest& PlayTuneRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PlayTuneRequest_tune_2ftune_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void PlayTuneRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.tune.PlayTuneRequest)
@@ -295,7 +328,7 @@ void PlayTuneRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && tune_description_ != nullptr) {
+  if (GetArena() == nullptr && tune_description_ != nullptr) {
     delete tune_description_;
   }
   tune_description_ = nullptr;
@@ -304,9 +337,11 @@ void PlayTuneRequest::Clear() {
 
 const char* PlayTuneRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.tune.TuneDescription tune_description = 1;
       case 1:
@@ -317,8 +352,7 @@ const char* PlayTuneRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -345,7 +379,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.tune.TuneDescription tune_description = 1;
-  if (this->_internal_has_tune_description()) {
+  if (this->has_tune_description()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -369,7 +403,7 @@ size_t PlayTuneRequest::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // .mavsdk.rpc.tune.TuneDescription tune_description = 1;
-  if (this->_internal_has_tune_description()) {
+  if (this->has_tune_description()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *tune_description_);
@@ -384,29 +418,38 @@ size_t PlayTuneRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PlayTuneRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    PlayTuneRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PlayTuneRequest::GetClassData() const { return &_class_data_; }
-
-void PlayTuneRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<PlayTuneRequest *>(to)->MergeFrom(
-      static_cast<const PlayTuneRequest &>(from));
+void PlayTuneRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.tune.PlayTuneRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PlayTuneRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PlayTuneRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.tune.PlayTuneRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.tune.PlayTuneRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void PlayTuneRequest::MergeFrom(const PlayTuneRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.tune.PlayTuneRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_tune_description()) {
+  if (from.has_tune_description()) {
     _internal_mutable_tune_description()->::mavsdk::rpc::tune::TuneDescription::MergeFrom(from._internal_tune_description());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PlayTuneRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.tune.PlayTuneRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void PlayTuneRequest::CopyFrom(const PlayTuneRequest& from) {
@@ -422,18 +465,21 @@ bool PlayTuneRequest::IsInitialized() const {
 
 void PlayTuneRequest::InternalSwap(PlayTuneRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(tune_description_, other->tune_description_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayTuneRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_tune_2ftune_2eproto_getter, &descriptor_table_tune_2ftune_2eproto_once,
-      file_level_metadata_tune_2ftune_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void PlayTuneResponse::InitAsDefaultInstance() {
+  ::mavsdk::rpc::tune::_PlayTuneResponse_default_instance_._instance.get_mutable()->tune_result_ = const_cast< ::mavsdk::rpc::tune::TuneResult*>(
+      ::mavsdk::rpc::tune::TuneResult::internal_default_instance());
+}
 class PlayTuneResponse::_Internal {
  public:
   static const ::mavsdk::rpc::tune::TuneResult& tune_result(const PlayTuneResponse* msg);
@@ -443,13 +489,10 @@ const ::mavsdk::rpc::tune::TuneResult&
 PlayTuneResponse::_Internal::tune_result(const PlayTuneResponse* msg) {
   return *msg->tune_result_;
 }
-PlayTuneResponse::PlayTuneResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+PlayTuneResponse::PlayTuneResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.tune.PlayTuneResponse)
 }
 PlayTuneResponse::PlayTuneResponse(const PlayTuneResponse& from)
@@ -463,19 +506,19 @@ PlayTuneResponse::PlayTuneResponse(const PlayTuneResponse& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.tune.PlayTuneResponse)
 }
 
-inline void PlayTuneResponse::SharedCtor() {
-tune_result_ = nullptr;
+void PlayTuneResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PlayTuneResponse_tune_2ftune_2eproto.base);
+  tune_result_ = nullptr;
 }
 
 PlayTuneResponse::~PlayTuneResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.tune.PlayTuneResponse)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void PlayTuneResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void PlayTuneResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete tune_result_;
 }
 
@@ -488,6 +531,11 @@ void PlayTuneResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void PlayTuneResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const PlayTuneResponse& PlayTuneResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PlayTuneResponse_tune_2ftune_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void PlayTuneResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.tune.PlayTuneResponse)
@@ -495,7 +543,7 @@ void PlayTuneResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && tune_result_ != nullptr) {
+  if (GetArena() == nullptr && tune_result_ != nullptr) {
     delete tune_result_;
   }
   tune_result_ = nullptr;
@@ -504,9 +552,11 @@ void PlayTuneResponse::Clear() {
 
 const char* PlayTuneResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.tune.TuneResult tune_result = 1;
       case 1:
@@ -517,8 +567,7 @@ const char* PlayTuneResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -545,7 +594,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.tune.TuneResult tune_result = 1;
-  if (this->_internal_has_tune_result()) {
+  if (this->has_tune_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -569,7 +618,7 @@ size_t PlayTuneResponse::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // .mavsdk.rpc.tune.TuneResult tune_result = 1;
-  if (this->_internal_has_tune_result()) {
+  if (this->has_tune_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *tune_result_);
@@ -584,29 +633,38 @@ size_t PlayTuneResponse::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PlayTuneResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    PlayTuneResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PlayTuneResponse::GetClassData() const { return &_class_data_; }
-
-void PlayTuneResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<PlayTuneResponse *>(to)->MergeFrom(
-      static_cast<const PlayTuneResponse &>(from));
+void PlayTuneResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.tune.PlayTuneResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PlayTuneResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PlayTuneResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.tune.PlayTuneResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.tune.PlayTuneResponse)
+    MergeFrom(*source);
+  }
 }
-
 
 void PlayTuneResponse::MergeFrom(const PlayTuneResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.tune.PlayTuneResponse)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_tune_result()) {
+  if (from.has_tune_result()) {
     _internal_mutable_tune_result()->::mavsdk::rpc::tune::TuneResult::MergeFrom(from._internal_tune_result());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PlayTuneResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.tune.PlayTuneResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void PlayTuneResponse::CopyFrom(const PlayTuneResponse& from) {
@@ -622,30 +680,28 @@ bool PlayTuneResponse::IsInitialized() const {
 
 void PlayTuneResponse::InternalSwap(PlayTuneResponse* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(tune_result_, other->tune_result_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayTuneResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_tune_2ftune_2eproto_getter, &descriptor_table_tune_2ftune_2eproto_once,
-      file_level_metadata_tune_2ftune_2eproto[1]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void TuneDescription::InitAsDefaultInstance() {
+}
 class TuneDescription::_Internal {
  public:
 };
 
-TuneDescription::TuneDescription(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+TuneDescription::TuneDescription(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   song_elements_(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.tune.TuneDescription)
 }
 TuneDescription::TuneDescription(const TuneDescription& from)
@@ -656,19 +712,18 @@ TuneDescription::TuneDescription(const TuneDescription& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.tune.TuneDescription)
 }
 
-inline void TuneDescription::SharedCtor() {
-tempo_ = 0;
+void TuneDescription::SharedCtor() {
+  tempo_ = 0;
 }
 
 TuneDescription::~TuneDescription() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.tune.TuneDescription)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void TuneDescription::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void TuneDescription::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void TuneDescription::ArenaDtor(void* object) {
@@ -680,6 +735,11 @@ void TuneDescription::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void TuneDescription::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const TuneDescription& TuneDescription::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TuneDescription_tune_2ftune_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void TuneDescription::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.tune.TuneDescription)
@@ -694,9 +754,11 @@ void TuneDescription::Clear() {
 
 const char* TuneDescription::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // repeated .mavsdk.rpc.tune.SongElement song_elements = 1;
       case 1:
@@ -718,8 +780,7 @@ const char* TuneDescription::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -755,7 +816,7 @@ failure:
   }
 
   // int32 tempo = 2;
-  if (this->_internal_tempo() != 0) {
+  if (this->tempo() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_tempo(), target);
   }
@@ -795,7 +856,7 @@ size_t TuneDescription::ByteSizeLong() const {
   }
 
   // int32 tempo = 2;
-  if (this->_internal_tempo() != 0) {
+  if (this->tempo() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_tempo());
@@ -810,30 +871,39 @@ size_t TuneDescription::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TuneDescription::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    TuneDescription::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TuneDescription::GetClassData() const { return &_class_data_; }
-
-void TuneDescription::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<TuneDescription *>(to)->MergeFrom(
-      static_cast<const TuneDescription &>(from));
+void TuneDescription::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.tune.TuneDescription)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TuneDescription* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TuneDescription>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.tune.TuneDescription)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.tune.TuneDescription)
+    MergeFrom(*source);
+  }
 }
-
 
 void TuneDescription::MergeFrom(const TuneDescription& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.tune.TuneDescription)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   song_elements_.MergeFrom(from.song_elements_);
-  if (from._internal_tempo() != 0) {
+  if (from.tempo() != 0) {
     _internal_set_tempo(from._internal_tempo());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TuneDescription::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.tune.TuneDescription)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void TuneDescription::CopyFrom(const TuneDescription& from) {
@@ -849,30 +919,28 @@ bool TuneDescription::IsInitialized() const {
 
 void TuneDescription::InternalSwap(TuneDescription* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   song_elements_.InternalSwap(&other->song_elements_);
   swap(tempo_, other->tempo_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TuneDescription::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_tune_2ftune_2eproto_getter, &descriptor_table_tune_2ftune_2eproto_once,
-      file_level_metadata_tune_2ftune_2eproto[2]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void TuneResult::InitAsDefaultInstance() {
+}
 class TuneResult::_Internal {
  public:
 };
 
-TuneResult::TuneResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+TuneResult::TuneResult(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.tune.TuneResult)
 }
 TuneResult::TuneResult(const TuneResult& from)
@@ -880,27 +948,27 @@ TuneResult::TuneResult(const TuneResult& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   result_str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_result_str().empty()) {
-    result_str_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_result_str(), 
-      GetArenaForAllocation());
+    result_str_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_result_str(),
+      GetArena());
   }
   result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.tune.TuneResult)
 }
 
-inline void TuneResult::SharedCtor() {
-result_str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-result_ = 0;
+void TuneResult::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TuneResult_tune_2ftune_2eproto.base);
+  result_str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  result_ = 0;
 }
 
 TuneResult::~TuneResult() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.tune.TuneResult)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void TuneResult::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void TuneResult::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   result_str_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -913,6 +981,11 @@ void TuneResult::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void TuneResult::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const TuneResult& TuneResult::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TuneResult_tune_2ftune_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void TuneResult::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.tune.TuneResult)
@@ -920,16 +993,18 @@ void TuneResult::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  result_str_.ClearToEmpty();
+  result_str_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   result_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* TuneResult::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.tune.TuneResult.Result result = 1;
       case 1:
@@ -950,8 +1025,7 @@ const char* TuneResult::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -978,14 +1052,14 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.tune.TuneResult.Result result = 1;
-  if (this->_internal_result() != 0) {
+  if (this->result() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
       1, this->_internal_result(), target);
   }
 
   // string result_str = 2;
-  if (!this->_internal_result_str().empty()) {
+  if (this->result_str().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_result_str().data(), static_cast<int>(this->_internal_result_str().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -1011,14 +1085,14 @@ size_t TuneResult::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // string result_str = 2;
-  if (!this->_internal_result_str().empty()) {
+  if (this->result_str().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_result_str());
   }
 
   // .mavsdk.rpc.tune.TuneResult.Result result = 1;
-  if (this->_internal_result() != 0) {
+  if (this->result() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_result());
   }
@@ -1032,32 +1106,41 @@ size_t TuneResult::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TuneResult::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    TuneResult::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TuneResult::GetClassData() const { return &_class_data_; }
-
-void TuneResult::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<TuneResult *>(to)->MergeFrom(
-      static_cast<const TuneResult &>(from));
+void TuneResult::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.tune.TuneResult)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TuneResult* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TuneResult>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.tune.TuneResult)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.tune.TuneResult)
+    MergeFrom(*source);
+  }
 }
-
 
 void TuneResult::MergeFrom(const TuneResult& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.tune.TuneResult)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_result_str().empty()) {
+  if (from.result_str().size() > 0) {
     _internal_set_result_str(from._internal_result_str());
   }
-  if (from._internal_result() != 0) {
+  if (from.result() != 0) {
     _internal_set_result(from._internal_result());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TuneResult::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.tune.TuneResult)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void TuneResult::CopyFrom(const TuneResult& from) {
@@ -1073,20 +1156,15 @@ bool TuneResult::IsInitialized() const {
 
 void TuneResult::InternalSwap(TuneResult* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &result_str_, GetArenaForAllocation(),
-      &other->result_str_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  result_str_.Swap(&other->result_str_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(result_, other->result_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TuneResult::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_tune_2ftune_2eproto_getter, &descriptor_table_tune_2ftune_2eproto_once,
-      file_level_metadata_tune_2ftune_2eproto[3]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace tune

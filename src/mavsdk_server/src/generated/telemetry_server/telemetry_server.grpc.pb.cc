@@ -42,356 +42,426 @@ static const char* TelemetryServerService_method_names[] = {
 
 std::unique_ptr< TelemetryServerService::Stub> TelemetryServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< TelemetryServerService::Stub> stub(new TelemetryServerService::Stub(channel, options));
+  std::unique_ptr< TelemetryServerService::Stub> stub(new TelemetryServerService::Stub(channel));
   return stub;
 }
 
-TelemetryServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_PublishPosition_(TelemetryServerService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishHome_(TelemetryServerService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishSysStatus_(TelemetryServerService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishExtendedSysState_(TelemetryServerService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishRawGps_(TelemetryServerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishBattery_(TelemetryServerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishStatusText_(TelemetryServerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishOdometry_(TelemetryServerService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishPositionVelocityNed_(TelemetryServerService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishGroundTruth_(TelemetryServerService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishImu_(TelemetryServerService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishScaledImu_(TelemetryServerService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishRawImu_(TelemetryServerService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PublishUnixEpochTime_(TelemetryServerService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+TelemetryServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_PublishPosition_(TelemetryServerService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishHome_(TelemetryServerService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishSysStatus_(TelemetryServerService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishExtendedSysState_(TelemetryServerService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishRawGps_(TelemetryServerService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishBattery_(TelemetryServerService_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishStatusText_(TelemetryServerService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishOdometry_(TelemetryServerService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishPositionVelocityNed_(TelemetryServerService_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishGroundTruth_(TelemetryServerService_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishImu_(TelemetryServerService_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishScaledImu_(TelemetryServerService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishRawImu_(TelemetryServerService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PublishUnixEpochTime_(TelemetryServerService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status TelemetryServerService::Stub::PublishPosition(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest& request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishPositionRequest, ::mavsdk::rpc::telemetry_server::PublishPositionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishPosition_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishPosition_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishPosition(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishPositionRequest, ::mavsdk::rpc::telemetry_server::PublishPositionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishPosition_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishPosition(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishPosition_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishPosition(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishPosition_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishPosition(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishPosition_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishPositionResponse>* TelemetryServerService::Stub::PrepareAsyncPublishPositionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishPositionResponse, ::mavsdk::rpc::telemetry_server::PublishPositionRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishPosition_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishPosition(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishPosition_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishPosition(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishPositionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishPosition_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishPositionResponse>* TelemetryServerService::Stub::AsyncPublishPositionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishPositionRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishPositionResponse>::Create(channel_.get(), cq, rpcmethod_PublishPosition_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishPositionResponse>* TelemetryServerService::Stub::PrepareAsyncPublishPositionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishPositionResponse>::Create(channel_.get(), cq, rpcmethod_PublishPosition_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishHome(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest& request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishHomeRequest, ::mavsdk::rpc::telemetry_server::PublishHomeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishHome_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishHome_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishHome(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest* request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishHomeRequest, ::mavsdk::rpc::telemetry_server::PublishHomeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishHome_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishHome(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest* request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishHome_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishHome(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest* request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishHome_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishHome(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishHome_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishHomeResponse>* TelemetryServerService::Stub::PrepareAsyncPublishHomeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishHomeResponse, ::mavsdk::rpc::telemetry_server::PublishHomeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishHome_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishHome(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest* request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishHome_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishHome(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishHomeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishHome_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishHomeResponse>* TelemetryServerService::Stub::AsyncPublishHomeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishHomeRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishHomeResponse>::Create(channel_.get(), cq, rpcmethod_PublishHome_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishHomeResponse>* TelemetryServerService::Stub::PrepareAsyncPublishHomeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishHomeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishHomeResponse>::Create(channel_.get(), cq, rpcmethod_PublishHome_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest& request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishSysStatus_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishSysStatus_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest* request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishSysStatus_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest* request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishSysStatus_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest* request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishSysStatus_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishSysStatus(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishSysStatus_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>* TelemetryServerService::Stub::PrepareAsyncPublishSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse, ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishSysStatus_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest* request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishSysStatus_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishSysStatus(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishSysStatus_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>* TelemetryServerService::Stub::AsyncPublishSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishSysStatusRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>::Create(channel_.get(), cq, rpcmethod_PublishSysStatus_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>* TelemetryServerService::Stub::PrepareAsyncPublishSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>::Create(channel_.get(), cq, rpcmethod_PublishSysStatus_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishExtendedSysState(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest& request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishExtendedSysState_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishExtendedSysState_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishExtendedSysState(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest* request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishExtendedSysState_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishExtendedSysState(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest* request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishExtendedSysState_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishExtendedSysState(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest* request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishExtendedSysState_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishExtendedSysState(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishExtendedSysState_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse>* TelemetryServerService::Stub::PrepareAsyncPublishExtendedSysStateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishExtendedSysState_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishExtendedSysState(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest* request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishExtendedSysState_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishExtendedSysState(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishExtendedSysState_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse>* TelemetryServerService::Stub::AsyncPublishExtendedSysStateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishExtendedSysStateRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse>::Create(channel_.get(), cq, rpcmethod_PublishExtendedSysState_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse>* TelemetryServerService::Stub::PrepareAsyncPublishExtendedSysStateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse>::Create(channel_.get(), cq, rpcmethod_PublishExtendedSysState_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishRawGps(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest& request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishRawGps_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishRawGps_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishRawGps(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishRawGps_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishRawGps(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishRawGps_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishRawGps(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishRawGps_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishRawGps(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishRawGps_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse>* TelemetryServerService::Stub::PrepareAsyncPublishRawGpsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse, ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishRawGps_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishRawGps(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishRawGps_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishRawGps(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishRawGps_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse>* TelemetryServerService::Stub::AsyncPublishRawGpsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishRawGpsRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse>::Create(channel_.get(), cq, rpcmethod_PublishRawGps_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse>* TelemetryServerService::Stub::PrepareAsyncPublishRawGpsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse>::Create(channel_.get(), cq, rpcmethod_PublishRawGps_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishBattery(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest& request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishBatteryRequest, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishBattery_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishBattery_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishBattery(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest* request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishBatteryRequest, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishBattery_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishBattery(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest* request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishBattery_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishBattery(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest* request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishBattery_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishBattery(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishBattery_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishBatteryResponse>* TelemetryServerService::Stub::PrepareAsyncPublishBatteryRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishBatteryResponse, ::mavsdk::rpc::telemetry_server::PublishBatteryRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishBattery_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishBattery(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest* request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishBattery_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishBattery(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishBattery_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishBatteryResponse>* TelemetryServerService::Stub::AsyncPublishBatteryRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishBatteryRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishBatteryResponse>::Create(channel_.get(), cq, rpcmethod_PublishBattery_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishBatteryResponse>* TelemetryServerService::Stub::PrepareAsyncPublishBatteryRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishBatteryResponse>::Create(channel_.get(), cq, rpcmethod_PublishBattery_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishStatusText(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest& request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishStatusText_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishStatusText_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishStatusText(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest* request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishStatusText_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishStatusText(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest* request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishStatusText_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishStatusText(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest* request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishStatusText_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishStatusText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishStatusText_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>* TelemetryServerService::Stub::PrepareAsyncPublishStatusTextRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse, ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishStatusText_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishStatusText(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest* request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishStatusText_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishStatusText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishStatusText_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>* TelemetryServerService::Stub::AsyncPublishStatusTextRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishStatusTextRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>::Create(channel_.get(), cq, rpcmethod_PublishStatusText_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>* TelemetryServerService::Stub::PrepareAsyncPublishStatusTextRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>::Create(channel_.get(), cq, rpcmethod_PublishStatusText_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishOdometry(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest& request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishOdometryRequest, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishOdometry_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishOdometry_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishOdometry(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest* request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishOdometryRequest, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishOdometry_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishOdometry(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest* request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishOdometry_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishOdometry(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest* request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishOdometry_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishOdometry(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishOdometry_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishOdometryResponse>* TelemetryServerService::Stub::PrepareAsyncPublishOdometryRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishOdometryResponse, ::mavsdk::rpc::telemetry_server::PublishOdometryRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishOdometry_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishOdometry(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest* request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishOdometry_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishOdometry(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishOdometry_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishOdometryResponse>* TelemetryServerService::Stub::AsyncPublishOdometryRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishOdometryRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishOdometryResponse>::Create(channel_.get(), cq, rpcmethod_PublishOdometry_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishOdometryResponse>* TelemetryServerService::Stub::PrepareAsyncPublishOdometryRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishOdometryResponse>::Create(channel_.get(), cq, rpcmethod_PublishOdometry_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest& request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishPositionVelocityNed_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishPositionVelocityNed_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishPositionVelocityNed_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishPositionVelocityNed_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishPositionVelocityNed_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishPositionVelocityNed_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse>* TelemetryServerService::Stub::PrepareAsyncPublishPositionVelocityNedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishPositionVelocityNed_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest* request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishPositionVelocityNed_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishPositionVelocityNed(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishPositionVelocityNed_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse>* TelemetryServerService::Stub::AsyncPublishPositionVelocityNedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishPositionVelocityNedRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse>::Create(channel_.get(), cq, rpcmethod_PublishPositionVelocityNed_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse>* TelemetryServerService::Stub::PrepareAsyncPublishPositionVelocityNedRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse>::Create(channel_.get(), cq, rpcmethod_PublishPositionVelocityNed_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishGroundTruth(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest& request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishGroundTruth_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishGroundTruth_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishGroundTruth(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest* request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishGroundTruth_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishGroundTruth(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest* request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishGroundTruth_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishGroundTruth(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest* request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishGroundTruth_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishGroundTruth(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishGroundTruth_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse>* TelemetryServerService::Stub::PrepareAsyncPublishGroundTruthRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse, ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishGroundTruth_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishGroundTruth(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest* request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishGroundTruth_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishGroundTruth(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishGroundTruth_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse>* TelemetryServerService::Stub::AsyncPublishGroundTruthRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishGroundTruthRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse>::Create(channel_.get(), cq, rpcmethod_PublishGroundTruth_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse>* TelemetryServerService::Stub::PrepareAsyncPublishGroundTruthRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse>::Create(channel_.get(), cq, rpcmethod_PublishGroundTruth_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest& request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishImuRequest, ::mavsdk::rpc::telemetry_server::PublishImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishImu_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishImu_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishImuRequest, ::mavsdk::rpc::telemetry_server::PublishImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishImu_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishImu_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishImu_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishImu(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishImu_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishImuResponse>* TelemetryServerService::Stub::PrepareAsyncPublishImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishImuResponse, ::mavsdk::rpc::telemetry_server::PublishImuRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishImu_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishImu_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishImu(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishImuResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishImu_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishImuResponse>* TelemetryServerService::Stub::AsyncPublishImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishImuRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishImuResponse>::Create(channel_.get(), cq, rpcmethod_PublishImu_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishImuResponse>* TelemetryServerService::Stub::PrepareAsyncPublishImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishImuRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishImuResponse>::Create(channel_.get(), cq, rpcmethod_PublishImu_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishScaledImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest& request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishScaledImu_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishScaledImu_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishScaledImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishScaledImu_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishScaledImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishScaledImu_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishScaledImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishScaledImu_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishScaledImu(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishScaledImu_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>* TelemetryServerService::Stub::PrepareAsyncPublishScaledImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse, ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishScaledImu_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishScaledImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishScaledImu_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishScaledImu(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishScaledImu_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>* TelemetryServerService::Stub::AsyncPublishScaledImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishScaledImuRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>::Create(channel_.get(), cq, rpcmethod_PublishScaledImu_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>* TelemetryServerService::Stub::PrepareAsyncPublishScaledImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>::Create(channel_.get(), cq, rpcmethod_PublishScaledImu_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishRawImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest& request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishRawImuRequest, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishRawImu_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishRawImu_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishRawImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishRawImuRequest, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishRawImu_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishRawImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishRawImu_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishRawImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishRawImu_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishRawImu(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishRawImu_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>* TelemetryServerService::Stub::PrepareAsyncPublishRawImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse, ::mavsdk::rpc::telemetry_server::PublishRawImuRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishRawImu_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishRawImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishRawImu_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishRawImu(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishRawImu_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>* TelemetryServerService::Stub::AsyncPublishRawImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishRawImuRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>::Create(channel_.get(), cq, rpcmethod_PublishRawImu_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>* TelemetryServerService::Stub::PrepareAsyncPublishRawImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>::Create(channel_.get(), cq, rpcmethod_PublishRawImu_, context, request, false);
 }
 
 ::grpc::Status TelemetryServerService::Stub::PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PublishUnixEpochTime_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PublishUnixEpochTime_, context, request, response);
 }
 
-void TelemetryServerService::Stub::async::PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishUnixEpochTime_, context, request, response, std::move(f));
+void TelemetryServerService::Stub::experimental_async::PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishUnixEpochTime_, context, request, response, std::move(f));
 }
 
-void TelemetryServerService::Stub::async::PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PublishUnixEpochTime_, context, request, response, reactor);
+void TelemetryServerService::Stub::experimental_async::PublishUnixEpochTime(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PublishUnixEpochTime_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* TelemetryServerService::Stub::PrepareAsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PublishUnixEpochTime_, context, request);
+void TelemetryServerService::Stub::experimental_async::PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishUnixEpochTime_, context, request, response, reactor);
+}
+
+void TelemetryServerService::Stub::experimental_async::PublishUnixEpochTime(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_PublishUnixEpochTime_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* TelemetryServerService::Stub::AsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPublishUnixEpochTimeRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>::Create(channel_.get(), cq, rpcmethod_PublishUnixEpochTime_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* TelemetryServerService::Stub::PrepareAsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>::Create(channel_.get(), cq, rpcmethod_PublishUnixEpochTime_, context, request, false);
 }
 
 TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishPositionRequest, ::mavsdk::rpc::telemetry_server::PublishPositionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishPositionRequest, ::mavsdk::rpc::telemetry_server::PublishPositionResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishPositionRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishPositionResponse* resp) {
                return service->PublishPosition(ctx, req, resp);
@@ -399,9 +469,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishHomeRequest, ::mavsdk::rpc::telemetry_server::PublishHomeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishHomeRequest, ::mavsdk::rpc::telemetry_server::PublishHomeResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishHomeRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishHomeResponse* resp) {
                return service->PublishHome(ctx, req, resp);
@@ -409,9 +479,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest, ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* resp) {
                return service->PublishSysStatus(ctx, req, resp);
@@ -419,9 +489,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[3],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest, ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishExtendedSysStateResponse* resp) {
                return service->PublishExtendedSysState(ctx, req, resp);
@@ -429,9 +499,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest, ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishRawGpsRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishRawGpsResponse* resp) {
                return service->PublishRawGps(ctx, req, resp);
@@ -439,9 +509,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishBatteryRequest, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishBatteryRequest, ::mavsdk::rpc::telemetry_server::PublishBatteryResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishBatteryRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishBatteryResponse* resp) {
                return service->PublishBattery(ctx, req, resp);
@@ -449,9 +519,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest, ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* resp) {
                return service->PublishStatusText(ctx, req, resp);
@@ -459,9 +529,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishOdometryRequest, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishOdometryRequest, ::mavsdk::rpc::telemetry_server::PublishOdometryResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishOdometryRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishOdometryResponse* resp) {
                return service->PublishOdometry(ctx, req, resp);
@@ -469,9 +539,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest, ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishPositionVelocityNedResponse* resp) {
                return service->PublishPositionVelocityNed(ctx, req, resp);
@@ -479,9 +549,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest, ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishGroundTruthRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishGroundTruthResponse* resp) {
                return service->PublishGroundTruth(ctx, req, resp);
@@ -489,9 +559,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishImuRequest, ::mavsdk::rpc::telemetry_server::PublishImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishImuRequest, ::mavsdk::rpc::telemetry_server::PublishImuResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishImuRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishImuResponse* resp) {
                return service->PublishImu(ctx, req, resp);
@@ -499,9 +569,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest, ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* resp) {
                return service->PublishScaledImu(ctx, req, resp);
@@ -509,9 +579,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishRawImuRequest, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishRawImuRequest, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* resp) {
                return service->PublishRawImu(ctx, req, resp);
@@ -519,9 +589,9 @@ TelemetryServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelemetryServerService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< TelemetryServerService::Service, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>(
           [](TelemetryServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* req,
              ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* resp) {
                return service->PublishUnixEpochTime(ctx, req, resp);

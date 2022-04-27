@@ -14,72 +14,104 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
+extern PROTOBUF_INTERNAL_EXPORT_core_2fcore_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ConnectionState_core_2fcore_2eproto;
 namespace mavsdk {
 namespace rpc {
 namespace core {
-constexpr SubscribeConnectionStateRequest::SubscribeConnectionStateRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
-struct SubscribeConnectionStateRequestDefaultTypeInternal {
-  constexpr SubscribeConnectionStateRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SubscribeConnectionStateRequestDefaultTypeInternal() {}
-  union {
-    SubscribeConnectionStateRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SubscribeConnectionStateRequestDefaultTypeInternal _SubscribeConnectionStateRequest_default_instance_;
-constexpr ConnectionStateResponse::ConnectionStateResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : connection_state_(nullptr){}
-struct ConnectionStateResponseDefaultTypeInternal {
-  constexpr ConnectionStateResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ConnectionStateResponseDefaultTypeInternal() {}
-  union {
-    ConnectionStateResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ConnectionStateResponseDefaultTypeInternal _ConnectionStateResponse_default_instance_;
-constexpr SetMavlinkTimeoutRequest::SetMavlinkTimeoutRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : timeout_s_(0){}
-struct SetMavlinkTimeoutRequestDefaultTypeInternal {
-  constexpr SetMavlinkTimeoutRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SetMavlinkTimeoutRequestDefaultTypeInternal() {}
-  union {
-    SetMavlinkTimeoutRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetMavlinkTimeoutRequestDefaultTypeInternal _SetMavlinkTimeoutRequest_default_instance_;
-constexpr SetMavlinkTimeoutResponse::SetMavlinkTimeoutResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
-struct SetMavlinkTimeoutResponseDefaultTypeInternal {
-  constexpr SetMavlinkTimeoutResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SetMavlinkTimeoutResponseDefaultTypeInternal() {}
-  union {
-    SetMavlinkTimeoutResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetMavlinkTimeoutResponseDefaultTypeInternal _SetMavlinkTimeoutResponse_default_instance_;
-constexpr ConnectionState::ConnectionState(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : is_connected_(false){}
-struct ConnectionStateDefaultTypeInternal {
-  constexpr ConnectionStateDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ConnectionStateDefaultTypeInternal() {}
-  union {
-    ConnectionState _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ConnectionStateDefaultTypeInternal _ConnectionState_default_instance_;
+class SubscribeConnectionStateRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SubscribeConnectionStateRequest> _instance;
+} _SubscribeConnectionStateRequest_default_instance_;
+class ConnectionStateResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ConnectionStateResponse> _instance;
+} _ConnectionStateResponse_default_instance_;
+class SetMavlinkTimeoutRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SetMavlinkTimeoutRequest> _instance;
+} _SetMavlinkTimeoutRequest_default_instance_;
+class SetMavlinkTimeoutResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SetMavlinkTimeoutResponse> _instance;
+} _SetMavlinkTimeoutResponse_default_instance_;
+class ConnectionStateDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ConnectionState> _instance;
+} _ConnectionState_default_instance_;
 }  // namespace core
 }  // namespace rpc
 }  // namespace mavsdk
+static void InitDefaultsscc_info_ConnectionState_core_2fcore_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::core::_ConnectionState_default_instance_;
+    new (ptr) ::mavsdk::rpc::core::ConnectionState();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::core::ConnectionState::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ConnectionState_core_2fcore_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ConnectionState_core_2fcore_2eproto}, {}};
+
+static void InitDefaultsscc_info_ConnectionStateResponse_core_2fcore_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::core::_ConnectionStateResponse_default_instance_;
+    new (ptr) ::mavsdk::rpc::core::ConnectionStateResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::core::ConnectionStateResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ConnectionStateResponse_core_2fcore_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ConnectionStateResponse_core_2fcore_2eproto}, {
+      &scc_info_ConnectionState_core_2fcore_2eproto.base,}};
+
+static void InitDefaultsscc_info_SetMavlinkTimeoutRequest_core_2fcore_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::core::_SetMavlinkTimeoutRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::core::SetMavlinkTimeoutRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::core::SetMavlinkTimeoutRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SetMavlinkTimeoutRequest_core_2fcore_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SetMavlinkTimeoutRequest_core_2fcore_2eproto}, {}};
+
+static void InitDefaultsscc_info_SetMavlinkTimeoutResponse_core_2fcore_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::core::_SetMavlinkTimeoutResponse_default_instance_;
+    new (ptr) ::mavsdk::rpc::core::SetMavlinkTimeoutResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::core::SetMavlinkTimeoutResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SetMavlinkTimeoutResponse_core_2fcore_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SetMavlinkTimeoutResponse_core_2fcore_2eproto}, {}};
+
+static void InitDefaultsscc_info_SubscribeConnectionStateRequest_core_2fcore_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::mavsdk::rpc::core::_SubscribeConnectionStateRequest_default_instance_;
+    new (ptr) ::mavsdk::rpc::core::SubscribeConnectionStateRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::mavsdk::rpc::core::SubscribeConnectionStateRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SubscribeConnectionStateRequest_core_2fcore_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SubscribeConnectionStateRequest_core_2fcore_2eproto}, {}};
+
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_core_2fcore_2eproto[5];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_core_2fcore_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_core_2fcore_2eproto = nullptr;
@@ -146,36 +178,41 @@ const char descriptor_table_protodef_core_2fcore_2eproto[] PROTOBUF_SECTION_VARI
   "mavsdk.rpc.core.SetMavlinkTimeoutRespons"
   "e\"\000B\033\n\016io.mavsdk.coreB\tCoreProtob\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_core_2fcore_2eproto_deps[1] = {
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_core_2fcore_2eproto_sccs[5] = {
+  &scc_info_ConnectionState_core_2fcore_2eproto.base,
+  &scc_info_ConnectionStateResponse_core_2fcore_2eproto.base,
+  &scc_info_SetMavlinkTimeoutRequest_core_2fcore_2eproto.base,
+  &scc_info_SetMavlinkTimeoutResponse_core_2fcore_2eproto.base,
+  &scc_info_SubscribeConnectionStateRequest_core_2fcore_2eproto.base,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_core_2fcore_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_core_2fcore_2eproto = {
-  false, false, 560, descriptor_table_protodef_core_2fcore_2eproto, "core/core.proto", 
-  &descriptor_table_core_2fcore_2eproto_once, nullptr, 0, 5,
+  false, false, descriptor_table_protodef_core_2fcore_2eproto, "core/core.proto", 560,
+  &descriptor_table_core_2fcore_2eproto_once, descriptor_table_core_2fcore_2eproto_sccs, descriptor_table_core_2fcore_2eproto_deps, 5, 0,
   schemas, file_default_instances, TableStruct_core_2fcore_2eproto::offsets,
-  file_level_metadata_core_2fcore_2eproto, file_level_enum_descriptors_core_2fcore_2eproto, file_level_service_descriptors_core_2fcore_2eproto,
+  file_level_metadata_core_2fcore_2eproto, 5, file_level_enum_descriptors_core_2fcore_2eproto, file_level_service_descriptors_core_2fcore_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_core_2fcore_2eproto_getter() {
-  return &descriptor_table_core_2fcore_2eproto;
-}
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_core_2fcore_2eproto(&descriptor_table_core_2fcore_2eproto);
+static bool dynamic_init_dummy_core_2fcore_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_core_2fcore_2eproto)), true);
 namespace mavsdk {
 namespace rpc {
 namespace core {
 
 // ===================================================================
 
+void SubscribeConnectionStateRequest::InitAsDefaultInstance() {
+}
 class SubscribeConnectionStateRequest::_Internal {
  public:
 };
 
-SubscribeConnectionStateRequest::SubscribeConnectionStateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+SubscribeConnectionStateRequest::SubscribeConnectionStateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.core.SubscribeConnectionStateRequest)
 }
 SubscribeConnectionStateRequest::SubscribeConnectionStateRequest(const SubscribeConnectionStateRequest& from)
@@ -184,18 +221,17 @@ SubscribeConnectionStateRequest::SubscribeConnectionStateRequest(const Subscribe
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.core.SubscribeConnectionStateRequest)
 }
 
-inline void SubscribeConnectionStateRequest::SharedCtor() {
+void SubscribeConnectionStateRequest::SharedCtor() {
 }
 
 SubscribeConnectionStateRequest::~SubscribeConnectionStateRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.core.SubscribeConnectionStateRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void SubscribeConnectionStateRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void SubscribeConnectionStateRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void SubscribeConnectionStateRequest::ArenaDtor(void* object) {
@@ -207,6 +243,11 @@ void SubscribeConnectionStateRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID:
 void SubscribeConnectionStateRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const SubscribeConnectionStateRequest& SubscribeConnectionStateRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SubscribeConnectionStateRequest_core_2fcore_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void SubscribeConnectionStateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.core.SubscribeConnectionStateRequest)
@@ -219,11 +260,12 @@ void SubscribeConnectionStateRequest::Clear() {
 
 const char* SubscribeConnectionStateRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -272,26 +314,35 @@ size_t SubscribeConnectionStateRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SubscribeConnectionStateRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    SubscribeConnectionStateRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubscribeConnectionStateRequest::GetClassData() const { return &_class_data_; }
-
-void SubscribeConnectionStateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<SubscribeConnectionStateRequest *>(to)->MergeFrom(
-      static_cast<const SubscribeConnectionStateRequest &>(from));
+void SubscribeConnectionStateRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.core.SubscribeConnectionStateRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SubscribeConnectionStateRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SubscribeConnectionStateRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.core.SubscribeConnectionStateRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.core.SubscribeConnectionStateRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void SubscribeConnectionStateRequest::MergeFrom(const SubscribeConnectionStateRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.core.SubscribeConnectionStateRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubscribeConnectionStateRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.core.SubscribeConnectionStateRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void SubscribeConnectionStateRequest::CopyFrom(const SubscribeConnectionStateRequest& from) {
@@ -307,17 +358,20 @@ bool SubscribeConnectionStateRequest::IsInitialized() const {
 
 void SubscribeConnectionStateRequest::InternalSwap(SubscribeConnectionStateRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SubscribeConnectionStateRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_core_2fcore_2eproto_getter, &descriptor_table_core_2fcore_2eproto_once,
-      file_level_metadata_core_2fcore_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void ConnectionStateResponse::InitAsDefaultInstance() {
+  ::mavsdk::rpc::core::_ConnectionStateResponse_default_instance_._instance.get_mutable()->connection_state_ = const_cast< ::mavsdk::rpc::core::ConnectionState*>(
+      ::mavsdk::rpc::core::ConnectionState::internal_default_instance());
+}
 class ConnectionStateResponse::_Internal {
  public:
   static const ::mavsdk::rpc::core::ConnectionState& connection_state(const ConnectionStateResponse* msg);
@@ -327,13 +381,10 @@ const ::mavsdk::rpc::core::ConnectionState&
 ConnectionStateResponse::_Internal::connection_state(const ConnectionStateResponse* msg) {
   return *msg->connection_state_;
 }
-ConnectionStateResponse::ConnectionStateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+ConnectionStateResponse::ConnectionStateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.core.ConnectionStateResponse)
 }
 ConnectionStateResponse::ConnectionStateResponse(const ConnectionStateResponse& from)
@@ -347,19 +398,19 @@ ConnectionStateResponse::ConnectionStateResponse(const ConnectionStateResponse& 
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.core.ConnectionStateResponse)
 }
 
-inline void ConnectionStateResponse::SharedCtor() {
-connection_state_ = nullptr;
+void ConnectionStateResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ConnectionStateResponse_core_2fcore_2eproto.base);
+  connection_state_ = nullptr;
 }
 
 ConnectionStateResponse::~ConnectionStateResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.core.ConnectionStateResponse)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ConnectionStateResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void ConnectionStateResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete connection_state_;
 }
 
@@ -372,6 +423,11 @@ void ConnectionStateResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*)
 void ConnectionStateResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const ConnectionStateResponse& ConnectionStateResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ConnectionStateResponse_core_2fcore_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void ConnectionStateResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.core.ConnectionStateResponse)
@@ -379,7 +435,7 @@ void ConnectionStateResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && connection_state_ != nullptr) {
+  if (GetArena() == nullptr && connection_state_ != nullptr) {
     delete connection_state_;
   }
   connection_state_ = nullptr;
@@ -388,9 +444,11 @@ void ConnectionStateResponse::Clear() {
 
 const char* ConnectionStateResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // .mavsdk.rpc.core.ConnectionState connection_state = 1;
       case 1:
@@ -401,8 +459,7 @@ const char* ConnectionStateResponse::_InternalParse(const char* ptr, ::PROTOBUF_
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -429,7 +486,7 @@ failure:
   (void) cached_has_bits;
 
   // .mavsdk.rpc.core.ConnectionState connection_state = 1;
-  if (this->_internal_has_connection_state()) {
+  if (this->has_connection_state()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -453,7 +510,7 @@ size_t ConnectionStateResponse::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // .mavsdk.rpc.core.ConnectionState connection_state = 1;
-  if (this->_internal_has_connection_state()) {
+  if (this->has_connection_state()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *connection_state_);
@@ -468,29 +525,38 @@ size_t ConnectionStateResponse::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ConnectionStateResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ConnectionStateResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ConnectionStateResponse::GetClassData() const { return &_class_data_; }
-
-void ConnectionStateResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ConnectionStateResponse *>(to)->MergeFrom(
-      static_cast<const ConnectionStateResponse &>(from));
+void ConnectionStateResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.core.ConnectionStateResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ConnectionStateResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ConnectionStateResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.core.ConnectionStateResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.core.ConnectionStateResponse)
+    MergeFrom(*source);
+  }
 }
-
 
 void ConnectionStateResponse::MergeFrom(const ConnectionStateResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.core.ConnectionStateResponse)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_connection_state()) {
+  if (from.has_connection_state()) {
     _internal_mutable_connection_state()->::mavsdk::rpc::core::ConnectionState::MergeFrom(from._internal_connection_state());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConnectionStateResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.core.ConnectionStateResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void ConnectionStateResponse::CopyFrom(const ConnectionStateResponse& from) {
@@ -506,29 +572,27 @@ bool ConnectionStateResponse::IsInitialized() const {
 
 void ConnectionStateResponse::InternalSwap(ConnectionStateResponse* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(connection_state_, other->connection_state_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ConnectionStateResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_core_2fcore_2eproto_getter, &descriptor_table_core_2fcore_2eproto_once,
-      file_level_metadata_core_2fcore_2eproto[1]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void SetMavlinkTimeoutRequest::InitAsDefaultInstance() {
+}
 class SetMavlinkTimeoutRequest::_Internal {
  public:
 };
 
-SetMavlinkTimeoutRequest::SetMavlinkTimeoutRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+SetMavlinkTimeoutRequest::SetMavlinkTimeoutRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
 }
 SetMavlinkTimeoutRequest::SetMavlinkTimeoutRequest(const SetMavlinkTimeoutRequest& from)
@@ -538,19 +602,18 @@ SetMavlinkTimeoutRequest::SetMavlinkTimeoutRequest(const SetMavlinkTimeoutReques
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
 }
 
-inline void SetMavlinkTimeoutRequest::SharedCtor() {
-timeout_s_ = 0;
+void SetMavlinkTimeoutRequest::SharedCtor() {
+  timeout_s_ = 0;
 }
 
 SetMavlinkTimeoutRequest::~SetMavlinkTimeoutRequest() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void SetMavlinkTimeoutRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void SetMavlinkTimeoutRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void SetMavlinkTimeoutRequest::ArenaDtor(void* object) {
@@ -562,6 +625,11 @@ void SetMavlinkTimeoutRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*
 void SetMavlinkTimeoutRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const SetMavlinkTimeoutRequest& SetMavlinkTimeoutRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SetMavlinkTimeoutRequest_core_2fcore_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void SetMavlinkTimeoutRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
@@ -575,9 +643,11 @@ void SetMavlinkTimeoutRequest::Clear() {
 
 const char* SetMavlinkTimeoutRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // double timeout_s = 1;
       case 1:
@@ -588,8 +658,7 @@ const char* SetMavlinkTimeoutRequest::_InternalParse(const char* ptr, ::PROTOBUF
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -616,7 +685,7 @@ failure:
   (void) cached_has_bits;
 
   // double timeout_s = 1;
-  if (!(this->_internal_timeout_s() <= 0 && this->_internal_timeout_s() >= 0)) {
+  if (!(this->timeout_s() <= 0 && this->timeout_s() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_timeout_s(), target);
   }
@@ -638,7 +707,7 @@ size_t SetMavlinkTimeoutRequest::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // double timeout_s = 1;
-  if (!(this->_internal_timeout_s() <= 0 && this->_internal_timeout_s() >= 0)) {
+  if (!(this->timeout_s() <= 0 && this->timeout_s() >= 0)) {
     total_size += 1 + 8;
   }
 
@@ -651,29 +720,38 @@ size_t SetMavlinkTimeoutRequest::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetMavlinkTimeoutRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    SetMavlinkTimeoutRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetMavlinkTimeoutRequest::GetClassData() const { return &_class_data_; }
-
-void SetMavlinkTimeoutRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<SetMavlinkTimeoutRequest *>(to)->MergeFrom(
-      static_cast<const SetMavlinkTimeoutRequest &>(from));
+void SetMavlinkTimeoutRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SetMavlinkTimeoutRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SetMavlinkTimeoutRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
+    MergeFrom(*source);
+  }
 }
-
 
 void SetMavlinkTimeoutRequest::MergeFrom(const SetMavlinkTimeoutRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from._internal_timeout_s() <= 0 && from._internal_timeout_s() >= 0)) {
+  if (!(from.timeout_s() <= 0 && from.timeout_s() >= 0)) {
     _internal_set_timeout_s(from._internal_timeout_s());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetMavlinkTimeoutRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.core.SetMavlinkTimeoutRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void SetMavlinkTimeoutRequest::CopyFrom(const SetMavlinkTimeoutRequest& from) {
@@ -689,29 +767,27 @@ bool SetMavlinkTimeoutRequest::IsInitialized() const {
 
 void SetMavlinkTimeoutRequest::InternalSwap(SetMavlinkTimeoutRequest* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(timeout_s_, other->timeout_s_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SetMavlinkTimeoutRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_core_2fcore_2eproto_getter, &descriptor_table_core_2fcore_2eproto_once,
-      file_level_metadata_core_2fcore_2eproto[2]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void SetMavlinkTimeoutResponse::InitAsDefaultInstance() {
+}
 class SetMavlinkTimeoutResponse::_Internal {
  public:
 };
 
-SetMavlinkTimeoutResponse::SetMavlinkTimeoutResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+SetMavlinkTimeoutResponse::SetMavlinkTimeoutResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
 }
 SetMavlinkTimeoutResponse::SetMavlinkTimeoutResponse(const SetMavlinkTimeoutResponse& from)
@@ -720,18 +796,17 @@ SetMavlinkTimeoutResponse::SetMavlinkTimeoutResponse(const SetMavlinkTimeoutResp
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
 }
 
-inline void SetMavlinkTimeoutResponse::SharedCtor() {
+void SetMavlinkTimeoutResponse::SharedCtor() {
 }
 
 SetMavlinkTimeoutResponse::~SetMavlinkTimeoutResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void SetMavlinkTimeoutResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void SetMavlinkTimeoutResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void SetMavlinkTimeoutResponse::ArenaDtor(void* object) {
@@ -743,6 +818,11 @@ void SetMavlinkTimeoutResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena
 void SetMavlinkTimeoutResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const SetMavlinkTimeoutResponse& SetMavlinkTimeoutResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SetMavlinkTimeoutResponse_core_2fcore_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void SetMavlinkTimeoutResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
@@ -755,11 +835,12 @@ void SetMavlinkTimeoutResponse::Clear() {
 
 const char* SetMavlinkTimeoutResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -808,26 +889,35 @@ size_t SetMavlinkTimeoutResponse::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetMavlinkTimeoutResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    SetMavlinkTimeoutResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetMavlinkTimeoutResponse::GetClassData() const { return &_class_data_; }
-
-void SetMavlinkTimeoutResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<SetMavlinkTimeoutResponse *>(to)->MergeFrom(
-      static_cast<const SetMavlinkTimeoutResponse &>(from));
+void SetMavlinkTimeoutResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SetMavlinkTimeoutResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SetMavlinkTimeoutResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
+    MergeFrom(*source);
+  }
 }
-
 
 void SetMavlinkTimeoutResponse::MergeFrom(const SetMavlinkTimeoutResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetMavlinkTimeoutResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.core.SetMavlinkTimeoutResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void SetMavlinkTimeoutResponse::CopyFrom(const SetMavlinkTimeoutResponse& from) {
@@ -843,28 +933,26 @@ bool SetMavlinkTimeoutResponse::IsInitialized() const {
 
 void SetMavlinkTimeoutResponse::InternalSwap(SetMavlinkTimeoutResponse* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SetMavlinkTimeoutResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_core_2fcore_2eproto_getter, &descriptor_table_core_2fcore_2eproto_once,
-      file_level_metadata_core_2fcore_2eproto[3]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void ConnectionState::InitAsDefaultInstance() {
+}
 class ConnectionState::_Internal {
  public:
 };
 
-ConnectionState::ConnectionState(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+ConnectionState::ConnectionState(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.core.ConnectionState)
 }
 ConnectionState::ConnectionState(const ConnectionState& from)
@@ -874,19 +962,18 @@ ConnectionState::ConnectionState(const ConnectionState& from)
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.core.ConnectionState)
 }
 
-inline void ConnectionState::SharedCtor() {
-is_connected_ = false;
+void ConnectionState::SharedCtor() {
+  is_connected_ = false;
 }
 
 ConnectionState::~ConnectionState() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.core.ConnectionState)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ConnectionState::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+void ConnectionState::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
 void ConnectionState::ArenaDtor(void* object) {
@@ -898,6 +985,11 @@ void ConnectionState::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void ConnectionState::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const ConnectionState& ConnectionState::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ConnectionState_core_2fcore_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void ConnectionState::Clear() {
 // @@protoc_insertion_point(message_clear_start:mavsdk.rpc.core.ConnectionState)
@@ -911,9 +1003,11 @@ void ConnectionState::Clear() {
 
 const char* ConnectionState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // bool is_connected = 2;
       case 2:
@@ -924,8 +1018,7 @@ const char* ConnectionState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -952,7 +1045,7 @@ failure:
   (void) cached_has_bits;
 
   // bool is_connected = 2;
-  if (this->_internal_is_connected() != 0) {
+  if (this->is_connected() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_is_connected(), target);
   }
@@ -974,7 +1067,7 @@ size_t ConnectionState::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // bool is_connected = 2;
-  if (this->_internal_is_connected() != 0) {
+  if (this->is_connected() != 0) {
     total_size += 1 + 1;
   }
 
@@ -987,29 +1080,38 @@ size_t ConnectionState::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ConnectionState::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ConnectionState::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ConnectionState::GetClassData() const { return &_class_data_; }
-
-void ConnectionState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ConnectionState *>(to)->MergeFrom(
-      static_cast<const ConnectionState &>(from));
+void ConnectionState::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:mavsdk.rpc.core.ConnectionState)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ConnectionState* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ConnectionState>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:mavsdk.rpc.core.ConnectionState)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:mavsdk.rpc.core.ConnectionState)
+    MergeFrom(*source);
+  }
 }
-
 
 void ConnectionState::MergeFrom(const ConnectionState& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.core.ConnectionState)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_is_connected() != 0) {
+  if (from.is_connected() != 0) {
     _internal_set_is_connected(from._internal_is_connected());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConnectionState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:mavsdk.rpc.core.ConnectionState)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void ConnectionState::CopyFrom(const ConnectionState& from) {
@@ -1025,15 +1127,14 @@ bool ConnectionState::IsInitialized() const {
 
 void ConnectionState::InternalSwap(ConnectionState* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(is_connected_, other->is_connected_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ConnectionState::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_core_2fcore_2eproto_getter, &descriptor_table_core_2fcore_2eproto_once,
-      file_level_metadata_core_2fcore_2eproto[4]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace core
