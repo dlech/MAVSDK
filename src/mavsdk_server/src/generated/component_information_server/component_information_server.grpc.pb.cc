@@ -30,61 +30,66 @@ static const char* ComponentInformationServerService_method_names[] = {
 
 std::unique_ptr< ComponentInformationServerService::Stub> ComponentInformationServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< ComponentInformationServerService::Stub> stub(new ComponentInformationServerService::Stub(channel, options));
+  std::unique_ptr< ComponentInformationServerService::Stub> stub(new ComponentInformationServerService::Stub(channel));
   return stub;
 }
 
-ComponentInformationServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_ProvideFloatParam_(ComponentInformationServerService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SubscribeFloatParam_(ComponentInformationServerService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+ComponentInformationServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_ProvideFloatParam_(ComponentInformationServerService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeFloatParam_(ComponentInformationServerService_method_names[1], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status ComponentInformationServerService::Stub::ProvideFloatParam(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest& request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ProvideFloatParam_, context, request, response);
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_ProvideFloatParam_, context, request, response);
 }
 
-void ComponentInformationServerService::Stub::async::ProvideFloatParam(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest* request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ProvideFloatParam_, context, request, response, std::move(f));
+void ComponentInformationServerService::Stub::experimental_async::ProvideFloatParam(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest* request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ProvideFloatParam_, context, request, response, std::move(f));
 }
 
-void ComponentInformationServerService::Stub::async::ProvideFloatParam(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest* request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ProvideFloatParam_, context, request, response, reactor);
+void ComponentInformationServerService::Stub::experimental_async::ProvideFloatParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ProvideFloatParam_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse>* ComponentInformationServerService::Stub::PrepareAsyncProvideFloatParamRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse, ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ProvideFloatParam_, context, request);
+void ComponentInformationServerService::Stub::experimental_async::ProvideFloatParam(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest* request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ProvideFloatParam_, context, request, response, reactor);
+}
+
+void ComponentInformationServerService::Stub::experimental_async::ProvideFloatParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ProvideFloatParam_, context, request, response, reactor);
 }
 
 ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse>* ComponentInformationServerService::Stub::AsyncProvideFloatParamRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncProvideFloatParamRaw(context, request, cq);
-  result->StartCall();
-  return result;
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse>::Create(channel_.get(), cq, rpcmethod_ProvideFloatParam_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse>* ComponentInformationServerService::Stub::PrepareAsyncProvideFloatParamRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse>::Create(channel_.get(), cq, rpcmethod_ProvideFloatParam_, context, request, false);
 }
 
 ::grpc::ClientReader< ::mavsdk::rpc::component_information_server::FloatParamResponse>* ComponentInformationServerService::Stub::SubscribeFloatParamRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(channel_.get(), rpcmethod_SubscribeFloatParam_, context, request);
+  return ::grpc_impl::internal::ClientReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(channel_.get(), rpcmethod_SubscribeFloatParam_, context, request);
 }
 
-void ComponentInformationServerService::Stub::async::SubscribeFloatParam(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::component_information_server::FloatParamResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeFloatParam_, context, request, reactor);
+void ComponentInformationServerService::Stub::experimental_async::SubscribeFloatParam(::grpc::ClientContext* context, ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest* request, ::grpc::experimental::ClientReadReactor< ::mavsdk::rpc::component_information_server::FloatParamResponse>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeFloatParam_, context, request, reactor);
 }
 
 ::grpc::ClientAsyncReader< ::mavsdk::rpc::component_information_server::FloatParamResponse>* ComponentInformationServerService::Stub::AsyncSubscribeFloatParamRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeFloatParam_, context, request, true, tag);
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeFloatParam_, context, request, true, tag);
 }
 
 ::grpc::ClientAsyncReader< ::mavsdk::rpc::component_information_server::FloatParamResponse>* ComponentInformationServerService::Stub::PrepareAsyncSubscribeFloatParamRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeFloatParam_, context, request, false, nullptr);
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::component_information_server::FloatParamResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeFloatParam_, context, request, false, nullptr);
 }
 
 ComponentInformationServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ComponentInformationServerService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ComponentInformationServerService::Service, ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ComponentInformationServerService::Service, ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest, ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse>(
           [](ComponentInformationServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::component_information_server::ProvideFloatParamRequest* req,
              ::mavsdk::rpc::component_information_server::ProvideFloatParamResponse* resp) {
                return service->ProvideFloatParam(ctx, req, resp);
@@ -94,9 +99,9 @@ ComponentInformationServerService::Service::Service() {
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< ComponentInformationServerService::Service, ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest, ::mavsdk::rpc::component_information_server::FloatParamResponse>(
           [](ComponentInformationServerService::Service* service,
-             ::grpc::ServerContext* ctx,
+             ::grpc_impl::ServerContext* ctx,
              const ::mavsdk::rpc::component_information_server::SubscribeFloatParamRequest* req,
-             ::grpc::ServerWriter<::mavsdk::rpc::component_information_server::FloatParamResponse>* writer) {
+             ::grpc_impl::ServerWriter<::mavsdk::rpc::component_information_server::FloatParamResponse>* writer) {
                return service->SubscribeFloatParam(ctx, req, writer);
              }, this)));
 }

@@ -10,7 +10,7 @@ if(SUPERBUILD AND HUNTER_ENABLED)
 endif()
 
 execute_process(
-    COMMAND git describe --abbrev=8 --dirty --always --tags
+    COMMAND git describe --abbrev=8 --dirty --always --tags --match=v*
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     OUTPUT_VARIABLE VERSION_STR
     OUTPUT_STRIP_TRAILING_WHITESPACE
