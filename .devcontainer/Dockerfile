@@ -22,8 +22,9 @@ RUN dpkg --add-architecture armhf && apt-get update && export DEBIAN_FRONTEND=no
     zlib1g-dev:armhf libprotobuf-dev:armhf libc-ares-dev:armhf libabsl-dev:armhf libre2-dev:armhf libupb-dev:armhf \
     devscripts debhelper git-buildpackage dput lintian bash-completion
 
-COPY x86_64-linux-gnu/cmake/grpc/ /usr/lib/x86_64-linux-gnu/cmake/grpc/
+COPY aarch64-linux-gnu/cmake/grpc/ /usr/lib/aarch64-linux-gnu/cmake/grpc/
 COPY arm-linux-gnueabihf/cmake/grpc/ /usr/lib/arm-linux-gnueabihf/cmake/grpc/
+COPY x86_64-linux-gnu/cmake/grpc/ /usr/lib/x86_64-linux-gnu/cmake/grpc/
 COPY devscripts.conf /etc/
 COPY dput.cf /etc/
 COPY git-to-deb.sh /etc/profile.d/
