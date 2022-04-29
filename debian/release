@@ -5,8 +5,33 @@
 set -e
 
 gbp buildpackage --git-tag-only --git-debian-branch=skywrangler
+
 debuild
-debuild -b --host-arch armhf
+
+if [[ "dpkg-architecture -q DEB_HOST_ARCH" != "amd64" ]]
+    debuild -b --host-arch amd64
+fi
+
+if [[ "dpkg-architecture -q DEB_HOST_ARCH" != "arm64" ]]
+    debuild -b --host-arch arm64
+fi
+
+if [[ "dpkg-architecture -q DEB_HOST_ARCH" != "armhf" ]]
+    debuild -b --host-arch armhf
+fi
+
 debrelease
-debrelease -aarmhf
+
+if [[ "dpkg-architecture -q DEB_HOST_ARCH" != "amd64" ]]
+    debrelease -aamd64
+fi
+
+if [[ "dpkg-architecture -q DEB_HOST_ARCH" != "arm64" ]]
+    debrelease -aarm64
+fi
+
+if [[ "dpkg-architecture -q DEB_HOST_ARCH" != "armhf" ]]
+    debrelease -aarmhf
+fi
+
 git push --tags
